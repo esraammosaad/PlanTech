@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/view/screens/login.dart';
 
 class OnBoardingController extends GetxController {
   PageController pageController = PageController();
@@ -12,6 +13,8 @@ class OnBoardingController extends GetxController {
 
     if (selectedPage < 3) {
       selectedPage++;
+    }else{
+      Get.to(()=>const LogIn(),transition: Transition.cupertino);
     }
     update();
   }
