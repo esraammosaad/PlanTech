@@ -4,4 +4,5 @@ class AppImageAsset{
   static const onBoardingImageTwo ="assets/images/unsplash_vs6a4EHj_Ro.png";
   static const onBoardingImageThree ="assets/images/unsplash_SxiWUpGLaZM.png";
   static const onBoardingImageFour ="assets/images/droneimage.jpeg";
+  static const splashImage ="assets/images/splashimage.svg";
 }
