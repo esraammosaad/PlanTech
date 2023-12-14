@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:grad_proj/controller/on_boarding_controller.dart';
 import 'package:grad_proj/core/constants/styles.dart';
 import '../../../data/data_source/static/static.dart';
 class CustomOnBoardingCircles extends StatelessWidget {
@@ -14,29 +18,31 @@ class CustomOnBoardingCircles extends StatelessWidget {
       children: [
         Align(
           alignment: AlignmentDirectional.topEnd,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.40,
-            height: MediaQuery.of(context).size.width * 0.40,
-            decoration: ShapeDecoration(
-              image: DecorationImage(
-                image: AssetImage(onBoardigList[index].image!),
-                fit: BoxFit.cover,
+          child: GetBuilder<OnBoardingController>(
+            builder: (controller)=>Container(
+              width: MediaQuery.of(context).size.width * 0.40,
+              height: MediaQuery.of(context).size.width * 0.40,
+              decoration: ShapeDecoration(
+                image: DecorationImage(
+                  image: AssetImage(onBoardigList[index].image!),
+                  fit: BoxFit.cover,
+                ),
+                shape: const OvalBorder(
+                  side: BorderSide(width: 1.50, color: Colors.white),
+                ),
               ),
-              shape: const OvalBorder(
-                side: BorderSide(width: 1.50, color: Colors.white),
-              ),
-            ),
-            child: Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.07,
-                height: MediaQuery.of(context).size.width * 0.07,
-                decoration: ShapeDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(onBoardigList[index].image!),
-                    fit: BoxFit.cover,
-                  ),
-                  shape: const OvalBorder(
-                    side: BorderSide(width: 0.80, color: Colors.white),
+              child: controller.selectedPage==3?null:Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.07,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                  decoration: ShapeDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(onBoardigList[index].image!),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: const OvalBorder(
+                      side: BorderSide(width: 0.80, color: Colors.white),
+                    ),
                   ),
                 ),
               ),
