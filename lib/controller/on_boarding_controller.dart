@@ -10,7 +10,7 @@ class OnBoardingController extends GetxController {
         duration: const Duration(milliseconds: 300), curve: Curves.easeInExpo);
 
 
-    if (selectedPage < 2) {
+    if (selectedPage < 3) {
       selectedPage++;
     }
     update();
