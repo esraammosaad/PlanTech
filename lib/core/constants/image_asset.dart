@@ -5,4 +5,5 @@ class AppImageAsset{
   static const onBoardingImageThree ="assets/images/unsplash_SxiWUpGLaZM.png";
   static const onBoardingImageFour ="assets/images/droneimage.jpeg";
   static const splashImage ="assets/images/splashimage.svg";
+  static const loginImage ="assets/images/loginimage.png";
 }
