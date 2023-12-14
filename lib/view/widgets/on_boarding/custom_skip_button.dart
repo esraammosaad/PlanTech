@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/constants/styles.dart';
+import '../../screens/login.dart';
 class CustomSkipButton extends StatelessWidget {
   const CustomSkipButton({
     super.key,
@@ -9,7 +11,9 @@ class CustomSkipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+        Get.to(()=>const LogIn());
+      },
       child: Text(
         'Skip',
         style: Styles.textStyle18,
