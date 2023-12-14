@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad_proj/core/constants/color.dart';
 
 import '../constants/styles.dart';
 class CustomButton extends StatelessWidget {
@@ -19,10 +20,10 @@ class CustomButton extends StatelessWidget {
         height: 47,
         padding: const EdgeInsets.symmetric(horizontal: 92, vertical: 10),
         decoration: ShapeDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment(1.00, -0.03),
-            end: Alignment(-1, 0.03),
-            colors: [Color(0xFF75E00A), Color(0xFF09E09F)],
+          gradient:  LinearGradient(
+            begin: const Alignment(1.00, -0.03),
+            end: const Alignment(-1, 0.03),
+            colors: AppColors.buttonsColor,
           ),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
