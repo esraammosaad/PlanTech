@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: LogIn(),
+
     );
   }
 }
