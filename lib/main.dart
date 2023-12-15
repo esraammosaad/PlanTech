@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:grad_proj/view/screens/login.dart';
 import 'package:grad_proj/view/screens/signup.dart';
 import 'package:grad_proj/view/screens/splash.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: SignUp(),
+      home: LogIn(),
     );
   }
 }
