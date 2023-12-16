@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/on_boarding_controller.dart';
 import 'package:grad_proj/data/data_source/static/static.dart';
-import '../widgets/on_boarding/custom_on_boarding_decoration.dart';
-import '../widgets/on_boarding/custom_on_boarding_image.dart';
+import '../../widgets/on_boarding/custom_on_boarding_decoration.dart';
+import '../../widgets/on_boarding/custom_on_boarding_image.dart';
 
 class OnBoarding extends GetView<OnBoardingController> {
   const OnBoarding({Key? key}) : super(key: key);

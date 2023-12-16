@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../core/constants/image_asset.dart';
-import '../widgets/splash/custom_animation_builder.dart';
+import '../../../core/constants/image_asset.dart';
+import '../../widgets/splash/custom_animation_builder.dart';
 import 'on_boarding.dart';
 
 class Splash extends StatefulWidget {
