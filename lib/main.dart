@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:grad_proj/core/constants/fonts.dart';
-import 'package:grad_proj/view/screens/landing/splash.dart';
+import 'package:grad_proj/view/screens/splash.dart';
+
 
 void main() {
   runApp(const MyApp());
