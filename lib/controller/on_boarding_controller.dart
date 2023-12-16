@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/view/screens/login.dart';
+import 'package:grad_proj/view/screens/auth/login.dart';
 
 class OnBoardingController extends GetxController {
   PageController pageController = PageController();
