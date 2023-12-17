@@ -42,14 +42,6 @@ class _CustomOtpFormState extends State<CustomOtpForm> {
               fontWeight: FontWeight.bold,
             ),
             length: 6,
-            obscureText: true,
-            obscuringCharacter: '*',
-            obscuringWidget: SvgPicture.asset(
-              AppImageAsset.splashImage,
-              width: 1,
-              height: 20,
-            ),
-            blinkWhenObscuring: true,
             animationType: AnimationType.fade,
             validator: (value) {
               if (value!.isEmpty) {
