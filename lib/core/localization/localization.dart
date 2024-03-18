@@ -1,0 +1,70 @@
+import 'package:get/get.dart';
+
+class MyTranslation extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+        'en': {
+          '1': 'Choose Language',
+          '2': 'English',
+          '3': 'Arabic',
+          '4': 'Continue',
+          '5':'Sign in',
+          '6':'Enter Email',
+          '7':'Enter Password',
+          '8':'Or',
+          '9':'with',
+          '10':"Don't have an account?",
+          '11':'Sign up',
+          '12':'please Enter Your Email',
+          '13':'please Enter Your Password',
+          '14':'Re-enter Password',
+          '15':'Already have an account?',
+          '16':'Skip',
+          '17':'Forget Password?',
+          '18':'Please Enter Your Email To Send Verification Code',
+          '19':'confirm',
+          '20':'Enter Your OTP',
+          '21':'Please type the verification code sent to your email',
+          '22':'Not received the code yet? ',
+          '23':'Resend',
+          '24':'Please Enter Your New Password',
+          '25':'Please Enter Your Number',
+          '26':'Please type the verification code sent to your phone number',
+          '27':'Now You Have An Account Successfully please verify your email',
+          '28':'Login Now',
+
+
+        },
+        'ar': {
+          '1': 'أختر اللغة',
+          '2': 'الإنجليزية',
+          '3': 'العربية',
+          '4': 'متابعة',
+          '5':'تسجيل دخول',
+          '6':'أدخل البريد الالكتروني',
+          '7':'أدخل الرقم السري',
+          '8':'أو',
+          '9':'ب',
+          '10':'ليس لديك حساب؟',
+          '11':'إنشاء حساب',
+          '12':'أدخل بريدك الالكتروني',
+          '13':'أدخل رقمك السري',
+          '14':'أعد إدخال الرقم السري',
+          '15':'بالفعل لديك حساب؟',
+          '16':'تخطي',
+          '17':'نسيت كلمة المرور؟',
+          '18':'من فضلك أدخل بريدك الإلكتروني ليتم إرسال رمز التحقق',
+          '19':'تم',
+          '20':'أدخل رمز التحقق',
+          '21':'من فضلك ادخل رمز التحقق الذي تم إرساله على بريدك الإلكتروني',
+          '22':'لم يتم إرساله بعد؟ ',
+          '23':'إعادة ارسال',
+          '24':'من فضلك ادخل كلمة مرور جديدة',
+          '25':'من فضلك أدخل رقم الهاتف',
+          '26':'من فضلك ادخل رمز التحقق الذي تم إرساله على رقم الهاتف',
+          '27':'الأن لديك حساب بنجاح',
+          '28':'سجل دخول الأن',
+
+        }
+      };
+}

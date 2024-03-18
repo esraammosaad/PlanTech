@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grad_proj/core/constants/color.dart';
+import '../../../core/constants/color.dart';
+import '../../../core/constants/styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -9,7 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.textInputAction,
     required this.obscureText,
     this.controller,
-    required this.errMassage,
+    required this.errMassage, this.icon, this.prefixIcon, this.validator, required this.hintText,
   }) : super(key: key);
 
   final TextInputType keyboardType;
@@ -18,44 +19,56 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String?) onSave;
   final TextEditingController? controller;
   final String errMassage;
+  final Widget?  icon;
+  final Widget?  prefixIcon;
+  final  String ? Function(String?)? validator;
+  final String hintText;
+
+
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
-      cursorColor: AppColors.textFormColor,
+      cursorColor: AppColors.kPrimaryColor,
       onSaved: onSave,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
-      validator: (value) {
+      validator: validator??(value) {
         if (value!.isEmpty) {
           return errMassage;
         }
         return null;
       },
       decoration: InputDecoration(
-        errorStyle: TextStyle(
-          color: AppColors.textFormColor,
-        ),
+        prefixIcon: prefixIcon,
+        suffixIcon:icon ,
+        // floatingLabelAlignment:FloatingLabelAlignment.start ,
+        // floatingLabelBehavior: FloatingLabelBehavior.always,
+        // labelText:'email' ,
+        // labelStyle: Styles.textStyle20,
+        hintText: hintText,
+        hintStyle: TextStyle(color: AppColors.greyColor),
+
         contentPadding: const EdgeInsets.only(
           top: 16,
           bottom: 16,
           left: 25,
         ),
-        border: buildOutlineInputBorder(AppColors.textFormColor),
-        errorBorder: buildOutlineInputBorder(AppColors.kPrimaryColor),
+        border: buildOutlineInputBorder(AppColors.greyColor),
+        errorBorder: buildOutlineInputBorder(Colors.red),
         focusedErrorBorder: buildOutlineInputBorder(Colors.red),
-        focusedBorder: buildOutlineInputBorder(AppColors.textFormColor),
-        enabledBorder: buildOutlineInputBorder(AppColors.textFormColor),
+        focusedBorder: buildOutlineInputBorder(AppColors.greyColor),
+        enabledBorder: buildOutlineInputBorder(AppColors.greyColor),
       ),
     );
   }
 
   OutlineInputBorder buildOutlineInputBorder(Color color) {
     return OutlineInputBorder(
-      borderSide: BorderSide(color: color),
-      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: color,width: 0.5),
+      borderRadius: BorderRadius.circular(15),
     );
   }
 }

@@ -1,13 +1,15 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:grad_proj/view/widgets/auth/custom_text_rich.dart';
+import 'package:grad_proj/controller/auth_controllers/otp_controller.dart';
+import 'package:grad_proj/controller/auth_controllers/signup_with_phone_number_controller.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../core/constants/color.dart';
-import '../../../core/constants/image_asset.dart';
+import '../../../core/constants/icon_asset.dart';
 import '../../../core/constants/styles.dart';
 import '../../../core/shared/custom_button.dart';
+import '../../../core/shared/custom_loading_icon.dart';
 import 'custom_auth_text.dart';
+import 'custom_text_rich.dart';
 
 class CustomOtpForm extends StatefulWidget {
   const CustomOtpForm({Key? key}) : super(key: key);
@@ -17,112 +19,108 @@ class CustomOtpForm extends StatefulWidget {
 }
 
 class _CustomOtpFormState extends State<CustomOtpForm> {
-  GlobalKey<FormState> formKey = GlobalKey();
-  StreamController<ErrorAnimationType> errorController = StreamController();
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-  TextEditingController controller = TextEditingController();
-  String currentText = '';
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: autoValidateMode,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 45,
-          ),
-          const CustomAuthText(text: 'Enter OTP'),
-          PinCodeTextField(
-            autoFocus: true,
-            appContext: context,
-            pastedTextStyle: TextStyle(
-              color: Colors.green.shade600,
-              fontWeight: FontWeight.bold,
-            ),
-            length: 6,
-            animationType: AnimationType.fade,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return "";
-              } else {
-                return null;
-              }
-            },
-            pinTheme: PinTheme(
-              inactiveColor: AppColors.textFormColor,
-              activeColor: AppColors.textFormColor,
-              activeBorderWidth: 1,
-              borderWidth: 1,
-              disabledColor: AppColors.textFormColor,
-              disabledBorderWidth: 1,
-              errorBorderColor: Colors.red,
-              selectedColor: AppColors.kPrimaryColor,
-              errorBorderWidth: 1,
-              shape: PinCodeFieldShape.box,
-              borderRadius: BorderRadius.circular(5),
-              fieldHeight: 40,
-              fieldWidth: 40,
-            ),
-            cursorColor: AppColors.textFormColor,
-            animationDuration: const Duration(milliseconds: 300),
-            errorAnimationController: errorController,
-            controller: controller,
-            keyboardType: TextInputType.number,
-            onCompleted: (v) {
-              debugPrint("Completed");
-            },
-            onChanged: (value) {
-              debugPrint(value);
-              setState(() {
-                currentText = value;
-              });
-            },
-            beforeTextPaste: (text) {
-              debugPrint("Allowing to paste $text");
-              return true;
-            },
-          ),
-          Align(
-            alignment: AlignmentDirectional.topEnd,
-            child: Text(
-              '2:08sec',
-              style: Styles.textStyle17,
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            'Please type the verification code sent to +49 156 820001302',
-            textAlign: TextAlign.center,
-            style: Styles.textStyle17,
-          ),
-          const SizedBox(
-            height: 32,
-          ),
-          CustomButton(
-              text: 'Submit',
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                }
-                errorController.add(ErrorAnimationType.shake);
+    SignUpWthPhoneNumControllerImp signUpWthPhoneNumController = Get.find();
+    return GetBuilder<OtpControllerImp>(
+        builder: (controller) => controller.isLoading
+            ? const CustomLoadingIcon(
+                path: AppIcons.loadingIcon,
+              )
+            : Form(
+                key: controller.formKey,
+                autovalidateMode: controller.autoValidateMode,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                // Triggering error shake animation
-                autoValidateMode = AutovalidateMode.always;
-                setState(() {});
-              }),
-          const SizedBox(
-            height: 50,
-          ),
-          CustomTextRich(
-              text: 'Not received the code yet? ',
-              textTwo: 'Resend',
-              onTap: () {})
-        ],
-      ),
-    );
+                    CustomAuthText(text: '20'.tr, subText: '',),
+                    PinCodeTextField(
+                      autoFocus: true,
+                      appContext: context,
+                      pastedTextStyle: TextStyle(
+                        color: Colors.green.shade600,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      length: 6,
+                      animationType: AnimationType.fade,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "";
+                        } else {
+                          return null;
+                        }
+                      },
+                      pinTheme: PinTheme(
+                        inactiveColor: AppColors.kPrimaryColor,
+                        activeColor: AppColors.kPrimaryColor,
+                        activeBorderWidth: 1,
+                        borderWidth: 1,
+                        disabledColor: AppColors.kPrimaryColor,
+                        disabledBorderWidth: 1,
+                        errorBorderColor: Colors.red,
+                        selectedColor: AppColors.kPrimaryColor,
+                        errorBorderWidth: 1,
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(5),
+                        fieldHeight: 40,
+                        fieldWidth: 40,
+                      ),
+                      cursorColor: AppColors.kPrimaryColor,
+                      animationDuration: const Duration(milliseconds: 300),
+                      errorAnimationController: controller.errorController,
+                      controller: controller.controller,
+                      keyboardType: TextInputType.number,
+                      onCompleted: (v) {
+                        debugPrint("Completed");
+                      },
+                      onSaved: (value) {},
+                      onChanged: (value) {
+                        debugPrint(value);
+                        setState(() {
+                          controller.currentText = value;
+                        });
+                      },
+                      beforeTextPaste: (text) {
+                        debugPrint("Allowing to paste $text");
+                        return true;
+                      },
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional.topEnd,
+                      child: Text(
+                        '${controller.counter}sec',
+                        style: Styles.textStyle17,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      '26'.tr,
+                      textAlign: TextAlign.center,
+                      style: Styles.textStyle17,
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    CustomButton(
+                        text: '19'.tr,
+                        onTap: () {
+                          controller.checkCode(context);
+                        }),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    CustomTextRich(
+                        text: '22'.tr,
+                        textTwo: '23'.tr,
+                        onTap: () {
+                          signUpWthPhoneNumController
+                              .signUpWithPhoneNumber(context);
+                        })
+                  ],
+                ),
+              ));
   }
 }
