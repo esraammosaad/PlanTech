@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:grad_proj/core/constants/theme_data.dart';
+import 'package:grad_proj/core/services/services.dart';
+import 'package:get/get.dart';
+
+class LocaleController extends GetxController {
+  Locale? language;
+  ThemeData theme=themeEnglish;
+  MyServices myServices = Get.find();
+
+  changeLang(String langCode) {
+    Locale locale = Locale(langCode);
+    langCode=='ar'?theme=themeArabic:theme=themeEnglish;
+    myServices.sharedPreferences.setString('lang', langCode);
+    Get.changeTheme(theme);
+    Get.updateLocale(locale);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    String? code = myServices.sharedPreferences.getString('lang');
+    if (code == 'ar') {
+      language = const Locale('ar');
+      theme=themeArabic;
+    } else if (code == 'en') {
+      language = const Locale('en');
+      theme=themeEnglish;
+    } else {
+      language = Locale(Get.deviceLocale!.languageCode);
+    }
+  }
+}

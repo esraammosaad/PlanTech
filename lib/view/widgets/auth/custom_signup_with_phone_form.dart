@@ -1,57 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:grad_proj/controller/auth_controllers/signup_with_phone_number_controller.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/view/screens/auth/otp.dart';
+import '../../../core/constants/color.dart';
+import '../../../core/constants/icon_asset.dart';
+import '../../../core/constants/styles.dart';
 import '../../../core/shared/custom_button.dart';
+import '../../../core/shared/custom_loading_icon.dart';
 import 'custom_auth_text.dart';
 import 'custom_text_form_field.dart';
 
-class CustomSignUpWithPhoneForm extends StatefulWidget {
-  const CustomSignUpWithPhoneForm({
-    super.key,
-  });
+class CustomSignUpWithPhoneForm extends StatelessWidget {
+  const CustomSignUpWithPhoneForm({super.key});
 
-  @override
-  State<CustomSignUpWithPhoneForm> createState() =>
-      _CustomSignUpWithPhoneFormState();
-}
-
-class _CustomSignUpWithPhoneFormState extends State<CustomSignUpWithPhoneForm> {
-  TextEditingController phoneNumController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      autovalidateMode: autoValidateMode,
-      key: formKey,
-      child: Column(
+    return GetBuilder<SignUpWthPhoneNumControllerImp>(
+        builder: (controller) => controller.isLoading
+            ? const CustomLoadingIcon(path: AppIcons.loadingIcon,)
+            :Form(
+              autovalidateMode: controller.autoValidateMode,
+              key: controller.formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: MediaQuery.of(context).size.height*0.25,),
-          const CustomAuthText(text: 'Please Enter Your Phone Number'),
-          CustomTextFormField(
-              onSave: (value) {},
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              obscureText: false,
-              errMassage: 'please Enter Your Phone Number',
-              controller: phoneNumController),
-          const SizedBox(
-            height: 40,
-          ),
-          CustomButton(
-              text: 'Confirm',
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  Get.to(()=>const OneTimePassword());
-                }
-                autoValidateMode = AutovalidateMode.always;
-                setState(() {});
-              }),
-        ],
-      ),
-    );
+                  const CustomAuthText(
+                      text: "Enter Your Phone",
+                      subText:
+                      "At our app, we take the security of your information seriously."),
+
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextFormField(
+                    hintText: 'Your Phone',
+                    prefixIcon: controller.chooseCountryCode(),
+                      onSave: (value) {},
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
+                      obscureText: false,
+                      errMassage: '25'.tr,
+                      controller: controller.phoneNumController),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  CustomButton(
+                      text: '19'.tr,
+                      onTap: () {
+                        controller.signUpWithPhoneNumber(context);
+                      }),
+                ],
+              ),
+            ));
   }
 }
