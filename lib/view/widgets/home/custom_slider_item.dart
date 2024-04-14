@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grad_proj/core/constants/color.dart';
+import 'package:grad_proj/core/constants/image_asset.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
 import '../../../data/models/onboardingmodel.dart';
@@ -22,9 +23,9 @@ class CustomSliderItem extends StatelessWidget {
           decoration:  BoxDecoration(
             borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),bottomRight:Radius.circular(25) ),
             color: AppColors.kPrimaryColor,
-            // image: DecorationImage(
-            //   image: AssetImage(item.image!),fit: BoxFit.cover,
-            // ),
+            image: const DecorationImage(
+              image: AssetImage(AppImageAsset.cardBg),fit: BoxFit.cover,
+            ),
           ),
         ),
         Positioned(

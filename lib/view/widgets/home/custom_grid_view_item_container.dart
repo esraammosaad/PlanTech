@@ -3,7 +3,6 @@ class CustomGridViewItemContainer extends StatelessWidget {
   const CustomGridViewItemContainer({
     super.key, required this.index,
   });
-  // final ProductModel product;
 final int index;
 
   @override

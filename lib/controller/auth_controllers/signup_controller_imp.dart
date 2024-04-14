@@ -50,6 +50,7 @@ class SignUpControllerImp extends SignUpController {
         Get.offAllNamed(AppRoutes.logInScreen);
         showSnackBar('27'.tr, context);
         updateUserData.updateName(usernameController.text);
+        updateUserData.updatePhotoUrl('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
         authRepo.addUserToCollection(UserModel(
             name: usernameController.text,
             email: emailController.text,

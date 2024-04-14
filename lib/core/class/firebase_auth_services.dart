@@ -58,29 +58,34 @@ class FirebaseAuthServices {
 
   phoneAuth(
       {required String phoneNum,
-        required void Function(PhoneAuthCredential) verificationCompleted,
-        required void Function(FirebaseAuthException) verificationFailed,
-        required void Function(String, int?) codeSent,
-        required void Function(String) codeAutoRetrievalTimeout}) async {
+      required void Function(PhoneAuthCredential) verificationCompleted,
+      required void Function(FirebaseAuthException) verificationFailed,
+      required void Function(String, int?) codeSent,
+      required void Function(String) codeAutoRetrievalTimeout}) async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-
       timeout: const Duration(seconds: 40),
       phoneNumber: phoneNum,
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
       codeSent: codeSent,
       codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
-
     );
   }
 
   Future<void> addUsersCollection(
-      UserModel userModel,) async {
+    UserModel userModel,
+  ) async {
     CollectionReference<Map<String, dynamic>> collectionReference =
-    FirebaseFirestore.instance.collection('users');
-    await collectionReference
-        .doc(userModel.uid)
-        .set(userModel.toJson());
+        FirebaseFirestore.instance.collection('users');
+    await collectionReference.doc(userModel.uid).set(userModel.toJson());
+  }
+
+  Future<UserModel> getUserInfo({required String uid}) async {
+    DocumentSnapshot<Map<String, dynamic>> data =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    UserModel userInfo = UserModel.fromJson(data.data()!);
+
+    return userInfo;
   }
 
   Future<void> logOutUser() async {

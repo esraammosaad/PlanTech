@@ -27,8 +27,8 @@ class CustomAnotherAppBar extends StatelessWidget {
                 .jumpToPage(controller.selectedPage - 1);
           },
         ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.2,
+        const SizedBox(
+          width: 20,
         ),
         Text(
           text,

@@ -1,6 +1,5 @@
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grad_proj/core/constants/color.dart';
@@ -17,16 +16,16 @@ class CustomNavBar extends StatelessWidget {
         enableShadow: true,
         items: const [
           TabItem(
-            icon: Icons.home_outlined,
+            icon: Icons.home_rounded,
           ),
           TabItem(
-            icon: Icons.park_outlined,
+            icon: Icons.groups,
           ),
           TabItem(
             icon: Icons.camera_alt_outlined,
           ),
           TabItem(
-            icon: Icons.edit_note_outlined,
+            icon: Icons.bluetooth,
           ),
           TabItem(
             icon: Icons.person_outline,

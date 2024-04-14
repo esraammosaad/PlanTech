@@ -9,18 +9,14 @@ class CustomGridViewItemFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            productName,
-            overflow: TextOverflow.ellipsis,
-            style: Styles.textStyle14
-                .copyWith(color: Colors.black,fontWeight: FontWeight.bold,),
-          ),
-
-        ],
+      padding: const EdgeInsets.all(10.0),
+      child: Center(
+        child: Text(
+          productName,
+          overflow: TextOverflow.ellipsis,
+          style: Styles.textStyle16
+              .copyWith(color: Colors.black,fontWeight: FontWeight.bold,),
+        ),
       ),
     );
   }

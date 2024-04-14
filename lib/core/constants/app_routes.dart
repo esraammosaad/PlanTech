@@ -1,4 +1,4 @@
-class AppRoutes {
+abstract class AppRoutes {
   static String splashScreen = '/';
   static String onBoardingScreen = '/onBoarding';
   static String chooseLanguageScreen = '/chooseLanguage';
@@ -11,5 +11,9 @@ class AppRoutes {
   static String signUpWithPhoneNumberScreen = '/signUpWithPhoneNumber';
   static String homeScreen = '/home';
   static String navBarScreen = '/navBar';
+  static String plantsDetailsScreen = '/plantsDetails';
+  static String addPostScreen = '/addPost';
+  static String postDetailsScreen = '/postDetails';
+  static String seeAllScreen = '/seeAll';
 
 }
