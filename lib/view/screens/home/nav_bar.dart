@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
 import 'package:grad_proj/view/screens/home/camera.dart';
-import 'package:grad_proj/view/screens/home/add_post.dart';
+import 'package:grad_proj/view/screens/home/bluetooth.dart';
 import 'package:grad_proj/view/screens/home/plants_community.dart';
 import 'package:grad_proj/view/screens/home/home.dart';
 import 'package:grad_proj/view/screens/home/profile.dart';
 import 'package:get/get.dart';
-
 import '../../../core/functions/alert_dialog.dart';
 import '../../widgets/home/custom_nav_bar.dart';
 
@@ -29,7 +28,7 @@ class NavBar extends StatelessWidget {
             Home(),
             PlantsCommunity(),
             Camera(),
-            AddPost(),
+            Bluetooth(),
             Profile(),
           ],
         ),

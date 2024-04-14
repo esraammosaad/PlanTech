@@ -7,7 +7,8 @@ class Styles {
     fontSize: 18,
     fontWeight: FontWeight.w700,
     height: 0,
-  );static TextStyle textStyle10 = const TextStyle(
+  );
+  static TextStyle textStyle10 = const TextStyle(
     color: Colors.black,
     fontSize: 10,
     fontWeight: FontWeight.w700,
@@ -24,7 +25,8 @@ class Styles {
     fontSize: 25,
     fontWeight: FontWeight.w500,
     height: 0,
-  );  static TextStyle textStyle30 = const TextStyle(
+  );
+  static TextStyle textStyle30 = const TextStyle(
     color: Colors.black,
     fontSize: 30,
     fontWeight: FontWeight.w500,
@@ -53,12 +55,14 @@ class Styles {
     fontSize: 12,
     fontWeight: FontWeight.w300,
     height: 0,
-  );static TextStyle textStyle14 = const TextStyle(
+  );
+  static TextStyle textStyle14 = const TextStyle(
     color: Colors.black,
     fontSize: 14,
     fontWeight: FontWeight.w400,
     height: 0,
-  );static TextStyle textStyle16 =  TextStyle(
+  );
+  static TextStyle textStyle16 = TextStyle(
     color: AppColors.kPrimaryColor,
     fontSize: 16,
     fontWeight: FontWeight.w600,

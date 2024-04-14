@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grad_proj/data/data_source/remote/home_repo/home_repo_impl.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/data/models/product_model.dart';
+import 'package:grad_proj/data/models/plants_model.dart';
 
 abstract class HomeController extends GetxController {
   slider(int index);
@@ -34,10 +34,10 @@ class HomeControllerImp extends HomeController {
       dataList=r;
       isLoading = false;
       update();
-      for (int i = 0; i < r.length; i++) {
-      }
+
     });
   }
+
 
 
 

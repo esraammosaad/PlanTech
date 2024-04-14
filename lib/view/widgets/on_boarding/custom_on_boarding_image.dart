@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../data/data_source/static/static_onboarding.dart';
 class CustomOnBoardingImage extends StatelessWidget {
   const CustomOnBoardingImage({

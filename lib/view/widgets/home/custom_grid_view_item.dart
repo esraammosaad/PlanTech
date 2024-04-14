@@ -1,8 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/home_controllers/home_controller.dart';
 import 'package:get/get.dart';
-import 'custom_grid_view_item_container.dart';
+import 'custom_cached_network_image.dart';
 import 'custom_grid_view_item_footer.dart';
 
 class CustomGridViewItem extends StatelessWidget {
@@ -22,17 +21,12 @@ class CustomGridViewItem extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-              child: CachedNetworkImage(
-            fit: BoxFit.cover,
-            width: double.infinity,
-            imageUrl: controller.dataList[index].defaultImage.thumbnail??"",
-            errorWidget: (context, url, error) => const Icon(Icons.error),
-
+              child: CustomCachedNetworkImage(
+            image: controller.dataList[index].defaultImage.thumbnail,
           )),
           CustomGridViewItemFooter(
             productName: controller.dataList[index].commonName ?? "",
           ),
-          CustomGridViewItemContainer(index: index),
         ],
       ),
     );

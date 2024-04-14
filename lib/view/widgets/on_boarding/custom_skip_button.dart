@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../core/constants/styles.dart';
 import '../../screens/auth/login.dart';
 class CustomSkipButton extends StatelessWidget {

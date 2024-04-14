@@ -25,6 +25,7 @@ class Assets {
   static const String iconsNointernet = 'assets/icons/nointernet.json';
   static const String iconsPhoneCall = 'assets/icons/phone-call.png';
   static const String iconsSearch = 'assets/icons/search.png';
+  static const String imagesCardBackground = 'assets/images/card_background.png';
   static const String imagesHome1 = 'assets/images/home1.jpeg';
   static const String imagesHome2 = 'assets/images/home2.jpeg';
   static const String imagesHome3 = 'assets/images/home3.jpeg';

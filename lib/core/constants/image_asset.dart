@@ -5,5 +5,6 @@ class AppImageAsset{
   static const String homeImage1 ="assets/images/home1.jpeg";
   static const String homeImage2 ="assets/images/onboardingtwo.jpeg";
   static const String homeImage3 ="assets/images/onboardingthree.jpeg";
+  static const String cardBg ="assets/images/card_background.png";
 }
 
