@@ -5,17 +5,22 @@ class Camera extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(padding: EdgeInsets.symmetric(vertical: 16),
-      child: CustomScrollView(
-        slivers: [
-
-          SliverToBoxAdapter(
-              child: CustomAnotherAppBar(text: 'Camera')),
-
-        ],
+    return SafeArea(
+      child: const Padding(
+        padding: EdgeInsets.all(50),
+        child: CustomScrollView(
+          slivers: [
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: SliverToBoxAdapter(
+                  child: CustomAnotherAppBar(text: 'Camera')),
+            ),
+      
+          ],
+        ),
+      
+      
       ),
-
-
     ) ;
   }
 }

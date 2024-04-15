@@ -91,9 +91,14 @@ dependencies:
   timeago: ^3.6.1
   uuid: ^4.4.0
   firebase_storage: ^11.6.9
+  flutter_switch:
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

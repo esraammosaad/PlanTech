@@ -90,12 +90,12 @@ class Profile extends StatelessWidget {
                         children: [
                           CustomProfileWidget(
                               onTap: () {
-                                controller.logOut();
+
                               },
                               text: 'Your Profile'),
                           CustomProfileWidget(
                               onTap: () {
-                                controller.logOut();
+
                               },
                               text: 'Settings'),
                           CustomProfileWidget(
@@ -117,3 +117,4 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
