@@ -11,7 +11,8 @@ abstract class PlantsDetailsController extends GetxController {
 class PlantsDetailsControllerImp extends PlantsDetailsController {
   PlantsDetailsRepoImpl dataController = Get.find();
   bool isLoading = false;
-  late PlantsDetailsModel ? plantsData;
+   PlantsDetailsModel ? plantsData;
+  String ?errMessage;
 
 
 
@@ -19,19 +20,28 @@ class PlantsDetailsControllerImp extends PlantsDetailsController {
   getPlantsData({required int id}) async {
     isLoading = true;
     update();
-    var result = await dataController.getPlantsDetails(id: id);
-    result.fold((l) {
-      debugPrint(l.errMessage);
-      isLoading = false;
-      update();
-    }, (r) {
-      isLoading = false;
-      update();
-      plantsData=r;
-      debugPrint(r.dimension);
+    try {
+      var result = await dataController.getPlantsDetails(id: id);
+      result.fold((l) {
+        debugPrint(l.errMessage);
+        errMessage=l.errMessage;
+        isLoading = false;
+        update();
+      }, (r) {
+
+        plantsData=r;
+        isLoading = false;
+        update();
+        debugPrint(r.dimension);
 
 
-    });
+      });
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      errMessage=e.toString();
+      isLoading = false;
+      update();
+    }
   }
 
 

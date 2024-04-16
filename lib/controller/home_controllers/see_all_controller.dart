@@ -9,10 +9,10 @@ abstract class SeeAllController extends GetxController {
 }
 
 class SeeAllControllerImp extends SeeAllController {
-  int currentIndex = 0;
   HomeRepoImpl dataController = Get.find();
   bool isLoading = false;
-  List<Datum> dataList=[];
+  String ? errMessage;
+  List<Datum> seeAllDataList=[];
 
 
 
@@ -21,17 +21,25 @@ class SeeAllControllerImp extends SeeAllController {
   getAllData() async {
     isLoading = true;
     update();
-    var result = await dataController.getAllPlants();
-    result.fold((l) {
-      debugPrint(l.errMessage);
-      isLoading = false;
-      update();
-    }, (r) {
-      dataList=r;
+    try {
+      var result = await dataController.getAllPlants();
+      result.fold((l) {
+        debugPrint(l.errMessage);
+        errMessage=l.errMessage;
+        isLoading = false;
+        update();
+      }, (r) {
+        seeAllDataList=r;
+        isLoading = false;
+        update();
+
+      });
+    } on Exception catch (e) {
+      errMessage=e.toString();
       isLoading = false;
       update();
 
-    });
+    }
   }
 
 

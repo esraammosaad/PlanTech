@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/controller/home_controllers/add_post_controller.dart';
+import 'package:grad_proj/controller/community_controllers/add_post_controller.dart';
 import '../../../core/constants/styles.dart';
 
 class CustomPickImageButton extends StatelessWidget {

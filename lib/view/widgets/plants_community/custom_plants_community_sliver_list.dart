@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grad_proj/view/widgets/home/custom_sliver_loading_indicator.dart';
-import '../../../controller/home_controllers/plants_community_controller.dart';
+import '../../../controller/community_controllers/plants_community_controller.dart';
 import 'custom_sliver_list_post_item.dart';
 
 class CustomPlantsCommunitySliverList extends StatelessWidget {

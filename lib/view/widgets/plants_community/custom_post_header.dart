@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import '../../../controller/home_controllers/plants_community_controller.dart';
+import '../../../controller/community_controllers/plants_community_controller.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 import '../../../data/models/post_model.dart';
@@ -34,7 +34,7 @@ class CustomPostHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                headerData.userName ?? "person",
+                headerData.userName==null||headerData.userName==''? "person":headerData.userName!,
                 style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w500),
               ),
               Text(

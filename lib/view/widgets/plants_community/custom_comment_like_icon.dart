@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import '../../../controller/home_controllers/post_details_controller.dart';
+import '../../../controller/community_controllers/post_details_controller.dart';
 import '../../../data/models/post_model.dart';
 class CustomCommentLikeIcon extends StatelessWidget {
   const CustomCommentLikeIcon({

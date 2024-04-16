@@ -4,8 +4,10 @@ import 'package:grad_proj/core/constants/app_routes.dart';
 import '../../../core/constants/styles.dart';
 class CustomTextRow extends StatelessWidget {
   const CustomTextRow({
-    super.key,
+    super.key, required this.text, required this.onTap,
   });
+  final String text;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +15,11 @@ class CustomTextRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Popular Plants',
+          text,
           style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
         ),
         GestureDetector(
-          onTap: (){
-            Get.toNamed(AppRoutes.seeAllScreen);
-
-          },
+          onTap: onTap,
           child: Text(
             'See All',
             style: Styles.textStyle16.copyWith(

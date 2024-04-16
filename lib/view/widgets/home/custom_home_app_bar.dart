@@ -29,7 +29,8 @@ class CustomHomeAppBar extends StatelessWidget {
                   color: Colors.grey[600], fontFamily: AppFonts.kArabicFont),
             ),
             Text(
-              FirebaseAuth.instance.currentUser?.displayName ?? 'none',
+              FirebaseAuth.instance.currentUser?.displayName==''||FirebaseAuth.instance.currentUser?.displayName==null?
+              'person':FirebaseAuth.instance.currentUser!.displayName!,
               style: Styles.textStyle14.copyWith(
                   color: Colors.grey[950], fontFamily: AppFonts.kArabicFont),
             ),

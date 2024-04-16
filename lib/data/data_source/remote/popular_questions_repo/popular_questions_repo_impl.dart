@@ -1,23 +1,25 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/data/models/plants_model.dart';
+import 'package:grad_proj/data/data_source/remote/popular_questions_repo/popular_questions_repo.dart';
+import 'package:grad_proj/data/models/popular_questions_model.dart';
 import '../../../../core/class/api_service.dart';
 import '../../../../core/class/failure.dart';
-import 'home_repo.dart';
 
-class HomeRepoImpl implements HomeRepo {
+class PopularQuestionsRepoImpl implements PopularQuestionsRepo {
   final ApiService apiService = Get.find();
   final String _baseUrl = 'https://perenual.com/api/';
   @override
-  Future<Either<Failure, List<Datum>>> getPlants() async {
+  Future<Either<Failure, List<Questions>>> getPopularQuestions() async {
     try {
       Map<String, dynamic> data = await apiService
-          .getData('$_baseUrl''species-list?key=sk-bu8C65f1041dab4504548&page=1');
-      List<Datum> plantsList = [];
-      plantsList = PlantsModel.fromJson(data).data;
+          .getData('$_baseUrl''article-faq-list?key=sk-r9GG65f0fae27a3684547&page=1');
+      List<Questions> popularQuestionsList = [];
+      popularQuestionsList = PopularQuestionsModel.fromJson(data).data;
+      debugPrint(popularQuestionsList[0].question);
 
-      return right(plantsList);
+      return right(popularQuestionsList);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
@@ -25,30 +27,26 @@ class HomeRepoImpl implements HomeRepo {
     }
   }
 
-
-
   @override
-  Future<Either<Failure, List<Datum>>> getAllPlants() async {
+  Future<Either<Failure, List<Questions>>> getAllPopularQuestions() async {
     try {
-      List<Datum> plantsList = [];
+      List<Questions> questionsList = [];
       for (int i = 1; i < 5; i++) {
         Map<String, dynamic> data = await apiService
-            .getData('$_baseUrl''species-list?key=sk-O9PP661780d434fd85066&page=$i');
+            .getData('$_baseUrl''article-faq-list?key=sk-r9GG65f0fae27a3684547&page=$i');
         for (int j = 0; j < 29; j++) {
-          plantsList.add(PlantsModel.fromJson(data).data[j]);
+          questionsList.add(PopularQuestionsModel.fromJson(data).data[j]);
         }
       }
       //sk-r9GG65f0fae27a3684547
       //sk-bu8C65f1041dab4504548
       //sk-O9PP661780d434fd85066
 
-      return right(plantsList);
+      return right(questionsList);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
       return left(ServerFailure(errMessage: e.toString()));
     }
   }
-
-
 }

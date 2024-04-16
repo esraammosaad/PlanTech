@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import '../../../controller/home_controllers/plants_community_controller.dart';
+import '../../../controller/community_controllers/plants_community_controller.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 import '../home/custom_profile_avatar.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/controller/home_controllers/post_details_controller.dart';
+import 'package:grad_proj/controller/community_controllers/post_details_controller.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/core/constants/styles.dart';
 import 'package:grad_proj/data/models/post_model.dart';

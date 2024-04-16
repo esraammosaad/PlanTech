@@ -15,7 +15,7 @@ class CustomLoadingIcon extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Lottie.asset(path, alignment: Alignment.center)],
+        children: [Lottie.asset(path, alignment: Alignment.center,)],
       ),
     );
   }

@@ -1,9 +1,3 @@
-import 'dart:convert';
-
-PlantsModel plantsModelFromJson(String str) => PlantsModel.fromJson(json.decode(str));
-
-String plantsModelToJson(PlantsModel data) => json.encode(data.toJson());
-
 class PlantsModel {
   final List<Datum> data;
   final int ?to;

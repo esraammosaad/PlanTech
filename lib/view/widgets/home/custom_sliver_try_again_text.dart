@@ -3,8 +3,9 @@ import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 class CustomSliverTryAgainText extends StatelessWidget {
   const CustomSliverTryAgainText({
-    super.key,
+    super.key, required this.text,
   });
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +13,9 @@ class CustomSliverTryAgainText extends StatelessWidget {
         hasScrollBody: false,
         child: Center(
             child: Text(
-              'Please Try Again After While ......',
+              text,
               style:
-              Styles.textStyle14.copyWith(color: AppColors.kGreyColor),
+              Styles.textStyle12.copyWith(color: AppColors.kGreyColor),
             )));
   }
 }

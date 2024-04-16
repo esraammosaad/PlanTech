@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controller/home_controllers/plants_community_controller.dart';
-import '../../../controller/home_controllers/post_details_controller.dart';
+import '../../../controller/community_controllers/plants_community_controller.dart';
+import '../../../controller/community_controllers/post_details_controller.dart';
 import '../../../core/constants/app_routes.dart';
 import '../../../data/models/post_model.dart';
 class CustomLikeAndCommentRow extends StatelessWidget {

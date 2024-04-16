@@ -12,7 +12,8 @@ class MyMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (FirebaseAuth.instance.currentUser!=null&&FirebaseAuth.instance.currentUser!.emailVerified) {
+    if (FirebaseAuth.instance.currentUser!=null) {
+      //FirebaseAuth.instance.authStateChanges()
       return RouteSettings(
         name: AppRoutes.navBarScreen,
       );

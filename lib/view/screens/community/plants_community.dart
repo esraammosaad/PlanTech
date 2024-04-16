@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grad_proj/core/constants/styles.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/core/constants/app_routes.dart';
+import 'package:grad_proj/view/widgets/home/custom_text_row.dart';
 import 'package:grad_proj/view/widgets/plants_community/custom_create_post_field.dart';
 import 'package:grad_proj/view/widgets/plants_community/custom_popular_questions_list.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
@@ -28,10 +30,10 @@ class PlantsCommunity extends StatelessWidget {
                         const SizedBox(
                           height: 8,
                         ),
-                        Text(
-                          'Popular Questions',
-                          style: Styles.textStyle18,
-                        ),
+                        CustomTextRow(text: 'Popular Questions',onTap: (){
+                          Get.toNamed(AppRoutes.seeAllPopularQuestionsScreen);
+
+                        }),
                         const SizedBox(
                           height: 12,
                         ),
