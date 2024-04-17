@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../../core/class/them_controller.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
+import '../../widgets/profile/change_mode.dart';
 
-class Bluetooth extends StatelessWidget {
+class Bluetooth extends StatefulWidget {
   const Bluetooth({Key? key}) : super(key: key);
+
+  @override
+  State<Bluetooth> createState() => _BluetoothState();
+}
+
+class _BluetoothState extends State<Bluetooth> {
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +29,10 @@ class Bluetooth extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.height * 0.2,
                   ),
+
+
                 ],
+
               ),
             ),
              SliverFillRemaining(
@@ -32,4 +46,5 @@ class Bluetooth extends StatelessWidget {
     );
   }
 }
+
 

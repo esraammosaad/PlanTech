@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_proj/controller/home_controllers/profile_controller.dart';
-import 'package:get/get.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
-import '../../widgets/profile/custom_profile_widget.dart';
+import '../../widgets/profile/setting_options.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -78,35 +76,39 @@ class Profile extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16,),
+// <<<<<<< esraa
 
-                  GetBuilder<ProfileControllerImpl>(builder: (controller) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.grey)),
-                      child: Column(
-                        children: [
-                          CustomProfileWidget(
-                              onTap: () {
+//                   GetBuilder<ProfileControllerImpl>(builder: (controller) {
+//                     return Container(
+//                       width: MediaQuery.of(context).size.width,
+//                       decoration: BoxDecoration(
+//                           borderRadius: BorderRadius.circular(10),
+//                           border: Border.all(color: Colors.grey)),
+//                       child: Column(
+//                         children: [
+//                           CustomProfileWidget(
+//                               onTap: () {
 
-                              },
-                              text: 'Your Profile'),
-                          CustomProfileWidget(
-                              onTap: () {
-                                controller.logOut();
-                              },
-                              text: 'Settings'),
-                          CustomProfileWidget(
-                              onTap: () {
-                                controller.logOut();
-                              },
-                              text: 'Logout'),
+//                               },
+//                               text: 'Your Profile'),
+//                           CustomProfileWidget(
+//                               onTap: () {
+//                                 controller.logOut();
+//                               },
+//                               text: 'Settings'),
+//                           CustomProfileWidget(
+//                               onTap: () {
+//                                 controller.logOut();
+//                               },
+//                               text: 'Logout'),
 
-                        ],
-                      ),
-                    );
-                  })
+//                         ],
+//                       ),
+//                     );
+//                   })
+// =======
+                  SettingOptions()
+
                 ],
               ),
             ),
@@ -116,3 +118,6 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
+
+

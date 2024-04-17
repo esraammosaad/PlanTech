@@ -6,6 +6,7 @@ class Camera extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return  Scaffold(
       appBar: customAppBar(text: 'Camera'),
       body: const Padding(padding: EdgeInsets.symmetric(vertical: 16),
