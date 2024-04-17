@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/controller/home_controllers/add_post_controller.dart';
+import 'package:grad_proj/controller/community_controllers/add_post_controller.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/core/constants/styles.dart';
 import 'package:grad_proj/view/widgets/home/custom_material_button.dart';
@@ -17,7 +17,9 @@ class AddPost extends StatelessWidget {
       appBar: AppBar(
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+
+            },
             child: Text(
               'post   ',
               style: Styles.textStyle16,

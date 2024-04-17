@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/controller/home_controllers/post_details_controller.dart';
+import 'package:grad_proj/controller/community_controllers/post_details_controller.dart';
 import 'package:grad_proj/data/models/post_model.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
@@ -36,8 +36,8 @@ class CustomCommentsSliverListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    controller.comments[index].userName ??
-                        'person',
+                    controller.comments[index].userName ==null||controller.comments[index].userName ==''?
+                        'person':controller.comments[index].userName!,
                     style: Styles.textStyle12
                         .copyWith(fontWeight: FontWeight.bold),
                   ),

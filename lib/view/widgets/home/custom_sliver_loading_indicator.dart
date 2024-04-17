@@ -8,7 +8,8 @@ class CustomSliverLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
+    return SliverFillRemaining(
+      hasScrollBody: false,
         child: Center(
             child: CircularProgressIndicator(
       color: AppColors.kPrimaryColor,

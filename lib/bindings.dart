@@ -1,11 +1,11 @@
-import 'package:grad_proj/controller/home_controllers/add_post_controller.dart';
+import 'package:grad_proj/controller/community_controllers/add_post_controller.dart';
+import 'package:grad_proj/controller/community_controllers/see_all_questions_controller.dart';
 import 'package:grad_proj/controller/home_controllers/home_controller.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
-import 'package:grad_proj/controller/home_controllers/plants_community_controller.dart';
-import 'package:grad_proj/controller/home_controllers/plants_details_controller.dart';
-import 'package:grad_proj/controller/home_controllers/post_details_controller.dart';
+import 'package:grad_proj/controller/plants_details_controllers/care_guide_controller.dart';
+import 'package:grad_proj/controller/plants_details_controllers/plants_details_controller.dart';
+import 'package:grad_proj/controller/community_controllers/post_details_controller.dart';
 import 'package:grad_proj/controller/home_controllers/profile_controller.dart';
-import 'package:grad_proj/controller/home_controllers/see_all_controller.dart';
 import 'package:grad_proj/core/class/api_service.dart';
 import 'package:grad_proj/core/class/firebase_auth_services.dart';
 import 'package:grad_proj/core/class/posts_services.dart';
@@ -19,6 +19,10 @@ import 'controller/auth_controllers/otp_controller.dart';
 import 'controller/auth_controllers/signin_controller_imp.dart';
 import 'controller/auth_controllers/signup_controller_imp.dart';
 import 'controller/auth_controllers/signup_with_phone_number_controller.dart';
+import 'controller/community_controllers/edit_post_controller.dart';
+import 'controller/community_controllers/plants_community_controller.dart';
+import 'controller/home_controllers/see_all_controller.dart';
+import 'data/data_source/remote/popular_questions_repo/popular_questions_repo_impl.dart';
 
 class MyBindings extends Bindings {
   @override
@@ -36,12 +40,16 @@ class MyBindings extends Bindings {
     Get.lazyPut(()=>ProfileControllerImpl(),fenix: true);
     Get.lazyPut(()=>PostDetailsControllerImp(),fenix: true);
     Get.lazyPut(()=>SeeAllControllerImp(),fenix: true);
+    Get.lazyPut(()=>EditAndDeletePostControllerImp(),fenix: true);
+    Get.lazyPut(()=>SeeAllQuestionsControllerImp(),fenix: true);
+    Get.lazyPut(()=>CareGuideControllerImp(),fenix: true);
     Get.put(FirebaseAuthServices());
     Get.put(AuthRepoImp());
     Get.put(UpdateUserData());
     Get.put(ApiService());
     Get.put(PlantsDetailsRepoImpl());
     Get.put(HomeRepoImpl());
+    Get.put(PopularQuestionsRepoImpl());
     Get.put(PostsRepo());
 
 

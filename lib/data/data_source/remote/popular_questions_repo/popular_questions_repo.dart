@@ -4,7 +4,7 @@ import 'package:grad_proj/data/models/popular_questions_model.dart';
 
 import '../../../../core/class/failure.dart';
 
-abstract class HomeRepo {
-  Future<Either<Failure, List<Datum>>> getPlants();
-  Future<Either<Failure, List<Datum>>> getAllPlants();
+abstract class PopularQuestionsRepo {
+  Future<Either<Failure, List<Questions>>> getPopularQuestions();
+  Future<Either<Failure, List<Questions>>> getAllPopularQuestions();
 }

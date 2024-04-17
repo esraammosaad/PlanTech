@@ -49,9 +49,8 @@ class Profile extends StatelessWidget {
                               alignment: AlignmentDirectional.centerStart,
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                FirebaseAuth
-                                        .instance.currentUser?.displayName ??
-                                    'none',
+                                FirebaseAuth.instance.currentUser?.displayName==''||FirebaseAuth.instance.currentUser?.displayName==null?
+                                'person':FirebaseAuth.instance.currentUser!.displayName!,
                                 style: Styles.textStyle25.copyWith(
                                     color: Colors.grey[950],
                                     fontFamily: AppFonts.kArabicFont),
@@ -61,8 +60,8 @@ class Profile extends StatelessWidget {
                               alignment: AlignmentDirectional.centerStart,
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                FirebaseAuth.instance.currentUser?.email ??
-                                    'none',
+                                FirebaseAuth.instance.currentUser?.email==''||FirebaseAuth.instance.currentUser?.email==null?
+                                    'person':FirebaseAuth.instance.currentUser!.email!,
                                 style: Styles.textStyle14.copyWith(
                                     color: Colors.grey[600],
                                     fontFamily: AppFonts.kArabicFont),
@@ -77,7 +76,39 @@ class Profile extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16,),
+// <<<<<<< esraa
+
+//                   GetBuilder<ProfileControllerImpl>(builder: (controller) {
+//                     return Container(
+//                       width: MediaQuery.of(context).size.width,
+//                       decoration: BoxDecoration(
+//                           borderRadius: BorderRadius.circular(10),
+//                           border: Border.all(color: Colors.grey)),
+//                       child: Column(
+//                         children: [
+//                           CustomProfileWidget(
+//                               onTap: () {
+
+//                               },
+//                               text: 'Your Profile'),
+//                           CustomProfileWidget(
+//                               onTap: () {
+//                                 controller.logOut();
+//                               },
+//                               text: 'Settings'),
+//                           CustomProfileWidget(
+//                               onTap: () {
+//                                 controller.logOut();
+//                               },
+//                               text: 'Logout'),
+
+//                         ],
+//                       ),
+//                     );
+//                   })
+// =======
                   SettingOptions()
+
                 ],
               ),
             ),

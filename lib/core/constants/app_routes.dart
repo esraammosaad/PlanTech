@@ -15,5 +15,9 @@ abstract class AppRoutes {
   static String addPostScreen = '/addPost';
   static String postDetailsScreen = '/postDetails';
   static String seeAllScreen = '/seeAll';
+  static String editPostScreen = '/editPost';
+  static String seeAllPopularQuestionsScreen = '/seeAllPopularQuestions';
+  static String popularQuestionsScreen = '/popularQuestions';
+  static String careGuideScreen = '/careGuide';
 
 }

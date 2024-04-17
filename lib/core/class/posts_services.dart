@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:grad_proj/core/class/failure.dart';
 import 'package:grad_proj/data/models/comment_model.dart';
 import 'package:grad_proj/data/models/post_model.dart';
@@ -75,6 +76,32 @@ class PostsRepo {
       return null;
     } catch (e) {
       return e.toString();
+    }
+  }
+
+  Future<void> editPost(
+      {required String post,
+      required String postId,
+      required String fileUrl}) async {
+    try {
+      await fireStore
+          .collection('posts')
+          .doc(postId)
+          .update({'post': post, 'fileUrl': fileUrl});
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> deletePost(
+      {required String postId, required String? fileUrl}) async {
+    try {
+      await fireStore.collection('posts').doc(postId).delete();
+      if (fileUrl != ''&& fileUrl!=null) {
+        FirebaseStorage.instance.refFromURL(fileUrl).delete();
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
     }
   }
 

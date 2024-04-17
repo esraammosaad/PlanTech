@@ -14,6 +14,7 @@ class HomeControllerImp extends HomeController {
   HomeRepoImpl dataController = Get.find();
   bool isLoading = false;
   List<Datum> dataList=[];
+  String ? errMessage;
 
   @override
   slider(int index) {
@@ -28,6 +29,7 @@ class HomeControllerImp extends HomeController {
     var result = await dataController.getPlants();
     result.fold((l) {
       debugPrint(l.errMessage);
+      errMessage=l.errMessage;
       isLoading = false;
       update();
     }, (r) {
