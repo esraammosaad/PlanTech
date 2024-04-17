@@ -29,7 +29,7 @@ class _BluetoothState extends State<Bluetooth> {
                   SizedBox(
                     width: MediaQuery.of(context).size.height * 0.2,
                   ),
-                  ChangeMode(),
+
 
                 ],
 

@@ -7,11 +7,13 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
-    this.isLoading=false
+    this.isLoading=false,
+   // this.color = const Color(0xff0a5c5c),
   });
   final String text;
   final VoidCallback onTap;
    final bool isLoading;
+   //final Color color ;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomButton extends StatelessWidget {
         height: 45,
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: ShapeDecoration(
-          color: AppColors.kPrimaryColor,
+          color: Color(0xff0a5c5c),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         child: Center(
