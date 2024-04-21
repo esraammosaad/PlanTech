@@ -27,47 +27,49 @@ class AddPost extends StatelessWidget {
           ),
         ],
       ),
-      body: GetBuilder<AddPostControllerImp>(builder: (controller) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const CustomAddPostHeader(),
-                      CustomAddPostTextField(controller: controller.controller),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      const CustomPickImageButton(),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      controller.isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.kPrimaryColor,
-                              ),
-                            )
-                          : CustomMaterialButton(
-                              text: 'post',
-                              onPressed: () {
-                                controller.addPost();
-                                controller.controller.clear();
-                              },
-                            )
-                    ],
+      body: SafeArea(
+        child: GetBuilder<AddPostControllerImp>(builder: (controller) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomAddPostHeader(),
+                        CustomAddPostTextField(controller: controller.controller),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        const CustomPickImageButton(),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        controller.isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.kPrimaryColor,
+                                ),
+                              )
+                            : CustomMaterialButton(
+                                text: 'post',
+                                onPressed: () {
+                                  controller.addPost();
+                                  controller.controller.clear();
+                                },
+                              )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

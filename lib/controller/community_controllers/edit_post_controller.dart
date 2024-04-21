@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/core/class/posts_services.dart';
+import 'package:grad_proj/data/data_source/remote/post_repo/post_repo_impl.dart';
 
 abstract class EditAndDeletePostController extends GetxController {
   editPost({
@@ -15,7 +15,7 @@ abstract class EditAndDeletePostController extends GetxController {
 }
 
 class EditAndDeletePostControllerImp extends EditAndDeletePostController {
-  PostsRepo postsRepo = Get.find();
+  PostsRepoImpl postsRepo = Get.find();
   late TextEditingController controller;
   bool isLoading = false;
   @override

@@ -14,12 +14,13 @@ class CustomMaterialButton extends StatelessWidget {
       width: double.infinity,
       child: MaterialButton(onPressed: onPressed,
         color: AppColors.kPrimaryColor,
+        padding: const EdgeInsets.all(9),
         shape: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10) ,
+            borderRadius: BorderRadius.circular(15) ,
             borderSide: BorderSide(color: AppColors.kPrimaryColor)
         ),child:  Text(
           text,
-          style: Styles.textStyle16.copyWith(color: Colors.white,fontWeight: FontWeight.w200),
+          style: Styles.textStyle16.copyWith(color: Colors.white,fontWeight: FontWeight.w500),
         ),
       ),
     );

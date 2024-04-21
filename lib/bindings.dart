@@ -1,3 +1,6 @@
+import 'package:grad_proj/controller/camera_controllers/camera_controller.dart';
+import 'package:grad_proj/controller/camera_controllers/model_controller.dart';
+import 'package:grad_proj/controller/camera_controllers/my_garden_controller.dart';
 import 'package:grad_proj/controller/community_controllers/add_post_controller.dart';
 import 'package:grad_proj/controller/community_controllers/see_all_questions_controller.dart';
 import 'package:grad_proj/controller/home_controllers/home_controller.dart';
@@ -8,7 +11,8 @@ import 'package:grad_proj/controller/community_controllers/post_details_controll
 import 'package:grad_proj/controller/home_controllers/profile_controller.dart';
 import 'package:grad_proj/core/class/api_service.dart';
 import 'package:grad_proj/core/class/firebase_auth_services.dart';
-import 'package:grad_proj/core/class/posts_services.dart';
+import 'package:grad_proj/data/data_source/remote/my_garden_repo/my_garden_repo_impl.dart';
+import 'package:grad_proj/data/data_source/remote/post_repo/post_repo_impl.dart';
 import 'package:grad_proj/core/class/update_user_data.dart';
 import 'package:grad_proj/data/data_source/remote/auth_repo/auth_repo_imp.dart';
 import 'package:grad_proj/data/data_source/remote/home_repo/home_repo_impl.dart';
@@ -43,6 +47,9 @@ class MyBindings extends Bindings {
     Get.lazyPut(()=>EditAndDeletePostControllerImp(),fenix: true);
     Get.lazyPut(()=>SeeAllQuestionsControllerImp(),fenix: true);
     Get.lazyPut(()=>CareGuideControllerImp(),fenix: true);
+    Get.lazyPut(()=>OpenCameraControllerImpl(),fenix: true);
+    Get.lazyPut(()=>ModelControllerImpl(),fenix: true);
+    Get.lazyPut(()=>MyGardenControllerImp(),fenix: true);
     Get.put(FirebaseAuthServices());
     Get.put(AuthRepoImp());
     Get.put(UpdateUserData());
@@ -50,7 +57,8 @@ class MyBindings extends Bindings {
     Get.put(PlantsDetailsRepoImpl());
     Get.put(HomeRepoImpl());
     Get.put(PopularQuestionsRepoImpl());
-    Get.put(PostsRepo());
+    Get.put(PostsRepoImpl());
+    Get.put(MyGardenRepoImpl());
 
 
 

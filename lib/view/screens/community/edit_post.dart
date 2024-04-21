@@ -27,50 +27,52 @@ class EditPost extends StatelessWidget {
           ),
         ],
       ),
-      body: GetBuilder<EditAndDeletePostControllerImp>(builder: (controller) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const CustomAddPostHeader(),
-                      CustomAddPostTextField(controller: controller.controller),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      item.fileUrl == '' || item.fileUrl == null
-                          ? const SizedBox()
-                          : CustomCachedNetworkImage(
-                              image: item.fileUrl!,
-                            ),
-                      controller.isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.kPrimaryColor,
+      body: SafeArea(
+        child: GetBuilder<EditAndDeletePostControllerImp>(builder: (controller) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomAddPostHeader(),
+                        CustomAddPostTextField(controller: controller.controller),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        item.fileUrl == '' || item.fileUrl == null
+                            ? const SizedBox()
+                            : CustomCachedNetworkImage(
+                                image: item.fileUrl!,
                               ),
-                            )
-                          : CustomMaterialButton(
-                              text: 'submit',
-                              onPressed: () {
-                                controller.editPost(
-                                    postId: item.postId!,
-                                    post: controller.controller.text,
-                                    fileUrl: item.fileUrl ?? "");
-                              },
-                            )
-                    ],
+                        controller.isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.kPrimaryColor,
+                                ),
+                              )
+                            : CustomMaterialButton(
+                                text: 'submit',
+                                onPressed: () {
+                                  controller.editPost(
+                                      postId: item.postId!,
+                                      post: controller.controller.text,
+                                      fileUrl: item.fileUrl ?? "");
+                                },
+                              )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

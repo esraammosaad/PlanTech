@@ -12,12 +12,14 @@ class PopularQuestions extends StatelessWidget {
     Questions question =Get.arguments[0];
     return Scaffold(
       appBar: customAppBar(text: 'Popular Questions'),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: CustomExpansionTile(questions: question,isInitiallyExpanded: true),
-          ),
-        ],
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: CustomExpansionTile(questions: question,isInitiallyExpanded: true),
+            ),
+          ],
+        ),
       ),
     );
   }

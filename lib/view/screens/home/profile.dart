@@ -11,8 +11,8 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 16.0,
+      padding: const EdgeInsets.only(
+        top: 16.0,
       ),
       child: CustomScrollView(
         slivers: [
@@ -20,6 +20,7 @@ class Profile extends StatelessWidget {
           const SliverToBoxAdapter(
               child: CustomAnotherAppBar(text: 'Account Settings')),
           SliverFillRemaining(
+            hasScrollBody: false,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
@@ -107,7 +108,7 @@ class Profile extends StatelessWidget {
 //                     );
 //                   })
 // =======
-                  SettingOptions()
+                  const SettingOptions()
 
                 ],
               ),

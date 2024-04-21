@@ -9,7 +9,6 @@ abstract class AppRoutes {
   static String otpForgetPasswordScreen = '/otpForgetPassword';
   static String resetPasswordScreen = '/resetPassword';
   static String signUpWithPhoneNumberScreen = '/signUpWithPhoneNumber';
-  static String homeScreen = '/home';
   static String navBarScreen = '/navBar';
   static String plantsDetailsScreen = '/plantsDetails';
   static String addPostScreen = '/addPost';
@@ -19,5 +18,8 @@ abstract class AppRoutes {
   static String seeAllPopularQuestionsScreen = '/seeAllPopularQuestions';
   static String popularQuestionsScreen = '/popularQuestions';
   static String careGuideScreen = '/careGuide';
+  static String cameraScreen = '/camera';
+  static String cameraResultScreen = '/cameraResult';
+  static String cameraTipsScreen = '/cameraTips';
 
 }

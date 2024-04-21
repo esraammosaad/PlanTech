@@ -5,13 +5,13 @@ class CustomSpace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-      const Divider(
+    return const Column(children: [
+      SizedBox(height: 8,),
+      Divider(
         height: 0,
         thickness: 1,
       ),
-      SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+      SizedBox(height: 8,),
     ]
     );
 

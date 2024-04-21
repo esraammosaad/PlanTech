@@ -25,6 +25,8 @@ class CustomAnotherAppBar extends StatelessWidget {
           onPressed: () {
             controller.pageController
                 .jumpToPage(controller.selectedPage - 1);
+            FocusScope.of(context).unfocus();
+
           },
         ),
         const SizedBox(

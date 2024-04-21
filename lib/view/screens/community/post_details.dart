@@ -30,34 +30,36 @@ class PostDetails extends StatelessWidget {
         ],
       ),
       body:
-      CustomScrollView(
-        controller: controller.scrollController,
-        slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomSliverListPostItem(
-                        item: item, index: index, isDetails: true),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text('Comments Section:',style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w300,color: AppColors.kPrimaryColor),),
-                    )
-                  ],
+      SafeArea(
+        child: CustomScrollView(
+          controller: controller.scrollController,
+          slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomSliverListPostItem(
+                          item: item, index: index, isDetails: true),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text('Comments Section:',style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w300,color: AppColors.kPrimaryColor),),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-               CustomCommentsSliverList(item: item),
-              const SliverFillRemaining(
-                hasScrollBody: false,
-                child: SizedBox(
-                  height: 60,
-                ),
-              )
-            ],
-
+                 CustomCommentsSliverList(item: item),
+                const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: SizedBox(
+                    height: 60,
+                  ),
+                )
+              ],
+        
+        ),
       ),
       bottomSheet: CustomAddCommentTextField(postId: item.postId!),
     );

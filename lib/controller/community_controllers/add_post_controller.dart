@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/core/class/posts_services.dart';
+import 'package:grad_proj/data/data_source/remote/post_repo/post_repo_impl.dart';
 import 'package:grad_proj/core/functions/pick_and_capture_image.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -13,7 +13,7 @@ abstract class AddPostController extends GetxController {
 }
 
 class AddPostControllerImp extends AddPostController {
-  PostsRepo postsRepo = Get.find();
+  PostsRepoImpl postsRepo = Get.find();
   late TextEditingController controller;
   File? image;
   late ImagePicker imagePicker;

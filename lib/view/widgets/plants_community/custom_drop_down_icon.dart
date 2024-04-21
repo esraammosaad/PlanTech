@@ -22,30 +22,43 @@ class CustomDropdownIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: DropdownButtonHideUnderline(
+
           child: DropdownButton2(
+
         dropdownStyleData: const DropdownStyleData(
+
           width: 100,
         ),
         onChanged: (value) {},
+
+
         customButton: const Icon(
           Icons.more_horiz_rounded,
           size: 24,
           color: Colors.black,
         ),
+
         items: [
-          DropdownMenuItem<Object?>(
+          DropdownMenuItem(
+            enabled: false,
+
+
+
             value: 'Edit',
             child: GestureDetector(
                 onTap: () {
                   controller.controller.text = item.post ?? "";
                   Get.toNamed(AppRoutes.editPostScreen, arguments: [item]);
+
                 },
                 child: Text(
                   'Edit',
                   style: Styles.textStyle10,
                 )),
           ),
-          DropdownMenuItem<Object?>(
+          DropdownMenuItem(
+            enabled: false,
+
             value: 'Delete',
             child: GestureDetector(
                 onTap: () {

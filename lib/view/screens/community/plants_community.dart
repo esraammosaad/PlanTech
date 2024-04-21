@@ -12,45 +12,47 @@ class PlantsCommunity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 16,
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 8,
+        ),
+        child: CustomScrollView(
+                  slivers: [
+                    const SliverToBoxAdapter(
+                        child: CustomAnotherAppBar(text: 'Plants Community')),
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      sliver: SliverToBoxAdapter(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CustomCreatePostField(),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          CustomTextRow(text: 'Popular Questions',onTap: (){
+                            Get.toNamed(AppRoutes.seeAllPopularQuestionsScreen);
+      
+                          }),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          const CustomPopularQuestionsList(),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                        ],
+                      )),
+                    ),
+                    const SliverPadding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      sliver: CustomPlantsCommunitySliverList(),
+                    ),
+                  ],
+                )
+      
       ),
-      child: CustomScrollView(
-                slivers: [
-                  const SliverToBoxAdapter(
-                      child: CustomAnotherAppBar(text: 'Plants Community')),
-                  SliverPadding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    sliver: SliverToBoxAdapter(
-                        child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const CustomCreatePostField(),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        CustomTextRow(text: 'Popular Questions',onTap: (){
-                          Get.toNamed(AppRoutes.seeAllPopularQuestionsScreen);
-
-                        }),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        const CustomPopularQuestionsList(),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                      ],
-                    )),
-                  ),
-                  const SliverPadding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    sliver: CustomPlantsCommunitySliverList(),
-                  ),
-                ],
-              )
-
     );
   }
 }
