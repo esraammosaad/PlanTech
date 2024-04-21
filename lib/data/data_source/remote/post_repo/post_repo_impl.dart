@@ -1,19 +1,21 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:grad_proj/core/class/failure.dart';
-import 'package:grad_proj/data/models/comment_model.dart';
-import 'package:grad_proj/data/models/post_model.dart';
+import 'package:grad_proj/data/data_source/remote/post_repo/post_repo.dart';
 import 'package:uuid/uuid.dart';
+import 'dart:io';
+import '../../../../core/class/failure.dart';
+import '../../../models/comment_model.dart';
+import '../../../models/post_model.dart';
 
-class PostsRepo {
+class PostsRepoImpl extends PostRepo {
   final auth = FirebaseAuth.instance;
   final fireStore = FirebaseFirestore.instance;
   final storage = FirebaseStorage.instance;
 
+  @override
   Future<Either<Failure, List<PostModel>>> getAllPosts() async {
     try {
       List<PostModel> data = [];
@@ -35,10 +37,11 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<String?> makePost(
       {required String post,
-      required File? file,
-      required String postType}) async {
+        required File? file,
+        required String postType}) async {
     try {
       final String postId = const Uuid().v1();
       final String uid = auth.currentUser!.uid;
@@ -79,10 +82,11 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<void> editPost(
       {required String post,
-      required String postId,
-      required String fileUrl}) async {
+        required String postId,
+        required String fileUrl}) async {
     try {
       await fireStore
           .collection('posts')
@@ -93,11 +97,12 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<void> deletePost(
       {required String postId, required String? fileUrl}) async {
     try {
       await fireStore.collection('posts').doc(postId).delete();
-      if (fileUrl != ''&& fileUrl!=null) {
+      if (fileUrl != '' && fileUrl != null) {
         FirebaseStorage.instance.refFromURL(fileUrl).delete();
       }
     } on Exception catch (e) {
@@ -105,6 +110,7 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<Either<Failure, List<CommentModel>>> getPostComments(
       {required String postId}) async {
     try {
@@ -129,6 +135,7 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<String?> makeComment(
       {required String comment, required String postId}) async {
     try {
@@ -156,6 +163,7 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<Either<Failure, bool>> likeAndDisLike({
     required String postId,
     required List likes,
@@ -178,6 +186,7 @@ class PostsRepo {
     }
   }
 
+  @override
   Future<Either<Failure, bool>> commentsLikeAndDisLike({
     required String commentId,
     required String postId,

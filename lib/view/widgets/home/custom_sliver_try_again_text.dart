@@ -15,7 +15,7 @@ class CustomSliverTryAgainText extends StatelessWidget {
             child: Text(
               text,
               style:
-              Styles.textStyle12.copyWith(color: AppColors.kGreyColor),
+              Styles.textStyle14.copyWith(color: AppColors.kGreyColor),
             )));
   }
 }

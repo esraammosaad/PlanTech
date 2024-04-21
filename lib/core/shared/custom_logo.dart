@@ -16,7 +16,7 @@ class CustomLogo extends StatelessWidget {
         child: Align(
           alignment: Alignment.topLeft,
           child: Text(
-            'PlanHub',
+            'PlantHub',
             style: Styles.textStyle18.copyWith(
                 color: AppColors.kPrimaryColor,
                 fontFamily: AppFonts.kEnglishFont,

@@ -49,7 +49,7 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "Height:  ${plantData?.dimension??""}",
+            plantData?.dimension??"",
             style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold),
           ),
         ],

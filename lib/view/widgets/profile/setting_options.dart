@@ -36,45 +36,44 @@ class SettingOptions extends StatelessWidget {
                     SizedBox(width: MediaQuery.of(context).size.width*0.05,),
                     Text("Light Mode",style: TextStyle(color: AppColors.kPrimaryColor),),
                   ],),
-                  ChangeMode(),
+                  const ChangeMode(),
 
                 ],
               ),
-              CustomSpace(),
+              const CustomSpace(),
 
               CustomSettingItem(
                 icon: Icons.language,
                 title: "Language",
                 onPressed: (){
-                  Get.to(ChooseLanguage());
                 },
               ),
-              CustomSpace(),
+              const CustomSpace(),
 
               CustomSettingItem(
                 icon: Icons.notifications,
                 title: "Notifications",
                 onPressed: (){},
               ),
-              CustomSpace(),
+              const CustomSpace(),
               CustomSettingItem(
                 icon: Icons.info,
                 title: "Info",
                 onPressed: (){},
               ),
-              CustomSpace(),
+              const CustomSpace(),
               CustomSettingItem(
                 icon: Icons.edit,
                 title: "Edit Profile",
                 onPressed: (){},
               ),
-              CustomSpace(),
+              const CustomSpace(),
               CustomSettingItem(
                 icon: Icons.contact_phone,
                 title: "Contact Us",
                 onPressed: (){},
               ),
-              CustomSpace(),
+              const CustomSpace(),
               CustomSettingItem(
                 icon: Icons.logout,
                 title: "Logout",

@@ -3,7 +3,7 @@ import 'package:grad_proj/data/models/comment_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/core/class/posts_services.dart';
+import 'package:grad_proj/data/data_source/remote/post_repo/post_repo_impl.dart';
 
 abstract class PostDetailsController extends GetxController {
   addComment({required String postId});
@@ -15,7 +15,7 @@ abstract class PostDetailsController extends GetxController {
 }
 
 class PostDetailsControllerImp extends PostDetailsController {
-  PostsRepo postsRepo = Get.find();
+  PostsRepoImpl postsRepo = Get.find();
   late TextEditingController commentController;
   bool isLoading = false;
   List<CommentModel> comments = [];

@@ -9,4 +9,5 @@ class AppIcons{
   static const String emptyCartIcon= 'assets/icons/empty.json';
   static const String loadCartIcon= 'assets/icons/loadcart.json';
   static const String favIcon= 'assets/icons/fav.json';
+  static const String scanImageIcon= 'assets/icons/scan_image.json';
 }

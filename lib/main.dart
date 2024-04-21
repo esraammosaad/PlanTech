@@ -1,38 +1,35 @@
+import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:grad_proj/routes.dart';
-
 import 'bindings.dart';
 import 'core/class/them_controller.dart';
 import 'core/localization/change_local.dart';
 import 'core/localization/localization.dart';
 import 'core/services/services.dart';
 import 'firebase_options.dart';
+late List<CameraDescription> cameras;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  cameras = await availableCameras();
   await initialServices();
-  runApp( MyApp());
+  runApp(  const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final ThemeController themeController = Get.put(ThemeController());
-  get darkTheme => null;
+  const MyApp({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
-
-
+    ThemeController themeController = Get.put(ThemeController());
     return Obx(() =>
         GetMaterialApp(
           themeMode: ThemeMode.dark,
