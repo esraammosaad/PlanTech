@@ -2,23 +2,20 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/core/functions/awesome_dialog.dart';
-import 'package:grad_proj/data/models/post_model.dart';
-import '../../../controller/community_controllers/edit_post_controller.dart';
 import '../../../core/constants/styles.dart';
 
 class CustomDropdownIcon extends StatelessWidget {
   const CustomDropdownIcon({
     super.key,
-    required this.item,
+    required this.editOnTap, required this.deleteOnTap,
   });
-  final PostModel item;
+
+  final VoidCallback editOnTap;
+  final VoidCallback deleteOnTap;
 
   @override
   Widget build(BuildContext context) {
-    EditAndDeletePostControllerImp controller = Get.find();
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: DropdownButtonHideUnderline(
@@ -46,11 +43,7 @@ class CustomDropdownIcon extends StatelessWidget {
 
             value: 'Edit',
             child: GestureDetector(
-                onTap: () {
-                  controller.controller.text = item.post ?? "";
-                  Get.toNamed(AppRoutes.editPostScreen, arguments: [item]);
-
-                },
+                onTap:editOnTap ,
                 child: Text(
                   'Edit',
                   style: Styles.textStyle10,
@@ -65,13 +58,9 @@ class CustomDropdownIcon extends StatelessWidget {
                   showAwesomeDialog(
                       context: context,
                       dialogType: DialogType.info,
-                      title: 'Do you want to delete your post? ',
+                      title: 'Do you want to delete? ',
                       desc: '',
-                      okOnPress: () async {
-                        Get.back();
-                        await controller.deletePost(postId: item.postId!, fileUrl: item.fileUrl);
-                        print(item.fileUrl);
-                      },
+                      okOnPress: deleteOnTap,
                       cancelOnPress: () {
                         Get.back();
                       });

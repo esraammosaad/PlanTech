@@ -20,6 +20,8 @@ class CustomAddCommentTextField extends StatelessWidget {
 
             controller.commentController.clear();
           },
+
+          cursorColor: AppColors.kPrimaryColor,
           decoration: InputDecoration(
             suffixIcon: IconButton(
               icon: Icon(
@@ -38,6 +40,8 @@ class CustomAddCommentTextField extends StatelessWidget {
                     topRight: Radius.circular(25)),
                 borderSide: BorderSide(color: AppColors.kPrimaryColor)),
             hintText: 'Add Comment',
+            fillColor: AppColors.backgroundColor,
+            filled: true,
             enabledBorder: OutlineInputBorder(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(25),

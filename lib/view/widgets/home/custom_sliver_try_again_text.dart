@@ -11,11 +11,16 @@ class CustomSliverTryAgainText extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverFillRemaining(
         hasScrollBody: false,
-        child: Center(
-            child: Text(
-              text,
-              style:
-              Styles.textStyle14.copyWith(color: AppColors.kGreyColor),
-            )));
+        child: Column(
+          children: [
+            Center(
+                child: Text(
+                  text,
+                  style:
+                  Styles.textStyle14.copyWith(color: AppColors.kGreyColor),
+                )),
+            const SizedBox(height: 30,),
+          ],
+        ));
   }
 }
