@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:grad_proj/view/screens/language/choose_language.dart';
-
+import 'package:grad_proj/core/constants/app_routes.dart';
 import '../../../controller/home_controllers/profile_controller.dart';
 import '../../../core/constants/color.dart';
 import 'change_mode.dart';
@@ -33,7 +30,7 @@ class SettingOptions extends StatelessWidget {
                 children: [
                   Row(children: [
                     Icon(Icons.dark_mode_outlined,color:AppColors.kPrimaryColor),
-                    SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+                    const SizedBox(width: 10,),
                     Text("Light Mode",style: TextStyle(color: AppColors.kPrimaryColor),),
                   ],),
                   const ChangeMode(),
@@ -65,7 +62,10 @@ class SettingOptions extends StatelessWidget {
               CustomSettingItem(
                 icon: Icons.edit,
                 title: "Edit Profile",
-                onPressed: (){},
+                onPressed: (){
+
+                  Get.toNamed(AppRoutes.editProfileScreen);
+                },
               ),
               const CustomSpace(),
               CustomSettingItem(

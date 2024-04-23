@@ -40,8 +40,8 @@ class PostsRepoImpl extends PostRepo {
   @override
   Future<String?> makePost(
       {required String post,
-        required File? file,
-        required String postType}) async {
+      required File? file,
+      required String postType}) async {
     try {
       final String postId = const Uuid().v1();
       final String uid = auth.currentUser!.uid;
@@ -85,8 +85,8 @@ class PostsRepoImpl extends PostRepo {
   @override
   Future<void> editPost(
       {required String post,
-        required String postId,
-        required String fileUrl}) async {
+      required String postId,
+      required String fileUrl}) async {
     try {
       await fireStore
           .collection('posts')
@@ -101,6 +101,19 @@ class PostsRepoImpl extends PostRepo {
   Future<void> deletePost(
       {required String postId, required String? fileUrl}) async {
     try {
+      var result = await fireStore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .get();
+      for (int i = 0; i < result.docs.length; i++) {
+        await FirebaseFirestore.instance
+            .collection('posts')
+            .doc(postId)
+            .collection('comments')
+            .doc(CommentModel.fromJson(result.docs[i].data()).commentId)
+            .delete();
+      }
       await fireStore.collection('posts').doc(postId).delete();
       if (fileUrl != '' && fileUrl != null) {
         FirebaseStorage.instance.refFromURL(fileUrl).delete();
@@ -160,6 +173,41 @@ class PostsRepoImpl extends PostRepo {
       return null;
     } catch (e) {
       return e.toString();
+    }
+  }
+
+  @override
+  Future<void> deleteComment(
+      {required String commentId, required String postId}) async {
+    try {
+      await fireStore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .delete();
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  @override
+  Future<void> editComment({
+    required String comment,
+    required String postId,
+    required String commentId,
+  }) async {
+    try {
+      await fireStore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .update({
+        'comment': comment,
+      });
+    } on Exception catch (e) {
+      debugPrint(e.toString());
     }
   }
 

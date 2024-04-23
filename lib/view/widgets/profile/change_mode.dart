@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:grad_proj/core/constants/color.dart';
 
 import '../../../core/class/them_controller.dart';
@@ -20,8 +19,8 @@ class _ChangeModeState extends State<ChangeMode> {
   @override
   Widget build(BuildContext context) {
     return  FlutterSwitch(
-      width: MediaQuery.of(context).size.height * 0.08,
-      height: MediaQuery.of(context).size.height * 0.04,
+      width: 45,
+      height: 30,
       valueFontSize: 16,
       toggleSize: 16,
       value: status,

@@ -17,6 +17,7 @@ class EditPost extends StatelessWidget {
     PostModel item = Get.arguments[0];
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         actions: [
           TextButton(
             onPressed: () {},

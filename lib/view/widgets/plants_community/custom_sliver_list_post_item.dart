@@ -5,6 +5,7 @@ import 'package:grad_proj/controller/community_controllers/post_details_controll
 import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/data/models/post_model.dart';
 import 'package:grad_proj/view/widgets/home/custom_cached_network_image.dart';
+import '../../../controller/community_controllers/edit_post_controller.dart';
 import '../../../controller/community_controllers/plants_community_controller.dart';
 import 'custom_drop_down_icon.dart';
 import 'custom_like_and_comment_row.dart';
@@ -23,6 +24,7 @@ class CustomSliverListPostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PostDetailsControllerImp commentsController = Get.find();
+    EditAndDeletePostControllerImp editAndDeleteController = Get.find();
     return GetBuilder<PlantsCommunityControllerImp>(builder: (controller) {
       return Stack(
         alignment: Alignment.topRight,
@@ -31,7 +33,7 @@ class CustomSliverListPostItem extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
-              border: isDetails ? null : Border.all(color: Colors.black),
+              border: isDetails ? null : Border.all(color: Colors.black38),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -76,10 +78,19 @@ class CustomSliverListPostItem extends StatelessWidget {
               ],
             ),
           ),
-           item.uid==FirebaseAuth.instance.currentUser!.uid?CustomDropdownIcon(item:item):const SizedBox(),
+          item.uid == FirebaseAuth.instance.currentUser!.uid
+              ? CustomDropdownIcon(editOnTap: () {
+            editAndDeleteController.controller.text = item.post ?? "";
+            Get.toNamed(AppRoutes.editPostScreen, arguments: [item],);
+
+          },deleteOnTap: () async {
+            Get.back();
+            await editAndDeleteController.deletePost(postId: item.postId!, fileUrl: item.fileUrl);
+            print(item.fileUrl);
+          },)
+              : const SizedBox(),
         ],
       );
     });
   }
 }
-
