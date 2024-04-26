@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+import '../../../core/class/them_controller.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
 import 'custom_profile_avatar.dart';
@@ -28,12 +30,24 @@ class CustomHomeAppBar extends StatelessWidget {
               style: Styles.textStyle14.copyWith(
                   color: Colors.grey[600], fontFamily: AppFonts.kArabicFont),
             ),
-            Text(
+            GetBuilder<ThemeController>(
+              builder: (controller){
+                return Text(
+                  FirebaseAuth.instance.currentUser?.displayName==''||FirebaseAuth.instance.currentUser?.displayName==null?
+                  'person':FirebaseAuth.instance.currentUser!.displayName!,
+                  style: Styles.textStyle16.copyWith(
+                      color:  controller.isDarkMode.value ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.bold,fontFamily: AppFonts.kArabicFont),
+                );
+              },
+
+            ),
+            /*Text(
               FirebaseAuth.instance.currentUser?.displayName==''||FirebaseAuth.instance.currentUser?.displayName==null?
               'person':FirebaseAuth.instance.currentUser!.displayName!,
               style: Styles.textStyle14.copyWith(
                   color: Colors.grey[950], fontFamily: AppFonts.kArabicFont),
-            ),
+            ),*/
           ],
         ),
         const Spacer(),

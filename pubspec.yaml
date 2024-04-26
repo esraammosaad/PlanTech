@@ -157,11 +157,15 @@ flutter:
     - family: SingleDay
       fonts:
         - asset: assets/fonts/SingleDay-Regular.ttf
-    - family: Inter
+    - family: Lugrasimo
       fonts:
-          - asset: assets/fonts/Inter-Regular.ttf
-          - asset: assets/fonts/Inter-Bold.ttf
+          - asset: assets/fonts/Lugrasimo-Regular.ttf
             weight: 700
+    - family: ComingSoon
+      fonts:
+        - asset: assets/fonts/ComingSoon-Regular.ttf
+
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

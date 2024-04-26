@@ -15,7 +15,8 @@ class CustomGridViewItemFooter extends StatelessWidget {
           productName,
           overflow: TextOverflow.ellipsis,
           style: Styles.textStyle16
-              .copyWith(color: Colors.black,fontWeight: FontWeight.bold,),
+              .copyWith(color: Colors.black,fontWeight: FontWeight.bold,
+          fontFamily: "ComingSoon"),
         ),
       ),
     );

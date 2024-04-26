@@ -12,36 +12,42 @@ class SeeAllPopularQuestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(text: 'Popular Questions'),
-      body: SafeArea(
-        child: GetBuilder<SeeAllQuestionsControllerImp>(builder: (controller) {
-          return controller.isLoading
-              ? const CustomLoadingIcon(path: 'assets/icons/loading.json')
-              : controller.errMessage != null
-                  ? Center(
-                      child: Text(
+    return GetBuilder(
+      builder: (controller){
+        return
+          Scaffold(
+            appBar: customAppBar(text: 'Popular Questions'),
+            body: SafeArea(
+              child: GetBuilder<SeeAllQuestionsControllerImp>(builder: (controller) {
+                return controller.isLoading
+                    ? const CustomLoadingIcon(path: 'assets/icons/loading.json')
+                    : controller.errMessage != null
+                    ? Center(
+                    child: Text(
                       controller.errMessage!,
                       style: Styles.textStyle12
                           .copyWith(color: AppColors.kGreyColor),
                     ))
-                  : CustomScrollView(
-                      slivers: [
-                        SliverPadding(
-                          padding: const EdgeInsets.all(5),
-                          sliver: SliverList.builder(
-                              itemBuilder: (context, index) =>  Padding(
-                                    padding: const EdgeInsets.only(bottom: 8.0),
-                                    child: CustomExpansionTile(questions: controller.seeAllDataList[index],isInitiallyExpanded: false),
-                                  ),
-                              itemCount: controller.seeAllDataList.length),
-                        ),
-        
-                        // const CustomSearchField(),
-                      ],
-                    );
-        }),
-      ),
+                    : CustomScrollView(
+                  slivers: [
+                    SliverPadding(
+                      padding: const EdgeInsets.all(5),
+                      sliver: SliverList.builder(
+                          itemBuilder: (context, index) =>  Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: CustomExpansionTile(questions: controller.seeAllDataList[index],isInitiallyExpanded: false),
+                          ),
+                          itemCount: controller.seeAllDataList.length),
+                    ),
+
+                    // const CustomSearchField(),
+                  ],
+                );
+              }),
+            ),
+          );
+      },
+
     );
   }
 }

@@ -35,6 +35,8 @@ class _ChangeModeState extends State<ChangeMode> {
           status = val;
           themeController.toggleTheme();
 
+         // print('${themeController.isDarkMode.value}');
+
         });
       },
     );

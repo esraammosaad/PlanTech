@@ -1,120 +1,115 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:grad_proj/core/services/preferanceManager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/class/them_controller.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
 import '../../widgets/profile/setting_options.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  bool status = false;
+  ThemeController themeController = Get.put(ThemeController());
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() {
+          status = PreferencesManager.instance.getBool('isDarkMode') ?? false;
+          themeController.isDarkMode.value = status;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 16.0,
+        top: 32.0,
       ),
-      child: CustomScrollView(
-        slivers: [
-
-          const SliverToBoxAdapter(
-              child: CustomAnotherAppBar(text: 'Account Settings')),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(FirebaseAuth
-                                  .instance.currentUser?.photoURL ??
-                              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+      child: GetBuilder<ThemeController>(
+        builder: (controller){
+        return CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+                child: CustomAnotherAppBar(text: 'Account Settings')),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: CircleAvatar(
+                            radius: 40,
+                            backgroundImage: NetworkImage(FirebaseAuth
+                                    .instance.currentUser?.photoURL ??
+                                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Expanded(
-                        flex: 4,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FittedBox(
-                              alignment: AlignmentDirectional.centerStart,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                FirebaseAuth.instance.currentUser?.displayName==''||FirebaseAuth.instance.currentUser?.displayName==null?
-                                'person':FirebaseAuth.instance.currentUser!.displayName!,
-                                style: Styles.textStyle25.copyWith(
-                                    color: Colors.grey[950],
-                                    fontFamily: AppFonts.kArabicFont),
-                              ),
-                            ),
-                            FittedBox(
-                              alignment: AlignmentDirectional.centerStart,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                FirebaseAuth.instance.currentUser?.email==''||FirebaseAuth.instance.currentUser?.email==null?
-                                    'person':FirebaseAuth.instance.currentUser!.email!,
-                                style: Styles.textStyle14.copyWith(
-                                    color: Colors.grey[600],
-                                    fontFamily: AppFonts.kArabicFont),
-                              ),
-                            ),
-                          ],
+                        const SizedBox(
+                          width: 20,
                         ),
-                      ),
-                      const Spacer(
-                        flex: 2,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16,),
-// <<<<<<< esraa
+                        Expanded(
+                          flex: 4,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FittedBox(
+                                alignment: AlignmentDirectional.centerStart,
+                                fit: BoxFit.scaleDown,
+                                child:
+                                   // print('${themeController.isDarkMode.value}');
+                                  Text(
+                                      FirebaseAuth.instance.currentUser?.displayName==''||FirebaseAuth.instance.currentUser?.displayName==null?
+                                      'person':FirebaseAuth.instance.currentUser!.displayName!,
+                                      style: Styles.textStyle20.copyWith(
+                                        color: controller.isDarkMode.value ? Colors.white : Colors.black
+                                      ),
+                                  )
+                              ),
+                              FittedBox(
+                                alignment: AlignmentDirectional.centerStart,
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  FirebaseAuth.instance.currentUser?.email==''||FirebaseAuth.instance.currentUser?.email==null?
+                                      'person':FirebaseAuth.instance.currentUser!.email!,
+                                  style: Styles.textStyle14.copyWith(
+                                      color: controller.isDarkMode.value ?Colors.grey[400] : Colors.grey[700],
+                                      fontFamily: AppFonts.kArabicFont),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(
+                          flex: 2,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16,),
+                    const SettingOptions()
 
-//                   GetBuilder<ProfileControllerImpl>(builder: (controller) {
-//                     return Container(
-//                       width: MediaQuery.of(context).size.width,
-//                       decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(10),
-//                           border: Border.all(color: Colors.grey)),
-//                       child: Column(
-//                         children: [
-//                           CustomProfileWidget(
-//                               onTap: () {
-
-//                               },
-//                               text: 'Your Profile'),
-//                           CustomProfileWidget(
-//                               onTap: () {
-//                                 controller.logOut();
-//                               },
-//                               text: 'Settings'),
-//                           CustomProfileWidget(
-//                               onTap: () {
-//                                 controller.logOut();
-//                               },
-//                               text: 'Logout'),
-
-//                         ],
-//                       ),
-//                     );
-//                   })
-// =======
-                  const SettingOptions()
-
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        );}
       ),
     );
   }

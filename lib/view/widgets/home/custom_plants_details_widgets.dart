@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/data/models/plants_details_model.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
@@ -15,44 +17,49 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomPlantDetailsNameAndTypeRow(plantData: plantData),
-          const SizedBox(
-            height: 12,
-          ),
-          Text(
-            plantData?.description??"",
-            style: Styles.textStyle12.copyWith(
-                color: AppColors.greyColor, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          FittedBox(
-            alignment: AlignmentDirectional.centerStart,
-            fit: BoxFit.scaleDown,
-            child: Text(
-              "Scientific Name :  ${plantData?.scientificName??""}",
-              style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold),
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            "Other Name :  ${plantData?.otherName??""}",
-            style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            plantData?.dimension??"",
-            style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold),
-          ),
-        ],
+      child: GetBuilder<ThemeController>(
+        builder: (controller){
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomPlantDetailsNameAndTypeRow(plantData: plantData),
+              const SizedBox(
+                height: 12,
+              ),
+              Text(
+                plantData?.description??"",
+                style: Styles.textStyle12.copyWith(
+                  color: AppColors.greyColor, fontWeight: FontWeight.bold,),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              FittedBox(
+                alignment: AlignmentDirectional.centerStart,
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "Scientific Name :  ${plantData?.scientificName??""}",
+                  style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold, color: controller.isDarkMode.value ? Colors.white : Colors.black),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Other Name :  ${plantData?.otherName??""}",
+                style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold, color: controller.isDarkMode.value ? Colors.white : Colors.black),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                plantData?.dimension??"",
+                style: Styles.textStyle12.copyWith(fontWeight: FontWeight.bold, color: controller.isDarkMode.value ? Colors.white : Colors.black),
+              ),
+            ],
+          ) ;
+        },
+
       ),
     );
   }

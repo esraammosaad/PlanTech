@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
+import 'package:grad_proj/core/constants/styles.dart';
 import '../../../core/constants/color.dart';
 
 PreferredSizeWidget customAppBar({required String text}){
@@ -16,7 +18,13 @@ PreferredSizeWidget customAppBar({required String text}){
         Get.back();
       },
     ),
-    title:  Text(text),
+    title:  GetBuilder<ThemeController>(
+      builder: (controller){
+        return Text(
+          text,style: Styles.textStyle18.copyWith(
+            color: controller.isDarkMode.value ? Colors.white : Colors.black
+        ),);},
+    ),
     centerTitle: true,
   );
 }

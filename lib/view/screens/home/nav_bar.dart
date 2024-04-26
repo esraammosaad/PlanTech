@@ -27,7 +27,7 @@ class NavBar extends StatelessWidget {
           onPageChanged: (index) {
             controller.navBar(index);
           },
-          children: const [
+          children:  [
             Home(),
             PlantsCommunity(),
             Bluetooth(),

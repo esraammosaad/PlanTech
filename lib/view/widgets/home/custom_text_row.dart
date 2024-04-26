@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
 import '../../../core/constants/styles.dart';
 class CustomTextRow extends StatelessWidget {
@@ -14,9 +15,16 @@ class CustomTextRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          text,
-          style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
+        GetBuilder<ThemeController>(
+          builder: (controller){
+            return Text(
+              text,
+              style: Styles.textStyle18.copyWith(
+                  color:  controller.isDarkMode.value ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.bold),
+            );
+          },
+
         ),
         GestureDetector(
           onTap: onTap,

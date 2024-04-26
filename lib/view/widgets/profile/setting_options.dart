@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/view/screens/language/choose_language.dart';
 
 import '../../../controller/home_controllers/profile_controller.dart';
 import '../../../core/constants/color.dart';
+import '../../../core/constants/styles.dart';
 import 'change_mode.dart';
 import 'custom_setting_item.dart';
 import 'custom_space.dart';
@@ -24,21 +26,27 @@ class SettingOptions extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey)),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16),
 
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(children: [
-                    Icon(Icons.dark_mode_outlined,color:AppColors.kPrimaryColor),
-                    SizedBox(width: MediaQuery.of(context).size.width*0.05,),
-                    Text("Light Mode",style: TextStyle(color: AppColors.kPrimaryColor),),
-                  ],),
-                  const ChangeMode(),
+              GetBuilder<ThemeController>(
+                builder:(controller){
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(children: [
+                        Icon(Icons.dark_mode_outlined,color:AppColors.kPrimaryColor),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+                        Text("Light Mode",style: Styles.textStyle18.copyWith(
+                            color: controller.isDarkMode.value == true ? Colors.white:AppColors.kPrimaryColor),),
+                      ],),
+                      const ChangeMode(),
 
-                ],
+                    ],
+                  );
+                }
+
               ),
               const CustomSpace(),
 
