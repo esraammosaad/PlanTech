@@ -30,6 +30,13 @@ abstract class PostRepo{
     required List likes,
   });
 
+  Future<void> deleteComment(
+      {required String commentId, required String postId});
+  Future<void> editComment(
+      {required String comment,
+        required String postId,
+        required String commentId,});
+
 
 
 }

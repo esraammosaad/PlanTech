@@ -23,6 +23,7 @@ import 'package:grad_proj/view/screens/landing/on_boarding.dart';
 import 'package:grad_proj/view/screens/landing/splash.dart';
 import 'package:grad_proj/view/screens/language/choose_language.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:grad_proj/view/screens/profile/edit_profile.dart';
 
 List<GetPage<dynamic>> appRoutes() {
   return [
@@ -30,7 +31,7 @@ List<GetPage<dynamic>> appRoutes() {
       name: AppRoutes.splashScreen,
       page: () => const Splash(),
         transitionDuration: const Duration(milliseconds: 900),
-        transition: Transition.fade,
+        transition: Transition.cupertino,
         curve: Curves.decelerate
     ),
     GetPage(
@@ -53,9 +54,9 @@ List<GetPage<dynamic>> appRoutes() {
     GetPage(
       name: AppRoutes.logInScreen,
       page: () => const LogIn(),
-        transitionDuration: const Duration(milliseconds: 900),
+        transitionDuration: const Duration(seconds: 2),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
+        curve: Curves.easeInExpo
     ),
     GetPage(
       name: AppRoutes.signUpScreen,
@@ -88,7 +89,7 @@ List<GetPage<dynamic>> appRoutes() {
     GetPage(
       name: AppRoutes.navBarScreen,
       page: () => const NavBar(),
-        transition: Transition.fadeIn,
+        transition: Transition.cupertino,
         transitionDuration: const Duration(seconds: 2),
         curve: Curves.easeInExpo
     ),
@@ -151,7 +152,7 @@ List<GetPage<dynamic>> appRoutes() {
     GetPage(
         name: AppRoutes.cameraScreen,
         page: () => const Camera(),
-        transition: Transition.fade,
+        transition: Transition.cupertino,
         transitionDuration: const Duration(seconds: 1),
         curve: Curves.easeInExpo),
     GetPage(
@@ -165,6 +166,12 @@ List<GetPage<dynamic>> appRoutes() {
         page: () => const CameraTips(),
         transition: Transition.downToUp,
         transitionDuration: const Duration(seconds: 1),
+        curve: Curves.easeInExpo),
+    GetPage(
+        name: AppRoutes.editProfileScreen,
+        page: () => const EditProfile(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
         curve: Curves.easeInExpo),
   ];
 }

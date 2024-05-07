@@ -11,6 +11,15 @@ abstract class PostDetailsController extends GetxController {
   startTimer();
   updateCommentTime({required DateTime loadedTime});
   likeComment({required String postId, required List likes ,required String commentId});
+  Future deleteComment({
+    required String postId,
+    required String commentId,
+  });
+  Future editComment({
+    required String postId,
+    required String comment,
+    required String commentId,
+  });
 
 }
 
@@ -46,6 +55,38 @@ class PostDetailsControllerImp extends PostDetailsController {
       isLoading = false;
       update();
     });
+  }
+  @override
+  Future deleteComment({
+    required String postId,
+    required String commentId,
+  }) async {
+    isLoading = true;
+    update();
+    await postsRepo.deleteComment(
+      postId: postId,
+     commentId: commentId,
+    );
+    isLoading = false;
+    update();
+
+  }
+  @override
+  Future editComment({
+    required String postId,
+    required String comment,
+    required String commentId,
+  }) async {
+    isLoading = true;
+    update();
+    await postsRepo.editComment(
+      postId: postId,
+      commentId: commentId,
+      comment: comment,
+    );
+    isLoading = false;
+    update();
+    Get.back();
   }
 
   @override

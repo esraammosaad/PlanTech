@@ -5,6 +5,9 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/view/screens/language/choose_language.dart';
 
+
+import 'package:grad_proj/core/constants/app_routes.dart';
+
 import '../../../controller/home_controllers/profile_controller.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
@@ -30,6 +33,7 @@ class SettingOptions extends StatelessWidget {
 
           child: Column(
             children: [
+
               GetBuilder<ThemeController>(
                 builder:(controller){
                   return Row(
@@ -45,9 +49,10 @@ class SettingOptions extends StatelessWidget {
 
                     ],
                   );
-                }
+                }),
 
-              ),
+
+
               const CustomSpace(),
 
               CustomSettingItem(
@@ -73,7 +78,10 @@ class SettingOptions extends StatelessWidget {
               CustomSettingItem(
                 icon: Icons.edit,
                 title: "Edit Profile",
-                onPressed: (){},
+                onPressed: (){
+
+                  Get.toNamed(AppRoutes.editProfileScreen);
+                },
               ),
               const CustomSpace(),
               CustomSettingItem(

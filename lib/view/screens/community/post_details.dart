@@ -11,14 +11,14 @@ import '../../widgets/plants_community/custom_comments_sliver_list.dart';
 class PostDetails extends StatelessWidget {
   const PostDetails({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    PostDetailsControllerImp controller=Get.find();
+    PostDetailsControllerImp controller = Get.find();
     PostModel item = Get.arguments[0];
     int index = Get.arguments[1];
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         actions: [
           TextButton(
             onPressed: () {},
@@ -29,36 +29,42 @@ class PostDetails extends StatelessWidget {
           ),
         ],
       ),
-      body:
-      SafeArea(
+      body: SafeArea(
         child: CustomScrollView(
           controller: controller.scrollController,
           slivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomSliverListPostItem(
-                          item: item, index: index, isDetails: true),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text('Comments Section:',style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w300,color: AppColors.kPrimaryColor),),
-                      )
-                    ],
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomSliverListPostItem(
+                      item: item, index: index, isDetails: true),
+                  const SizedBox(
+                    height: 12,
                   ),
-                ),
-                 CustomCommentsSliverList(item: item),
-                const SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: SizedBox(
-                    height: 60,
-                  ),
-                )
-              ],
-        
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Comments Section:',
+                      style: Styles.textStyle20.copyWith(
+                          fontWeight: FontWeight.w300,
+                          color: AppColors.kPrimaryColor),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SliverPadding(
+              sliver: CustomCommentsSliverList(item: item),
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+            ),
+            const SliverFillRemaining(
+              hasScrollBody: false,
+              child: SizedBox(
+                height: 60,
+              ),
+            )
+          ],
         ),
       ),
       bottomSheet: CustomAddCommentTextField(postId: item.postId!),
