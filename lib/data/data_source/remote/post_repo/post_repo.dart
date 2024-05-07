@@ -37,6 +37,8 @@ abstract class PostRepo{
         required String postId,
         required String commentId,});
 
+  Future<Either<Failure, List<PostModel>>> getMyPosts();
+
 
 
 }

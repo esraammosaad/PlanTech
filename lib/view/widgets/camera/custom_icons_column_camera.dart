@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
+
 class CustomIconsColumnCamera extends StatelessWidget {
   const CustomIconsColumnCamera({
     super.key,
@@ -22,12 +24,20 @@ class CustomIconsColumnCamera extends StatelessWidget {
           Icon(
             icon,
             color: AppColors.kGreyColor,
-            size: 28,
+            size:
+                getValueForScreenType(context: context, mobile: 28, tablet: 56),
           ),
           FittedBox(
             fit: BoxFit.scaleDown,
-            child: Text(text,
-                style: Styles.textStyle14.copyWith(color: AppColors.kGreyColor)),
+            child: Text(
+              text,
+              style: getValueForScreenType(
+                  context: context,
+                  mobile: Styles.textStyle14(context)
+                      .copyWith(color: AppColors.kGreyColor),
+                  tablet: Styles.textStyle25(context)
+                      .copyWith(color: AppColors.kGreyColor)),
+            ),
           )
         ],
       ),

@@ -27,7 +27,7 @@ class CustomBottomSheetItem extends StatelessWidget {
               ),
               Text(
                 text,
-                style: Styles.textStyle20,
+                style: Styles.textStyle20(context),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(

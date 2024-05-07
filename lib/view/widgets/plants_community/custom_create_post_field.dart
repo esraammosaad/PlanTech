@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
@@ -14,9 +15,16 @@ class CustomCreatePostField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomProfileAvatar(
+        GestureDetector(
+          onTap: (){
+            Get.toNamed(AppRoutes.myProfileScreen);
+          },
+          child: CustomProfileAvatar(
             image: FirebaseAuth.instance.currentUser?.photoURL ??
-                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+          ),
+        ),
+
         const SizedBox(
           width: 8,
         ),
@@ -26,7 +34,8 @@ class CustomCreatePostField extends StatelessWidget {
                 Get.toNamed(AppRoutes.addPostScreen);
               },
               child: const CustomAddPostContainer(
-                  hintText: "What's on your mind ?")),
+                hintText: "What's on your mind ?",
+              )),
         ),
       ],
     );

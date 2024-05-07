@@ -17,13 +17,13 @@ class CustomAuthText extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        Text(text, style: Styles.textStyle30.copyWith(color: AppColors.kPrimaryColor,fontWeight: FontWeight.bold)),
+        Text(text, style: Styles.textStyle30(context).copyWith(color: AppColors.kPrimaryColor,fontWeight: FontWeight.bold)),
         const SizedBox(
           height: 7,
         ),
         Text(
             subText,
-            style: Styles.textStyle12.copyWith(color:AppColors.greyColor,height: 1.5)),
+            style: Styles.textStyle12(context).copyWith(color:AppColors.greyColor,height: 1.5)),
       ],
     );
   }

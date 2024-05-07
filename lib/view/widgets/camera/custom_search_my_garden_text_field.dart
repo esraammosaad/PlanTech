@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
-import '../../../controller/camera_controllers/my_garden_controller.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 class CustomSearchMyGardenTextField extends StatelessWidget {
-  const CustomSearchMyGardenTextField({Key? key}) : super(key: key);
+  const CustomSearchMyGardenTextField({Key? key, required this.onChanged, required this.controller}) : super(key: key);
+  final void Function(String)? onChanged;
+  final TextEditingController controller;
+
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MyGardenControllerImp>(
-        builder: (controller) {
-          return TextField(
-            onChanged: (value){
-              controller.searchInMyGarden(data: controller.myGarden!,text:value);
-            },
-            controller:controller.controller ,
+    return TextField(
+       onChanged: onChanged,
+            controller:controller ,
             cursorColor: AppColors.kPrimaryColor,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(10),
+              contentPadding:  EdgeInsets.all(getValueForScreenType(context: context, mobile: 10,tablet: 25)),
               border: buildOutlineInputBorder(),
               disabledBorder: buildOutlineInputBorder(),
               enabledBorder: buildOutlineInputBorder(),
@@ -25,12 +23,14 @@ class CustomSearchMyGardenTextField extends StatelessWidget {
               focusedBorder: buildOutlineInputBorder(),
               focusedErrorBorder: buildOutlineInputBorder(),
               hintText: 'Search plants',
-              hintStyle: Styles.textStyle16.copyWith(color: AppColors.kGreyColor),
-              prefixIcon:  Icon(Icons.search,color: AppColors.kGreyColor,),
+              hintStyle: Styles.textStyle16(context).copyWith(color: AppColors.kGreyColor),
+              prefixIcon:  Padding(
+                padding:  EdgeInsets.only(left: getValueForScreenType(context: context, mobile: 20.0,tablet: 8)),
+                child: Icon(Icons.search,color: AppColors.kGreyColor,size: getValueForScreenType(context: context, mobile: 24,tablet: 40),),
+              ),
             ),
           );
-        }
-    );
+
   }
 
   OutlineInputBorder buildOutlineInputBorder() {

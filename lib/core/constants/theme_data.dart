@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'fonts.dart';
 
-ThemeData themeEnglish=ThemeData(
-  fontFamily: AppFonts.kPrimaryFont,
-  brightness: Brightness.light,
-  useMaterial3: true,
-);
+ThemeController themeController=Get.put(ThemeController());
 
-ThemeData themeArabic=ThemeData(
-  fontFamily: AppFonts.kArabicFont,
-  brightness: Brightness.light,
-  useMaterial3: true,
-);
+class ThemeServicesController extends GetxController{
+  static ThemeData themeEnglish = ThemeData(
+
+      fontFamily: AppFonts.kPrimaryFont,
+      brightness:themeController.isDarkMode.value?Brightness.dark:Brightness.light,
+      useMaterial3: true,
+    );
+  static  ThemeData themeArabic = ThemeData(
+    fontFamily: AppFonts.kArabicFont,
+    brightness: themeController.isDarkMode.value?Brightness.dark:Brightness.light,
+    useMaterial3: true,
+  );
+}
+
+
+
+
+

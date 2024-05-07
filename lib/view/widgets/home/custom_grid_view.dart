@@ -16,7 +16,7 @@ class CustomGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.only(right: 8,left: 8,top: 8,bottom: 30),
       sliver: GetBuilder<HomeControllerImp>(
         builder: (controller) => controller.errMessage != null
             ? CustomSliverTryAgainText(text: controller.errMessage!)

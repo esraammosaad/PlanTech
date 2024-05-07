@@ -96,6 +96,7 @@ dependencies:
   iconly: ^1.0.1
   flutter_switch:
   camera: ^0.10.5+9
+  shimmer: ^3.0.0
 
 
 

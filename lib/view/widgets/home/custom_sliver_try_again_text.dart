@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 class CustomSliverTryAgainText extends StatelessWidget {
@@ -12,12 +13,13 @@ class CustomSliverTryAgainText extends StatelessWidget {
     return SliverFillRemaining(
         hasScrollBody: false,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
                 child: Text(
                   text,
                   style:
-                  Styles.textStyle14.copyWith(color: AppColors.kGreyColor),
+                  getValueForScreenType(context: context, mobile: Styles.textStyle14(context).copyWith(color: AppColors.kGreyColor),tablet: Styles.textStyle25(context).copyWith(color: AppColors.kGreyColor)),
                 )),
             const SizedBox(height: 30,),
           ],

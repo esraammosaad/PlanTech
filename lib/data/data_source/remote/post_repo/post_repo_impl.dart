@@ -36,6 +36,27 @@ class PostsRepoImpl extends PostRepo {
       return Left(FirebaseFailure(errMessage: e.toString()));
     }
   }
+  @override
+  Future<Either<Failure, List<PostModel>>> getMyPosts() async {
+    try {
+      List<PostModel> data = [];
+
+      fireStore
+          .collection('posts').where('uid',isEqualTo:auth.currentUser!.uid)
+          .orderBy('time', descending: true)
+          .snapshots()
+          .listen((event) {
+        data.clear();
+        for (int i = 0; i < event.docs.length; i++) {
+          data.add(PostModel.fromJson(event.docs[i].data()));
+        }
+      });
+
+      return Right(data);
+    } on Exception catch (e) {
+      return Left(FirebaseFailure(errMessage: e.toString()));
+    }
+  }
 
   @override
   Future<String?> makePost(
@@ -204,8 +225,9 @@ class PostsRepoImpl extends PostRepo {
           .collection('comments')
           .doc(commentId)
           .update({
-        'comment': comment,
+        'post': comment,
       });
+      print('================================================');
     } on Exception catch (e) {
       debugPrint(e.toString());
     }

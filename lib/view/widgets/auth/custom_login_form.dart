@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/auth_controllers/signin_controller_imp.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/view/widgets/auth/custom_auth_text.dart';
 import '../../../core/constants/icon_asset.dart';
@@ -18,6 +19,7 @@ class CustomLogInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController=Get.find();
     return GetBuilder<SignInControllerImp>(
         builder: (controller) => controller.isLoading
             ? const CustomLoadingIcon(
@@ -90,7 +92,9 @@ class CustomLogInForm extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               '8'.tr,
-                              style: Styles.textStyle17,
+                              style: Styles.textStyle17(context).copyWith(color: themeController.isDarkMode.value
+                                  ? Colors.white70
+                                  : Colors.black),
                             ),
                           ),
                           const CustomDivider(),
@@ -102,7 +106,9 @@ class CustomLogInForm extends StatelessWidget {
                       Center(
                           child: Text(
                         '${'5'.tr} ${'9'.tr}',
-                        style: Styles.textStyle14,
+                        style: Styles.textStyle14(context).copyWith(color: themeController.isDarkMode.value
+                            ? Colors.white
+                            : Colors.black),
                       )),
                       const SizedBox(
                         height: 15,
@@ -119,7 +125,7 @@ class CustomLogInForm extends StatelessWidget {
                         height: 25,
                       ),
                       CustomTextRich(
-                          text: "10".tr,
+                          text: '${"10".tr} ',
                           onTap: () {
                             controller.goToSignUp();
                           },

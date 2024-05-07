@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../controller/camera_controllers/camera_controller.dart';
 
 class CustomCameraIcons extends StatelessWidget {
@@ -9,6 +11,7 @@ class CustomCameraIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController=Get.find();
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: GetBuilder<OpenCameraControllerImpl>(builder: (controller) {
@@ -19,10 +22,10 @@ class CustomCameraIcons extends StatelessWidget {
                 onTap: () {
                   controller.close();
                 },
-                child: const Icon(
+                child:  Icon(
                   Icons.close,
-                  color: Colors.white,
-                  size: 28,
+                  color: themeController.isDarkMode.value?Colors.black54:Colors.white,
+                  size:getValueForScreenType(context: context, mobile: 28,tablet: 50),
                 )),
             Row(
               children: [
@@ -32,7 +35,8 @@ class CustomCameraIcons extends StatelessWidget {
                   },
                   child: Icon(
                     controller.isFlashOn ? Icons.flash_on : Icons.flash_off,
-                    color: Colors.white,
+                    color: themeController.isDarkMode.value?Colors.black54:Colors.white,
+                    size: getValueForScreenType(context: context, mobile: 24,tablet: 50),
                   ),
                 ),
                 const SizedBox(
@@ -42,9 +46,10 @@ class CustomCameraIcons extends StatelessWidget {
                   onTap: () async {
                     await controller.flipCamera();
                   },
-                  child: const Icon(
+                  child:  Icon(
                     Icons.flip_camera_ios_outlined,
-                    color: Colors.white,
+                    color: themeController.isDarkMode.value?Colors.black54:Colors.white,
+                    size: getValueForScreenType(context: context, mobile: 24,tablet: 50),
                   ),
                 ),
               ],

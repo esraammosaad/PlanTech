@@ -21,7 +21,7 @@ class CustomAnimationBuilder extends StatelessWidget {
         position: slidingAnimation,
         child:  Text(
           'PlantHub',
-          style: Styles.textStyle45.copyWith(color: AppColors.kPrimaryColor,fontFamily: AppFonts.kEnglishFont,fontWeight: FontWeight.w200),
+          style: Styles.textStyle45(context).copyWith(color: AppColors.kPrimaryColor,fontFamily: AppFonts.kEnglishFont,fontWeight: FontWeight.w200),
         ),
       ),
     );

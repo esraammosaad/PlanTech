@@ -11,7 +11,7 @@ class PopularQuestions extends StatelessWidget {
   Widget build(BuildContext context) {
     Questions question =Get.arguments[0];
     return Scaffold(
-      appBar: customAppBar(text: 'Popular Questions'),
+      appBar: customAppBar(context,text: 'Popular Questions'),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [

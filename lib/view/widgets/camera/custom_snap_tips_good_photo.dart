@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/image_asset.dart';
 class CustomSnapTipsGoodPhoto extends StatelessWidget {
   const CustomSnapTipsGoodPhoto({
@@ -7,26 +8,26 @@ class CustomSnapTipsGoodPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return  Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.topRight,
       children: [
         CircleAvatar(
-          radius: 65,
-          backgroundImage: AssetImage(
+          radius: getValueForScreenType(context: context, mobile: 65,tablet: 150),
+          backgroundImage: const AssetImage(
             AppImageAsset.snapTipsOne,
           ),
         ),
-        Positioned(
+         Positioned(
           top: -8,
           right: -8,
           child: CircleAvatar(
             backgroundColor: Colors.green,
-            radius: 22,
+            radius: getValueForScreenType(context: context, mobile: 22,tablet: 45),
             child: Icon(
               Icons.check,
               color: Colors.white,
-              size: 35,
+              size: getValueForScreenType(context: context, mobile: 35,tablet: 57),
             ),
           ),
         ),
