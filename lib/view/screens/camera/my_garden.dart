@@ -7,33 +7,39 @@ import '../../widgets/camera/custom_search_my_garden_text_field.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
 import 'custom_my_garden_list_item.dart';
 
-class Bluetooth extends StatefulWidget {
-  const Bluetooth({Key? key}) : super(key: key);
+class MyGarden extends StatefulWidget {
+  const MyGarden({Key? key}) : super(key: key);
 
   @override
-  State<Bluetooth> createState() => _BluetoothState();
+  State<MyGarden> createState() => _MyGardenState();
 }
 
-class _BluetoothState extends State<Bluetooth> {
+class _MyGardenState extends State<MyGarden> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.only(top: 8.0,),
           child: CustomScrollView(
             slivers: [
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    CustomAnotherAppBar(text: 'My Garden'),
+                    const CustomAnotherAppBar(text: 'My Garden'),
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
-                      child: Column(
-                        children: [
-                          CustomSearchMyGardenTextField(),
-                        ],
+                          const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+                      child: GetBuilder<MyGardenControllerImp>(
+                        builder: (controller) {
+                          return Column(
+                            children: [
+                              CustomSearchMyGardenTextField(onChanged: (value){
+                                controller.searchInMyGarden(data: controller.myGarden!,text:value);
+                              },controller: controller.controller,),
+                            ],
+                          );
+                        }
                       ),
                     )
                   ],
@@ -56,6 +62,7 @@ class _BluetoothState extends State<Bluetooth> {
                             itemCount: controller.myGarden?.length,
                           );
               }),
+              const SliverToBoxAdapter(child: SizedBox(height: 10,),)
             ],
           ),
         ),

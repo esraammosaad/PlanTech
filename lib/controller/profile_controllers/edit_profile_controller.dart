@@ -11,18 +11,20 @@ import '../../core/functions/awesome_dialog.dart';
 import '../../core/functions/pick_and_capture_image.dart';
 import '../../data/data_source/remote/auth_repo/auth_repo_imp.dart';
 
-abstract class ProfileController extends GetxController {
+abstract class EditProfileController extends GetxController {
   logOut();
   updateUserPhoto({required BuildContext context});
   updateUserName({required name, required BuildContext context});
   updateUserEmail({required String email, required BuildContext context});
   updateUserPassword({required String password, required BuildContext context});
   updateUserPhoneNumber();
+  updateUserHeader({required BuildContext context});
   captureImageFromCamera();
   pickImageFromGallery();
+  pickHeaderFromGallery();
 }
 
-class ProfileControllerImpl extends ProfileController {
+class EditProfileControllerImpl extends EditProfileController {
   AuthRepoImp authRepo = Get.find();
   UpdateUserData updateUserData = Get.find();
   late TextEditingController usernameController;
@@ -32,9 +34,11 @@ class ProfileControllerImpl extends ProfileController {
   var firebaseAuth = FirebaseAuth.instance.currentUser!;
   late UserModel userData;
   File? image;
+  File? header;
   late ImagePicker imagePicker;
   bool isLoading = false;
   bool isLoadingPhoto = false;
+  bool isLoadingHeader = false;
   bool isLoadingName = false;
   bool isLoadingEmail = false;
   bool isLoadingPassword = false;
@@ -92,7 +96,7 @@ class ProfileControllerImpl extends ProfileController {
             await logOut();
           },
           cancelOnPress: () {});
-    }, (r) {
+    }, (r) async {
       showAwesomeDialog(
           context: context,
           dialogType: DialogType.info,
@@ -100,6 +104,7 @@ class ProfileControllerImpl extends ProfileController {
           desc: '',
           okOnPress: () {},
           cancelOnPress: () {});
+      await getUserData();
       update();
     });
     isLoadingEmail = false;
@@ -120,10 +125,10 @@ class ProfileControllerImpl extends ProfileController {
           title: l.errMessage,
           desc: '',
           okOnPress: () async {
-            await logOut();
+
           },
           cancelOnPress: () {});
-    }, (r) {
+    }, (r) async {
       showAwesomeDialog(
           context: context,
           dialogType: DialogType.success,
@@ -131,6 +136,7 @@ class ProfileControllerImpl extends ProfileController {
           desc: '',
           okOnPress: () {},
           cancelOnPress: () {});
+      await getUserData();
       update();
     });
     isLoadingName = false;
@@ -187,10 +193,10 @@ class ProfileControllerImpl extends ProfileController {
           title: l.errMessage,
           desc: '',
           okOnPress: () async {
-            await logOut();
+
           },
           cancelOnPress: () {});
-    }, (r) {
+    }, (r) async {
       showAwesomeDialog(
           context: context,
           dialogType: DialogType.success,
@@ -198,6 +204,7 @@ class ProfileControllerImpl extends ProfileController {
           desc: '',
           okOnPress: () {},
           cancelOnPress: () {});
+      await getUserData();
       update();
     });
     isLoadingPhoto = false;
@@ -217,6 +224,46 @@ class ProfileControllerImpl extends ProfileController {
     isLoading = true;
     image = (await selectPhotoFromGallery(imagePicker: imagePicker));
     isLoading = false;
+    update();
+  }
+  @override
+  pickHeaderFromGallery() async {
+    isLoading = true;
+    header = (await selectPhotoFromGallery(imagePicker: imagePicker));
+    isLoading = false;
+    update();
+  }
+
+  @override
+  updateUserHeader({required BuildContext context}) async {
+    isLoadingHeader = true;
+    update();
+
+    var result = await updateUserData.editUserHeader(
+      header: header,
+    );
+    result.fold((l) {
+      showAwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: l.errMessage,
+          desc: '',
+          okOnPress: () async {
+
+          },
+          cancelOnPress: () {});
+    }, (r) async {
+      showAwesomeDialog(
+          context: context,
+          dialogType: DialogType.success,
+          title: 'Header Changed Successfully',
+          desc: '',
+          okOnPress: () {},
+          cancelOnPress: () {});
+      await getUserData();
+      update();
+    });
+    isLoadingHeader = false;
     update();
   }
 }

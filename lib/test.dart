@@ -5,9 +5,9 @@ class Test extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body:
-        const Divider(
+        Divider(
           height: 0,
           thickness: 1,
         )

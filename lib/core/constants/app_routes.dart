@@ -22,5 +22,11 @@ abstract class AppRoutes {
   static String cameraResultScreen = '/cameraResult';
   static String cameraTipsScreen = '/cameraTips';
   static String editProfileScreen = '/editProfile';
+  static String searchHomeScreen = '/searchHome';
+  static String infoScreen = '/info';
+  static String contactUsScreen = '/contactUs';
+  static String myProfileScreen = '/myProfile';
+  static String connectCameraScreen = '/connectCamera';
+  static String editCommentScreen = '/editComment';
 
 }

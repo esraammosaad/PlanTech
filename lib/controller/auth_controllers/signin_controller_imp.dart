@@ -104,7 +104,7 @@ class SignInControllerImp extends SignInController {
           password: 'gmail account without password',
           image: FirebaseAuth.instance.currentUser?.photoURL ??
               'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
-          uid: FirebaseAuth.instance.currentUser?.uid ?? '', phoneNumber: FirebaseAuth.instance.currentUser?.phoneNumber ?? ''));
+          uid: FirebaseAuth.instance.currentUser?.uid ?? '', phoneNumber: FirebaseAuth.instance.currentUser?.phoneNumber ?? '', header: 'https://www.benaranurseries.com/media/wysiwyg/Blogs/Blog_internal_Monstera_delicosa.jpg'));
 
 
     }

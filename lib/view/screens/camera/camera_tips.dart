@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/styles.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../widgets/camera/custom_bad_photos_row.dart';
 import '../../widgets/camera/custom_snap_tips_good_photo.dart';
 import '../../widgets/home/custom_material_button.dart';
@@ -10,6 +12,7 @@ class CameraTips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -18,10 +21,19 @@ class CameraTips extends StatelessWidget {
           children: [
             Text(
               'Snap Tips',
-              style: Styles.textStyle25,
+              style: getValueForScreenType(
+                  context: context,
+                  mobile: Styles.textStyle25(context).copyWith(
+                      color: themeController.isDarkMode.value
+                          ? Colors.white
+                          : Colors.black),
+                  tablet: Styles.textStyle45(context).copyWith(
+                      color: themeController.isDarkMode.value
+                          ? Colors.white
+                          : Colors.black,fontWeight: FontWeight.w300)),
             ),
             const SizedBox(
-              height: 16,
+              height: 32,
             ),
             const CustomSnapTipsGoodPhoto(),
             const SizedBox(
@@ -29,17 +41,22 @@ class CameraTips extends StatelessWidget {
             ),
             const CustomBadPhotosRow(),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
-            CustomMaterialButton(onPressed: (){
-              Get.back();
-            },text: 'Continue',)
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getValueForScreenType(
+                      context: context, tablet: 150, mobile: 0)),
+              child: CustomMaterialButton(
+                onPressed: () {
+                  Get.back();
+                },
+                text: 'Continue',
+              ),
+            )
           ],
         ),
       ),
     );
   }
 }
-
-
-

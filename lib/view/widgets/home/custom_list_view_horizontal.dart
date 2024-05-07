@@ -11,7 +11,7 @@ class CustomListViewHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 35,
       child: ListView.builder(
         itemBuilder: (context, index) => CustomListViewHorizontalItem(
           originList: originList,

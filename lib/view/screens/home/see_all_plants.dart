@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/view/widgets/home/custom_sliver_try_again_text.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../controller/home_controllers/see_all_controller.dart';
 import '../../../controller/plants_details_controllers/plants_details_controller.dart';
 import '../../../core/constants/app_routes.dart';
@@ -15,7 +16,7 @@ class SeeAllPlants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(text: 'All Plants'),
+      appBar: customAppBar(context,text: 'All Plants'),
       body: CustomScrollView(
         slivers: [
           SliverPadding(
@@ -27,10 +28,20 @@ class SeeAllPlants extends StatelessWidget {
                       ? const CustomSliverLoadingIndicator()
                       : SliverGrid(
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
+                               SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: getValueForScreenType<int>(
+                              context: context,
+                              mobile: 2,
+                              tablet: 3,
+
+                            ),
                             mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
+                            crossAxisSpacing: getValueForScreenType<double>(
+                              context: context,
+                              mobile: 10,
+                              tablet: 25,
+
+                            ),
                           ),
                           delegate: SliverChildBuilderDelegate(
                               (context, index) => GestureDetector(

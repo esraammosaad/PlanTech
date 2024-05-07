@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import '../../../core/class/them_controller.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
@@ -13,20 +16,34 @@ class CustomExpansionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
+
     return ExpansionTile(
       initiallyExpanded: isInitiallyExpanded,
         title: Text(
           questions
               .question ??
               '',
-          style: Styles.textStyle18.copyWith(
+          style: getValueForScreenType(context: context, mobile: Styles.textStyle18(context).copyWith(
               fontFamily: AppFonts.kArabicFont,
-              fontWeight: FontWeight.w500),
+              fontWeight: FontWeight.w500,color:
+          themeController.isDarkMode.value
+              ? Colors.white
+              : Colors.black),tablet: Styles.textStyle25(context).copyWith(
+              fontFamily: AppFonts.kArabicFont,
+              fontWeight: FontWeight.w500,color:
+          themeController.isDarkMode.value
+              ? Colors.white
+              : Colors.black)),
         ),
         backgroundColor:
-        AppColors.backgroundColor,
+        themeController.isDarkMode.value
+            ? Colors.black26
+            : AppColors.backgroundColor,
         collapsedBackgroundColor:
-        AppColors.backgroundColor,
+        themeController.isDarkMode.value
+            ? Colors.black26
+            : AppColors.backgroundColor,
         childrenPadding:
         const EdgeInsets.symmetric(
           horizontal: 8,
@@ -40,11 +57,14 @@ class CustomExpansionTile extends StatelessWidget {
             questions
                 .answer ??
                 '',
-            style: Styles.textStyle14.copyWith(
+            style: getValueForScreenType(context: context, mobile: Styles.textStyle14(context).copyWith(
                 color: AppColors.greyColor,
                 fontFamily: AppFonts.kArabicFont,
-                fontWeight: FontWeight.bold),
-            textAlign: TextAlign.justify,
+                fontWeight: FontWeight.bold),tablet: Styles.textStyle20(context).copyWith(
+                color: AppColors.greyColor,
+                fontFamily: AppFonts.kArabicFont,
+                fontWeight: FontWeight.bold)),
+            textAlign: TextAlign.start,
           ),
           CustomCachedNetworkImage(
               image: questions

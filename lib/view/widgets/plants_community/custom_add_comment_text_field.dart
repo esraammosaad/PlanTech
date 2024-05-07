@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/community_controllers/post_details_controller.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/color.dart';
 
 class CustomAddCommentTextField extends StatelessWidget {
@@ -9,50 +10,53 @@ class CustomAddCommentTextField extends StatelessWidget {
     required this.postId,
   });
   final String postId;
+  static ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return GetBuilder<PostDetailsControllerImp>(builder: (controller) {
-      return TextField(
-          controller: controller.commentController,
-          onSubmitted: (value) async {
-            debugPrint(value);
-            controller.addComment(postId: postId);
+      return Padding(
+        padding:  EdgeInsets.only(right: 8.0,left: 8,bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: TextField(
+            maxLines: null,
+            minLines: 1,
+            keyboardType: TextInputType.multiline,
+            controller: controller.commentController,
+            onSubmitted: (value) async {
+              debugPrint(value);
+              controller.addComment(postId: postId);
 
-            controller.commentController.clear();
-          },
-
-          cursorColor: AppColors.kPrimaryColor,
-          decoration: InputDecoration(
-            suffixIcon: IconButton(
-              icon: Icon(
-                Icons.send,
-                color: AppColors.kPrimaryColor,
+              controller.commentController.clear();
+            },
+            cursorColor: AppColors.kPrimaryColor,
+            decoration: InputDecoration(
+              suffixIcon: IconButton(
+                icon: Icon(
+                  Icons.send,
+                  color: AppColors.kPrimaryColor,
+                ),
+                onPressed: () async {
+                  controller.addComment(postId: postId);
+                  controller.commentController.clear();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
               ),
-              onPressed: () async {
-                controller.addComment(postId: postId);
-                controller.commentController.clear();
-                FocusManager.instance.primaryFocus?.unfocus();
-              },
-            ),
-            border: OutlineInputBorder(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25)),
-                borderSide: BorderSide(color: AppColors.kPrimaryColor)),
-            hintText: 'Add Comment',
-            fillColor: AppColors.backgroundColor,
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25)),
-                borderSide: BorderSide(color: AppColors.kPrimaryColor)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25)),
-                borderSide: BorderSide(color: AppColors.kPrimaryColor)),
-          ));
+              border: OutlineInputBorder(
+                  borderRadius:  BorderRadius.circular(25),
+                  borderSide: BorderSide(color: AppColors.kPrimaryColor)),
+              hintText: 'Add Comment ..........',
+              fillColor: themeController.isDarkMode.value
+                  ? Colors.black
+                  : AppColors.backgroundColor,
+              filled: true,
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25),
+                  borderSide: BorderSide(color: AppColors.kPrimaryColor)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25),
+                  borderSide: BorderSide(color: AppColors.kPrimaryColor)),
+            )),
+      );
     });
   }
 }

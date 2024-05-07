@@ -19,7 +19,7 @@ class ChooseLanguage extends GetView<LocaleController> {
           children: [
             Text(
               '1'.tr,
-              style: Styles.textStyle20,
+              style: Styles.textStyle20(context),
             ),
             const SizedBox(
               height: 10,
@@ -41,7 +41,7 @@ class ChooseLanguage extends GetView<LocaleController> {
                 onPressed: () {
                   Get.toNamed( AppRoutes.onBoardingScreen);
                 },
-                child: Text('4'.tr, style: Styles.textStyle20))
+                child: Text('4'.tr, style: Styles.textStyle20(context)))
           ],
         ),
       ),

@@ -72,6 +72,8 @@ class UpdateUserData {
         .update({'image': image});
   }
 
+
+
   Future<void> editUserPhotoInPosts({required String image}) async {
     var result = await FirebaseFirestore.instance
         .collection('posts')
@@ -178,6 +180,9 @@ class UpdateUserData {
         await editUserPhotoInPosts(image: downloadUrl);
         await editUserPhotoInComments(image: downloadUrl);
         await updatePhotoUrl(downloadUrl);
+      }else if(image==null){
+        return left(FirebaseFailure(errMessage:"You Didn't Choose Photo"));
+
       }
       return right(null);
     } on FirebaseException catch (e) {
@@ -218,15 +223,36 @@ class UpdateUserData {
       return left(FirebaseFailure(errMessage: e.code.toString()));
     }
   }
-  // Future<Either<Failure, void>> editUserPhoneNumber(
-  //     {required String phoneNumber}) async {
-  //   try {
-  //     await updatePhoneNum(phoneNumber);
-  //
-  //     await editPasswordInUsers(password: password);
-  //     return right(null);
-  //   } on FirebaseException catch (e) {
-  //     return left(FirebaseFailure(errMessage: e.toString()));
-  //   }
-  // }
+  Future<void> updateUserHeader({required String header}) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({'header': header});
+  }
+  Future<Either<Failure, void>> editUserPhoneNumber(
+      {required String phoneNumber}) async {
+    try {
+      await editPhoneNumberInUsers(phoneNumber: phoneNumber);
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(errMessage: e.toString()));
+    }
+  }
+  Future<Either<Failure, void>> editUserHeader({File? header}) async {
+    final String fileId = const Uuid().v1();
+    final path = FirebaseStorage.instance.ref('users_headers').child(fileId);
+    try {
+      if (header != null) {
+        final taskSnapshot = await path.putFile(header);
+        final String downloadUrl = await taskSnapshot.ref.getDownloadURL();
+        await updateUserHeader(header: downloadUrl);
+      }else if(header==null){
+        return left(FirebaseFailure(errMessage:"You Didn't Choose Header"));
+
+      }
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(errMessage: e.code.toString()));
+    }
+  }
 }

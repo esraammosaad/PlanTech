@@ -18,7 +18,7 @@ class CustomHomeSlider extends StatelessWidget {
           options: CarouselOptions(
 
             padEnds: false,
-            aspectRatio: 16 / 9,
+            aspectRatio: 16 / 8,
             viewportFraction: 1,
             initialPage: 0,
             enableInfiniteScroll: true,
