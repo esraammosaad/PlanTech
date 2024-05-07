@@ -70,7 +70,7 @@ class SettingOptions extends StatelessWidget {
                 icon: Icons.bluetooth_connected,
                 title: "Connect Your Camera",
                 onPressed: () {
-                  Get.to(const ChooseLanguage());
+                  Get.toNamed(AppRoutes.connectCameraScreen);
                 },
               ),
               const CustomSpace(),

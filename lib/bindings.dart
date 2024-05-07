@@ -45,6 +45,8 @@ class MyBindings extends Bindings {
     Get.lazyPut(()=>OpenCameraControllerImpl(),fenix: true);
     Get.lazyPut(()=>ModelControllerImpl(),fenix: true);
     Get.lazyPut(()=>MyGardenControllerImp(),fenix: true);
+    Get.lazyPut(()=>EditProfileControllerImpl(),fenix: true);
+    Get.lazyPut(()=>MyProfileControllerImp(),fenix: true);
     Get.put(FirebaseAuthServices());
     Get.put(ThemeController());
     Get.put(AuthRepoImp());
@@ -63,8 +65,6 @@ class MyBindings extends Bindings {
     Get.put(PlantsDetailsControllerImp(),permanent: true);
     Get.put(SeeAllQuestionsControllerImp(),permanent: true);
     Get.put(CareGuideControllerImp(),permanent: true);
-    Get.put(EditProfileControllerImpl(),permanent: true);
-    Get.put(MyProfileControllerImp(),permanent: true);
 
 
 

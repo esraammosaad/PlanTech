@@ -97,6 +97,9 @@ dependencies:
   flutter_switch:
   camera: ^0.10.5+9
   shimmer: ^3.0.0
+  flutter_bluetooth_serial: ^0.4.0
+  scoped_model: ^2.0.0
+
 
 
 

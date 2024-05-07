@@ -31,7 +31,7 @@ class EditProfileControllerImpl extends EditProfileController {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController phoneNumberController;
-  var firebaseAuth = FirebaseAuth.instance.currentUser!;
+   User ? firebaseAuth = FirebaseAuth.instance.currentUser;
   late UserModel userData;
   File? image;
   File? header;
@@ -73,7 +73,7 @@ class EditProfileControllerImpl extends EditProfileController {
     isLoading=true;
     update();
     userData =
-        await authRepo.fireBaseServices.getUserInfo(uid: firebaseAuth.uid);
+        await authRepo.fireBaseServices.getUserInfo(uid: firebaseAuth!.uid);
     isLoading=false;
     update();
   }
