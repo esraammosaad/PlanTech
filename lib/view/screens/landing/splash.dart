@@ -32,10 +32,9 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
     return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child:  Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             CustomAnimationBuilder(
               animationController: animationController,
               slidingAnimation: slidingAnimation,

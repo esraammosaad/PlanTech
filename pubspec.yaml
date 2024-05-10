@@ -96,7 +96,7 @@ dependencies:
   iconly: ^1.0.1
   flutter_switch:
   camera: ^0.10.5+9
-  shimmer: ^3.0.0
+  google_nav_bar: ^5.0.6
 
 
 
@@ -149,6 +149,10 @@ flutter:
       fonts:
         - asset: assets/fonts/ReemKufi-Regular.ttf
         - asset: assets/fonts/ReemKufi-Bold.ttf
+          weight: 700
+    - family: Cooper Black
+      fonts:
+        - asset: assets/fonts/Cooper Black Regular.ttf
           weight: 700
     - family: Tajawal
       fonts:

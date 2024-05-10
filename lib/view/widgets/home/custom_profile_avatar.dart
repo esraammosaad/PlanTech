@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../core/constants/app_routes.dart';
+import '../../screens/profile/profile.dart';
+
 class CustomProfileAvatar extends StatelessWidget {
   const CustomProfileAvatar({
-    super.key, required this.image,
+    super.key,
+    required this.image,
   });
+
   final String image;
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: getValueForScreenType(context: context, mobile: 25,tablet: 50),
-      backgroundImage: NetworkImage(image),
+    return InkWell(
+      onTap: () {
+
+      },
+      child: CircleAvatar(
+        radius: 25,
+        backgroundImage: NetworkImage(image),
+      ),
     );
   }
 }
