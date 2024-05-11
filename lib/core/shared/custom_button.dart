@@ -24,12 +24,12 @@ class CustomButton extends StatelessWidget {
         height: 45,
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: ShapeDecoration(
-          color: Color(0xff0a5c5c),
+          color: const Color(0xff0a5c5c),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         child: Center(
             child: isLoading? CircularProgressIndicator(color:Colors.white ,backgroundColor:AppColors.kPrimaryColor,):Text(text,
-                style: Styles.textStyle17.copyWith(color: Colors.white))),
+                style: Styles.textStyle17(context).copyWith(color: Colors.white))),
       ),
     );
   }

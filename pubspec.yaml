@@ -96,6 +96,10 @@ dependencies:
   iconly: ^1.0.1
   flutter_switch:
   camera: ^0.10.5+9
+  shimmer: ^3.0.0
+  firebase_analytics:
+  permission_handler:
+
 
 
 
@@ -158,15 +162,11 @@ flutter:
     - family: SingleDay
       fonts:
         - asset: assets/fonts/SingleDay-Regular.ttf
-    - family: Lugrasimo
+    - family: Inter
       fonts:
-          - asset: assets/fonts/Lugrasimo-Regular.ttf
+          - asset: assets/fonts/Inter-Regular.ttf
+          - asset: assets/fonts/Inter-Bold.ttf
             weight: 700
-    - family: ComingSoon
-      fonts:
-        - asset: assets/fonts/ComingSoon-Regular.ttf
-
-
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

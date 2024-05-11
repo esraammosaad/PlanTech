@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/auth_controllers/signup_controller_imp.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/view/widgets/auth/custom_auth_text.dart';
 import '../../../core/constants/icon_asset.dart';
@@ -16,6 +17,7 @@ class CustomSignUpForm extends StatelessWidget {
   const CustomSignUpForm({super.key});
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController=Get.find();
     return GetBuilder<SignUpControllerImp>(
         builder: (controller) => controller.isLoading
             ? const CustomLoadingIcon(
@@ -127,7 +129,7 @@ class CustomSignUpForm extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               '8'.tr,
-                              style: Styles.textStyle17,
+                              style: Styles.textStyle17(context).copyWith(color: themeController.isDarkMode.value?Colors.white70:Colors.black),
                             ),
                           ),
                           const CustomDivider(),
@@ -139,7 +141,7 @@ class CustomSignUpForm extends StatelessWidget {
                       Center(
                           child: Text(
                         '${'11'.tr} ${'9'.tr}',
-                        style: Styles.textStyle14,
+                        style: Styles.textStyle14(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black),
                       )),
                       const SizedBox(
                         height: 15,
@@ -156,7 +158,7 @@ class CustomSignUpForm extends StatelessWidget {
                         height: 25,
                       ),
                       CustomTextRich(
-                          text: '15'.tr,
+                          text: "${'15'.tr} ",
                           onTap: () {
                             controller.goToSignIn();
                           },

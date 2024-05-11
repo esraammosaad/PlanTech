@@ -16,31 +16,32 @@ class PlantsCommunity extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(
           top: 8,
+
         ),
         child: CustomScrollView(
                   slivers: [
                     const SliverToBoxAdapter(
                         child: CustomAnotherAppBar(text: 'Plants Community')),
                     SliverPadding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8,),
                       sliver: SliverToBoxAdapter(
                           child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const CustomCreatePostField(),
                           const SizedBox(
-                            height: 8,
+                            height: 12,
                           ),
                           CustomTextRow(text: 'Popular Questions',onTap: (){
                             Get.toNamed(AppRoutes.seeAllPopularQuestionsScreen);
       
                           }),
                           const SizedBox(
-                            height: 12,
+                            height: 18,
                           ),
                           const CustomPopularQuestionsList(),
                           const SizedBox(
-                            height: 16,
+                            height: 22,
                           ),
                         ],
                       )),

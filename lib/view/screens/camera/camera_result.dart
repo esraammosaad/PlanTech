@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:io';
 import 'package:grad_proj/controller/camera_controllers/model_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/my_garden_controller.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/view/widgets/home/custom_material_button.dart';
 import '../../../core/constants/styles.dart';
@@ -12,6 +13,7 @@ class CameraResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController=Get.find();
     File? image = Get.arguments[0];
     return Scaffold(
       body: GetBuilder<ModelControllerImpl>(
@@ -55,7 +57,7 @@ class CameraResult extends StatelessWidget {
                           controller.result == ''
                               ? 'No Result'
                               : controller.result,
-                          style: Styles.textStyle25,
+                          style: Styles.textStyle25(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black),
                         ),
                       ),
                       GetBuilder<MyGardenControllerImp>(

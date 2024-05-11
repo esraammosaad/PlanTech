@@ -38,14 +38,14 @@ class CustomOnBoardingDecoration extends GetView<OnBoardingController> {
               Text(
                 onBoardingList[index].title!,
                 style:
-                    Styles.textStyle36.copyWith(color: Colors.white, height: 1),
+                    Styles.textStyle36(context).copyWith(color: Colors.white, height: 1),
               ),
               const SizedBox(
                 height: 8,
               ),
               Text(
                 onBoardingList[index].body!,
-                style: Styles.textStyle14.copyWith(color: Colors.white),
+                style: Styles.textStyle14(context).copyWith(color: Colors.white),
               ),
               const SizedBox(
                 height: 16,

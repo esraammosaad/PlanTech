@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/auth_controllers/otp_controller.dart';
 import 'package:grad_proj/controller/auth_controllers/signup_with_phone_number_controller.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/icon_asset.dart';
@@ -21,6 +22,7 @@ class CustomOtpForm extends StatefulWidget {
 class _CustomOtpFormState extends State<CustomOtpForm> {
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController=Get.find();
     SignUpWthPhoneNumControllerImp signUpWthPhoneNumController = Get.find();
     return GetBuilder<OtpControllerImp>(
         builder: (controller) => controller.isLoading
@@ -90,7 +92,7 @@ class _CustomOtpFormState extends State<CustomOtpForm> {
                       alignment: AlignmentDirectional.topEnd,
                       child: Text(
                         '${controller.counter}sec',
-                        style: Styles.textStyle17,
+                        style: Styles.textStyle17(context).copyWith(color:themeController.isDarkMode.value?Colors.white:Colors.black),
                       ),
                     ),
                     const SizedBox(
@@ -99,7 +101,7 @@ class _CustomOtpFormState extends State<CustomOtpForm> {
                     Text(
                       '26'.tr,
                       textAlign: TextAlign.center,
-                      style: Styles.textStyle17,
+                      style: Styles.textStyle17(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black),
                     ),
                     const SizedBox(
                       height: 32,

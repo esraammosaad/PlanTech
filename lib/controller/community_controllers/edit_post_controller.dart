@@ -34,6 +34,8 @@ class EditAndDeletePostControllerImp extends EditAndDeletePostController {
     isLoading = false;
     update();
     Get.back();
+
+
   }
   @override
   Future deletePost({

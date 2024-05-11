@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/community_controllers/add_post_controller.dart';
+import 'package:grad_proj/core/constants/color.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/styles.dart';
 
 class CustomPickImageButton extends StatelessWidget {
@@ -20,7 +22,12 @@ class CustomPickImageButton extends StatelessWidget {
                     },
                     child: Text(
                       'pick image',
-                      style: Styles.textStyle16,
+                      style: getValueForScreenType(
+                          context: context,
+                          mobile: Styles.textStyle16(context),
+                          tablet: Styles.textStyle30(context).copyWith(
+                              color: AppColors.kPrimaryColor,
+                              fontWeight: FontWeight.bold)),
                     )),
                 const Divider(),
                 TextButton(
@@ -29,7 +36,12 @@ class CustomPickImageButton extends StatelessWidget {
                     },
                     child: Text(
                       'capture image',
-                      style: Styles.textStyle16,
+                      style: getValueForScreenType(
+                          context: context,
+                          mobile: Styles.textStyle16(context),
+                          tablet: Styles.textStyle30(context).copyWith(
+                              color: AppColors.kPrimaryColor,
+                              fontWeight: FontWeight.bold)),
                     )),
               ],
             )

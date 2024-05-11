@@ -5,7 +5,7 @@ import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/core/constants/styles.dart';
 import 'package:get/get.dart';
 
-alertExitApp() {
+alertExitApp(BuildContext context) {
   Get.defaultDialog(
       title: "Alert",
       middleText: 'Do you want to close app',
@@ -17,7 +17,7 @@ alertExitApp() {
             child: Text(
               'confirm',
               style:
-                  Styles.textStyle14.copyWith(color: AppColors.kPrimaryColor),
+                  Styles.textStyle14(context).copyWith(color: AppColors.kPrimaryColor),
             )),
         ElevatedButton(
             onPressed: () {
@@ -26,7 +26,7 @@ alertExitApp() {
             child: Text(
               'cancel',
               style:
-                  Styles.textStyle14.copyWith(color: AppColors.kPrimaryColor),
+                  Styles.textStyle14(context).copyWith(color: AppColors.kPrimaryColor),
             )),
       ]);
 }

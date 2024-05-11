@@ -1,17 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:grad_proj/core/class/them_controller.dart';
-import 'package:grad_proj/view/screens/language/choose_language.dart';
-
-
+import 'package:grad_proj/core/class/notifications_services.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
-
-import '../../../controller/home_controllers/profile_controller.dart';
+import 'package:grad_proj/view/screens/language/choose_language.dart';
+import 'package:iconly/iconly.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import '../../../controller/profile_controllers/edit_profile_controller.dart';
+import '../../../core/class/notificationns_service.dart';
 import '../../../core/constants/color.dart';
-import '../../../core/constants/styles.dart';
-import 'change_mode.dart';
+import 'custom_change_mode_switch.dart';
 import 'custom_setting_item.dart';
 import 'custom_space.dart';
 
@@ -22,85 +20,125 @@ class SettingOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProfileControllerImpl>(builder: (controller) {
+    return GetBuilder<EditProfileControllerImpl>(builder: (controller) {
       return Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey)),
         child: Padding(
-          padding: const EdgeInsets.all(16),
-
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-
-              GetBuilder<ThemeController>(
-                builder:(controller){
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     children: [
-                      Row(children: [
-                        Icon(Icons.dark_mode_outlined,color:AppColors.kPrimaryColor),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.05,),
-                        Text("Light Mode",style: Styles.textStyle18.copyWith(
-                            color: controller.isDarkMode.value == true ? Colors.white:AppColors.kPrimaryColor),),
-                      ],),
-                      const ChangeMode(),
-
+                      Icon(CupertinoIcons.moon_stars,
+                          color: AppColors.greyColor),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Dark Mode",
+                        style: TextStyle(color: AppColors.greyColor),
+                      ),
                     ],
-                  );
-                }),
-
-
-
+                  ),
+                  const CustomChangeModeSwitch(),
+                ],
+              ),
               const CustomSpace(),
-
               CustomSettingItem(
-                icon: Icons.language,
-                title: "Language",
-                onPressed: (){
+                icon: IconlyLight.profile,
+                title: "Your Profile",
+                onPressed: () {
+
+                  Get.toNamed(AppRoutes.myProfileScreen);
+
                 },
               ),
               const CustomSpace(),
-
               CustomSettingItem(
-                icon: Icons.notifications,
-                title: "Notifications",
-                onPressed: (){},
-              ),
-              const CustomSpace(),
-              CustomSettingItem(
-                icon: Icons.info,
-                title: "Info",
-                onPressed: (){},
-              ),
-              const CustomSpace(),
-              CustomSettingItem(
-                icon: Icons.edit,
+                icon: IconlyLight.edit,
                 title: "Edit Profile",
-                onPressed: (){
-
+                onPressed: () {
                   Get.toNamed(AppRoutes.editProfileScreen);
                 },
               ),
               const CustomSpace(),
               CustomSettingItem(
-                icon: Icons.contact_phone,
-                title: "Contact Us",
-                onPressed: (){},
+                icon: Icons.bluetooth_connected,
+                title: "Connect Your Camera",
+                onPressed: () {
+                  Get.to(const ChooseLanguage());
+                },
+              ),
+              const CustomSpace(),
+            CustomSettingItem(
+              icon: IconlyLight.notification,
+              title: "Notifications",
+              onPressed: () {
+                // controller.getToken();
+
+                // getToken();
+              },
+            ),
+             /* GetBuilder<NotificationService>(builder: (controller){
+                return
+                  CustomSettingItem(
+                icon: IconlyLight.notification,
+                title: "Notifications",
+                onPressed: () {
+              // controller.getToken();
+
+                // getToken();
+                },
+                );
+
+              },*/
+
+              const CustomSpace(),
+              CustomSettingItem(
+                icon: Icons.language,
+                title: "Language",
+                onPressed: () {
+                  Get.to(const ChooseLanguage());
+                },
               ),
               const CustomSpace(),
               CustomSettingItem(
-                icon: Icons.logout,
-                title: "Logout",
-                onPressed: (){
-                  controller.logOut();
+                icon: IconlyLight.info_circle,
+                title: "Info",
+                onPressed: () {
+                  Get.toNamed(AppRoutes.infoScreen);
                 },
               ),
+              const CustomSpace(),
+              CustomSettingItem(
+                icon: IconlyLight.calling,
+                title: "Contact Us",
+                onPressed: () {
+                  Get.toNamed(AppRoutes.contactUsScreen);
 
-
-
-
+                },
+              ),
+              getValueForScreenType(
+                  context: context,
+                  mobile: Column(
+                    children: [
+                      const CustomSpace(),
+                      CustomSettingItem(
+                        icon: IconlyLight.logout,
+                        title: "Logout",
+                        onPressed: () {
+                          controller.logOut();
+                        },
+                      ),
+                    ],
+                  ),
+                  tablet: const SizedBox()),
             ],
           ),
         ),

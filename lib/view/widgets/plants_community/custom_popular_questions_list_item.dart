@@ -31,7 +31,7 @@ class CustomPopularQuestionsListItem extends StatelessWidget {
         ),
         child: Text(
           question.question ?? "",
-          style: Styles.textStyle18.copyWith(
+          style: Styles.textStyle18(context).copyWith(
             color: Colors.white,
             fontWeight: FontWeight.w500,
             fontFamily: AppFonts.kArabicFont,

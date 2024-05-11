@@ -1,7 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get.dart';
 import '../../../controller/camera_controllers/my_garden_controller.dart';
+import '../../../core/class/them_controller.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 import '../../../core/functions/awesome_dialog.dart';
@@ -16,6 +17,7 @@ class CustomMyGardenListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return GetBuilder<MyGardenControllerImp>(builder: (controller) {
       return Stack(
         children: [
@@ -25,7 +27,9 @@ class CustomMyGardenListItem extends StatelessWidget {
             margin: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: AppColors.backgroundColor,
+              color: themeController.isDarkMode.value
+                  ? Colors.black26
+                  : AppColors.backgroundColor,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,7 +41,9 @@ class CustomMyGardenListItem extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: AppColors.backgroundColor,
+                        color: themeController.isDarkMode.value
+                            ? Colors.black26
+                            : AppColors.backgroundColor,
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: CustomCachedNetworkImage(
@@ -58,7 +64,10 @@ class CustomMyGardenListItem extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: Text(
                             controller.myGarden![index].result,
-                            style: Styles.textStyle25,
+                            style: Styles.textStyle25(context).copyWith(
+                                color: themeController.isDarkMode.value
+                                    ? Colors.white
+                                    : Colors.black,),
                           ),
                         ),
                         const SizedBox(
@@ -70,7 +79,10 @@ class CustomMyGardenListItem extends StatelessWidget {
                               controller.updatePostTime(
                                 loadedTime: controller.myGarden![index].time!,
                               ),
-                              style: Styles.textStyle14,
+                              style: Styles.textStyle14(context).copyWith(
+                                  color: themeController.isDarkMode.value
+                                      ? Colors.white70
+                                      : Colors.black,fontWeight: FontWeight.w300),
                             )),
                       ],
                     ))

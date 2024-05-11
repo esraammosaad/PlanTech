@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/core/class/them_controller.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/styles.dart';
 class CustomSnapTipsBadPhoto extends StatelessWidget {
   const CustomSnapTipsBadPhoto({
@@ -11,6 +14,7 @@ class CustomSnapTipsBadPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController=Get.find();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -18,21 +22,21 @@ class CustomSnapTipsBadPhoto extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             CircleAvatar(
-              radius: 40,
+              radius: getValueForScreenType(context: context, mobile: 40,tablet: 100),
               backgroundImage: AssetImage(
                 image,
               ),
             ),
-            const Positioned(
+             Positioned(
               top: -7,
               right: -7,
               child: CircleAvatar(
                 backgroundColor: Colors.red,
-                radius: 15,
+                radius: getValueForScreenType(context: context, mobile: 15,tablet: 30),
                 child: Icon(
                   Icons.close,
                   color: Colors.white,
-                  size: 20,
+                  size: getValueForScreenType(context: context, mobile: 20,tablet: 40),
                 ),
               ),
             ),
@@ -44,7 +48,7 @@ class CustomSnapTipsBadPhoto extends StatelessWidget {
         Text(
           text,
           textAlign: TextAlign.center,
-          style: Styles.textStyle14.copyWith(height: 0),
+          style: getValueForScreenType(context: context, mobile: Styles.textStyle14(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black,height: 0),tablet: Styles.textStyle25(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black,height: 0)),
         )
       ],
     );

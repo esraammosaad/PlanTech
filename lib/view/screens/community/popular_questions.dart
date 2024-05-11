@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/data/models/popular_questions_model.dart';
 import 'package:grad_proj/view/widgets/plants_community/custom_expansion_tile.dart';
 import '../../widgets/home/custom_third_app_bar.dart';
@@ -11,24 +10,17 @@ class PopularQuestions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Questions question =Get.arguments[0];
-    return GetBuilder<ThemeController>(
-      builder: (controller){
-        return Scaffold(
-          appBar: customAppBar(
-              text: 'Popular Questions'),
-          body: SafeArea(
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: CustomExpansionTile
-                    (questions: question,isInitiallyExpanded: true),
-                ),
-              ],
+    return Scaffold(
+      appBar: customAppBar(context,text: 'Popular Questions'),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: CustomExpansionTile(questions: question,isInitiallyExpanded: true),
             ),
-          ),
-        );
-      },
-
+          ],
+        ),
+      ),
     );
   }
 }

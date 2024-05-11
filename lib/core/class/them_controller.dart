@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:grad_proj/core/class/themedata.dart';
-import 'package:grad_proj/core/services/preferanceManager.dart';
-import 'package:grad_proj/core/services/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
+
+import '../services/services.dart';
 
 class ThemeController extends GetxController {
-
-  void saveThemeMode(bool isDarkMode) async {
-     PreferencesManager.instance.setBool('isDarkMode', isDarkMode);
-  }
   RxBool isDarkMode = false.obs;
-  void toggleTheme() {
-    final bool currentmode = !isDarkMode.value;
-    isDarkMode.toggle().update((val) {});
-    PreferencesManager.instance.setBool('isDarkMode', currentmode);
-
+  MyServices myServices = Get.find();
+  void toggleTheme(bool value) {
+    isDarkMode.value = value;
+    myServices.sharedPreferences.setBool('themeMode', isDarkMode.value);
+    Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
-}
-/*
-class ThemeProvider extends GetxController {
-  Rx<ThemeData> themeData = darkTheme.obs;
-
-  void toggleTheme() {
-    if (themeData.value == darkTheme) {
-      themeData.value = lightTheme;
-
+  @override
+  void onInit() {
+    super.onInit();
+    bool? mode = myServices.sharedPreferences.getBool('themeMode');
+    if (mode==true) {
+      toggleTheme(true);
+      isDarkMode.value=true;
+    } else if (mode==false) {
+      toggleTheme(false);
+      isDarkMode.value=false;
     } else {
-      themeData.value = darkTheme;
-
+      isDarkMode.value=false;
+      toggleTheme(false);
     }
   }
-}*/
+}
