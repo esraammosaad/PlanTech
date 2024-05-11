@@ -5,13 +5,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/core/constants/fonts.dart';
-import 'package:grad_proj/core/constants/styles.dart';
 import 'package:grad_proj/routes.dart';
 import 'package:grad_proj/view/firebase_notification.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+
 import 'bindings.dart';
 import 'core/class/them_controller.dart';
+import 'core/constants/fonts.dart';
+import 'core/constants/styles.dart';
 import 'core/localization/change_local.dart';
 import 'core/localization/localization.dart';
 import 'core/services/services.dart';
@@ -35,6 +36,7 @@ void main() async {
   runApp( DevicePreview(
       enabled: true,
       builder:(context)=>  MyApp()));
+
 }
 
 class MyApp extends StatefulWidget {
@@ -91,16 +93,18 @@ class _MyAppState extends State<MyApp> {
             translations: MyTranslation(),
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-                fontFamily: AppFonts.kPrimaryFont, brightness: Brightness.light),
+                fontFamily: AppFonts.kPrimaryFont,
+                brightness: Brightness.light),
             darkTheme: ThemeData(
               fontFamily: AppFonts.kPrimaryFont,
               appBarTheme: AppBarTheme(
-                titleTextStyle: Styles.textStyle20(context).copyWith(color: Colors.white70),
+                titleTextStyle: Styles.textStyle20(context).copyWith(
+                    color: Colors.white70),
               ),
               brightness: Brightness.dark,
             ),
           );
-        }
-    );
+        } );
   }
+
 }

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/profile_controllers/edit_profile_controller.dart';
+import 'package:grad_proj/view/widgets/home/custom_sliver_try_again_text.dart';
 import 'package:grad_proj/view/widgets/profile/custom_center_loading_indicator.dart';
 import 'package:iconly/iconly.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -31,7 +32,10 @@ class CustomMyProfileStack extends StatelessWidget {
               SizedBox(
                   height: getValueForScreenType(context: context, mobile: 130,tablet: 180),
                   width: double.infinity,
-                  child: CachedNetworkImage(
+                  child:controller.isLoading?const Padding(
+                    padding: EdgeInsets.all(45.0),
+                    child: Center(child: Text('Loading............')),
+                  ): CachedNetworkImage(
                           imageUrl: controller.userData.header,
                           fit: BoxFit.cover,
                     width: double.infinity,

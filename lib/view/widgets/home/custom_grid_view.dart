@@ -43,7 +43,7 @@ class CustomGridView extends StatelessWidget {
                             child: CustomGridViewItem(
                               item: controller.dataList[index],
                             )),
-                        childCount: controller.dataList.length)),
+                        childCount:4)),
       ),
     );
   }
