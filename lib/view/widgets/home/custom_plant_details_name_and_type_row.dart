@@ -29,12 +29,12 @@ class CustomPlantDetailsNameAndTypeRow extends StatelessWidget {
                 plantData?.commonName ?? '',
                 style: getValueForScreenType(
                     context: context,
-                    mobile: Styles.textStyle20.copyWith(
+                    mobile: Styles.textStyle20(context).copyWith(
                         color: themeController.isDarkMode.value
                             ? Colors.white
                             : Colors.black,
                         fontWeight: FontWeight.w300),
-                    tablet: Styles.textStyle36.copyWith(
+                    tablet: Styles.textStyle36(context).copyWith(
                         color: themeController.isDarkMode.value
                             ? Colors.white
                             : Colors.black,
@@ -52,12 +52,12 @@ class CustomPlantDetailsNameAndTypeRow extends StatelessWidget {
                 " Type ${plantData?.type ?? ''}",
                 style: getValueForScreenType(
                     context: context,
-                    mobile: Styles.textStyle14.copyWith(
+                    mobile: Styles.textStyle14(context).copyWith(
                         color: themeController.isDarkMode.value
                             ? Colors.white70
                             : Colors.black,
                         fontWeight: FontWeight.bold),
-                    tablet: Styles.textStyle20.copyWith(
+                    tablet: Styles.textStyle20(context).copyWith(
                         color: themeController.isDarkMode.value
                             ? Colors.white70
                             : Colors.black,

@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constants/app_routes.dart';
+import '../../screens/profile/my_profile.dart';
+import '../../screens/profile/profile_settings.dart';
 import 'custom_home_app_bar.dart';
 import 'custom_home_slider.dart';
 import 'custom_page_indicator.dart';

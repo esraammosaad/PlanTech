@@ -53,7 +53,7 @@ class SettingOptions extends StatelessWidget {
                 title: "Your Profile",
                 onPressed: () {
 
-                  Get.toNamed(AppRoutes.profileScreen);
+                  Get.toNamed(AppRoutes.myProfileScreen);
 
                 },
               ),
@@ -70,7 +70,7 @@ class SettingOptions extends StatelessWidget {
                 icon: Icons.bluetooth_connected,
                 title: "Connect Your Camera",
                 onPressed: () {
-                  Get.to(const ChooseLanguage());
+                  Get.toNamed(AppRoutes.connectCameraScreen);
                 },
               ),
               const CustomSpace(),

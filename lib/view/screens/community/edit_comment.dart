@@ -65,7 +65,7 @@ class EditComment extends StatelessWidget {
                                           comment.userName == ''
                                       ? 'person'
                                       : comment.userName!,
-                                  style: Styles.textStyle14.copyWith(
+                                  style: Styles.textStyle14(context).copyWith(
                                       fontWeight: FontWeight.w500,
                                       color: themeController.isDarkMode.value
                                           ? Colors.white70
@@ -97,7 +97,7 @@ class EditComment extends StatelessWidget {
                                     Text(
                                       commentController.updateCommentTime(
                                           loadedTime: comment.time!),
-                                      style: Styles.textStyle12
+                                      style: Styles.textStyle12(context)
                                           .copyWith(color: AppColors.kGreyColor),
                                     ),
                                   ],
@@ -173,7 +173,7 @@ class EditComment extends StatelessWidget {
                                                   comment.userName == ''
                                               ? 'person'
                                               : comment.userName!,
-                                          style: Styles.textStyle14
+                                          style: Styles.textStyle14(context)
                                               .copyWith(
                                                   fontWeight: FontWeight.w500,
                                                   color: themeController
@@ -212,7 +212,7 @@ class EditComment extends StatelessWidget {
                                                   Text(
                                                     commentController.updateCommentTime(
                                                         loadedTime: comment.time!),
-                                                    style: Styles.textStyle12
+                                                    style: Styles.textStyle12(context)
                                                         .copyWith(color: AppColors.kGreyColor),
                                                   ),
                                                 ],

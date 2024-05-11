@@ -28,9 +28,9 @@ class CustomMaterialButton extends StatelessWidget {
           text,
           style: getValueForScreenType(
               context: context,
-              mobile: Styles.textStyle18
+              mobile: Styles.textStyle18(context)
                   .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
-              tablet: Styles.textStyle30
+              tablet: Styles.textStyle30(context)
                   .copyWith(color: Colors.white, fontWeight: FontWeight.w500)),
         ),
       ),

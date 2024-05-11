@@ -23,11 +23,11 @@ class CameraTips extends StatelessWidget {
               'Snap Tips',
               style: getValueForScreenType(
                   context: context,
-                  mobile: Styles.textStyle25.copyWith(
+                  mobile: Styles.textStyle25(context).copyWith(
                       color: themeController.isDarkMode.value
                           ? Colors.white
                           : Colors.black),
-                  tablet: Styles.textStyle45.copyWith(
+                  tablet: Styles.textStyle45(context).copyWith(
                       color: themeController.isDarkMode.value
                           ? Colors.white
                           : Colors.black,fontWeight: FontWeight.w300)),

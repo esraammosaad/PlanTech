@@ -1,5 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/core/constants/app_routes.dart';
+import 'package:grad_proj/view/screens/profile/my_profile.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
 import 'custom_profile_avatar.dart';
@@ -15,10 +20,16 @@ class CustomHomeAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset("assets/images/logo.png" , height: 60),
-        CustomProfileAvatar(
-            image: FirebaseAuth.instance.currentUser?.photoURL ??
-                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+        Image.asset("assets/images/logo.png", height: 60),
+        GestureDetector(
+          onTap: () {
+            print('===================');
+            Get.toNamed(AppRoutes.myProfileScreen);
+          },
+          child: CustomProfileAvatar(
+              image: FirebaseAuth.instance.currentUser?.photoURL ??
+                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+        ),
         // const SizedBox(
         //   width: 12,
         // ),

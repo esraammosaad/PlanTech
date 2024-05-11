@@ -10,14 +10,9 @@ class CustomProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-
-      },
-      child: CircleAvatar(
-        radius: 25,
-        backgroundImage: NetworkImage(image),
-      ),
+    return CircleAvatar(
+      radius: 25,
+      backgroundImage: NetworkImage(image),
     );
   }
 }

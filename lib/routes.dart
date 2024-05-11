@@ -17,6 +17,7 @@ import 'package:grad_proj/view/screens/community/see_all_popular_questions.dart'
 import 'package:grad_proj/view/screens/camera/camera_result.dart';
 import 'package:grad_proj/view/screens/home/google_nav_bar.dart';
 import 'package:grad_proj/view/screens/home/nav_bar.dart';
+import 'package:grad_proj/view/screens/home/search.dart';
 import 'package:grad_proj/view/screens/plants_details/care_guide.dart';
 import 'package:grad_proj/view/screens/plants_details/plants_details.dart';
 import 'package:grad_proj/view/screens/home/see_all_plants.dart';
@@ -24,7 +25,11 @@ import 'package:grad_proj/view/screens/landing/on_boarding.dart';
 import 'package:grad_proj/view/screens/landing/splash.dart';
 import 'package:grad_proj/view/screens/language/choose_language.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:grad_proj/view/screens/profile/connect_camera.dart';
+import 'package:grad_proj/view/screens/profile/contact_us.dart';
 import 'package:grad_proj/view/screens/profile/edit_profile.dart';
+import 'package:grad_proj/view/screens/profile/info.dart';
+import 'package:grad_proj/view/screens/profile/my_profile.dart';
 
 List<GetPage<dynamic>> appRoutes() {
   return [
@@ -174,5 +179,41 @@ List<GetPage<dynamic>> appRoutes() {
         transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 900),
         curve: Curves.easeInExpo),
+    GetPage(
+        name: AppRoutes.searchHomeScreen,
+        page: () => const SearchHome(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.infoScreen,
+        page: () => const Info(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.contactUsScreen,
+        page: () => const ContactUs(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.connectCameraScreen,
+        page: () => const ConnectCamera(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.myProfileScreen,
+        page: () => const MyProfile(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    // GetPage(
+    //     name: AppRoutes.editCommentScreen,
+    //     page: () => const EditComment(),
+    //     transition: Transition.cupertino,
+    //     transitionDuration: const Duration(milliseconds: 900),
+    //     curve: Curves.decelerate),
   ];
 }

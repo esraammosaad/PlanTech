@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconly/iconly.dart';
@@ -5,7 +6,6 @@ import 'package:iconly/iconly.dart';
 import '../camera/my_garden.dart';
 import '../community/plants_community.dart';
 import '../live_stream/live_stream.dart';
-import '../profile/profile.dart';
 import 'home.dart';
 
 class GoogleNavBar extends StatefulWidget {
@@ -20,7 +20,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
   static const List<Widget> _widgetOptions = <Widget>[
     Home(),
     LiveStream(),
-    Bluetooth(),
+    MyGarden(),
     PlantsCommunity(),
   ];
 
@@ -48,7 +48,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
               gap: 8,
               activeColor: Colors.white,
               iconSize: 24,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 12),
               duration: const Duration(milliseconds: 400),
               tabBackgroundColor: const Color(0xff98A668),
               color: Colors.black,

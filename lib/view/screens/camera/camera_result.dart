@@ -57,7 +57,7 @@ class CameraResult extends StatelessWidget {
                           controller.result == ''
                               ? 'No Result'
                               : controller.result,
-                          style: Styles.textStyle25.copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black),
+                          style: Styles.textStyle25(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black),
                         ),
                       ),
                       GetBuilder<MyGardenControllerImp>(

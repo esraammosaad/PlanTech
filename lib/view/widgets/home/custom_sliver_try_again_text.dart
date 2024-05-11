@@ -19,7 +19,7 @@ class CustomSliverTryAgainText extends StatelessWidget {
                 child: Text(
                   text,
                   style:
-                  getValueForScreenType(context: context, mobile: Styles.textStyle14.copyWith(color: AppColors.kGreyColor),tablet: Styles.textStyle25.copyWith(color: AppColors.kGreyColor)),
+                  getValueForScreenType(context: context, mobile: Styles.textStyle14(context).copyWith(color: AppColors.kGreyColor),tablet: Styles.textStyle25(context).copyWith(color: AppColors.kGreyColor)),
                 )),
             const SizedBox(height: 30,),
           ],
