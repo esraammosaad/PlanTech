@@ -32,7 +32,7 @@ final int index;
               onPressed: () {},
               child: Text(
                 'post details',
-                style: Styles.textStyle16(context),
+                style: Styles.textStyle16,
               ),
             ),
           ],
@@ -57,7 +57,7 @@ final int index;
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'Comments Section:',
-                            style: Styles.textStyle20(context).copyWith(
+                            style: Styles.textStyle20.copyWith(
                                 fontWeight: FontWeight.w300,
                                 color: AppColors.kPrimaryColor),
                           ),
@@ -95,7 +95,7 @@ final int index;
               onPressed: () {},
               child: Text(
                 'post details',
-                style: Styles.textStyle16(context),
+                style: Styles.textStyle16,
               ),
             ),
           ],
@@ -145,7 +145,7 @@ final int index;
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   'Comments Section:',
-                                  style: Styles.textStyle30(context).copyWith(
+                                  style: Styles.textStyle30.copyWith(
                                       fontWeight: FontWeight.w300,
                                       color: AppColors.kPrimaryColor),
                                 ),

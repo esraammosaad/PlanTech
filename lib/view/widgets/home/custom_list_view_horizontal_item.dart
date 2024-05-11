@@ -33,10 +33,10 @@ class CustomListViewHorizontalItem extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             originList?[index] ?? "",
-            style: getValueForScreenType<TextStyle>(context: context, mobile: Styles.textStyle12(context).copyWith(
+            style: getValueForScreenType<TextStyle>(context: context, mobile: Styles.textStyle12.copyWith(
                 color: themeController.isDarkMode.value
                     ? Colors.white
-                    : AppColors.kPrimaryColor),tablet: Styles.textStyle30(context).copyWith(
+                    : AppColors.kPrimaryColor),tablet: Styles.textStyle30.copyWith(
                 color: themeController.isDarkMode.value
                     ? Colors.white
                     : AppColors.kPrimaryColor),)

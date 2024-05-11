@@ -64,7 +64,7 @@ class CustomMyGardenListItem extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: Text(
                             controller.myGarden![index].result,
-                            style: Styles.textStyle25(context).copyWith(
+                            style: Styles.textStyle25.copyWith(
                                 color: themeController.isDarkMode.value
                                     ? Colors.white
                                     : Colors.black,),
@@ -79,7 +79,7 @@ class CustomMyGardenListItem extends StatelessWidget {
                               controller.updatePostTime(
                                 loadedTime: controller.myGarden![index].time!,
                               ),
-                              style: Styles.textStyle14(context).copyWith(
+                              style: Styles.textStyle14.copyWith(
                                   color: themeController.isDarkMode.value
                                       ? Colors.white70
                                       : Colors.black,fontWeight: FontWeight.w300),

@@ -28,7 +28,7 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
             ),
             Text(
               plantData?.description ?? "",
-              style: Styles.textStyle12(context).copyWith(
+              style: Styles.textStyle12.copyWith(
                   color: themeController.isDarkMode.value
                       ? Colors.white70
                       : AppColors.greyColor,
@@ -42,7 +42,7 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
               fit: BoxFit.scaleDown,
               child: Text(
                 "Scientific Name :  ${plantData?.scientificName ?? ""}",
-                style: Styles.textStyle12(context).copyWith(
+                style: Styles.textStyle12.copyWith(
                     fontWeight: FontWeight.bold,
                     color: themeController.isDarkMode.value
                         ? Colors.white
@@ -54,7 +54,7 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
             ),
             Text(
               "Other Name :  ${plantData?.otherName ?? ""}",
-              style: Styles.textStyle12(context).copyWith(
+              style: Styles.textStyle12.copyWith(
                   fontWeight: FontWeight.bold,
                   color: themeController.isDarkMode.value
                       ? Colors.white
@@ -65,7 +65,7 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
             ),
             Text(
               plantData?.dimension ?? "",
-              style: Styles.textStyle12(context).copyWith(
+              style: Styles.textStyle12.copyWith(
                   fontWeight: FontWeight.bold,
                   color: themeController.isDarkMode.value
                       ? Colors.white
@@ -74,7 +74,7 @@ class CustomPlantsDetailsWidgets extends StatelessWidget {
             const SizedBox(height: 16,),
             Text(
               "Origin :",
-              style: Styles.textStyle18(context)
+              style: Styles.textStyle18
                   .copyWith(fontWeight: FontWeight.w600,color: themeController.isDarkMode.value
                   ? Colors.white70
                   :Colors.black),

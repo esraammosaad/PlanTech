@@ -27,12 +27,12 @@ class CustomTabletDescriptionPlantsDetails extends StatelessWidget {
               plantData?.description ?? "",
               style: getValueForScreenType<TextStyle>(
                   context: context,
-                  mobile: Styles.textStyle12(context).copyWith(
+                  mobile: Styles.textStyle12.copyWith(
                       color: themeController.isDarkMode.value
                           ? Colors.white
                           : AppColors.greyColor,
                       fontWeight: FontWeight.w500),
-                  tablet: Styles.textStyle20(context).copyWith(
+                  tablet: Styles.textStyle20.copyWith(
                       color: themeController.isDarkMode.value
                           ? Colors.white
                           : AppColors.greyColor,

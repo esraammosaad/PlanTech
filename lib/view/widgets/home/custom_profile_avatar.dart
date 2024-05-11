@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../../../core/constants/app_routes.dart';
-import '../../screens/profile/profile.dart';
 
 class CustomProfileAvatar extends StatelessWidget {
   const CustomProfileAvatar({

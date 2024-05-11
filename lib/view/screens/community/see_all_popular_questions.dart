@@ -23,8 +23,8 @@ class SeeAllPopularQuestions extends StatelessWidget {
                   ? Center(
                       child: Text(
                       controller.errMessage!,
-                      style: getValueForScreenType(context: context, mobile: Styles.textStyle12(context)
-                          .copyWith(color: AppColors.kGreyColor),tablet: Styles.textStyle25(context)
+                      style: getValueForScreenType(context: context, mobile: Styles.textStyle12
+                          .copyWith(color: AppColors.kGreyColor),tablet: Styles.textStyle25
                           .copyWith(color: AppColors.kGreyColor)),
                     ))
                   : CustomScrollView(

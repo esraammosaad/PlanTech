@@ -38,13 +38,13 @@ class CustomSliderItem extends StatelessWidget {
             children: [
               Text(
                 item.title!,
-                style: Styles.textStyle20(context)
+                style: Styles.textStyle20
                     .copyWith(color: Colors.white,fontFamily: AppFonts.kArabicFont,fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 5,),
               Text(
                 item.body!,
-                style: Styles.textStyle14(context)
+                style: Styles.textStyle14
                     .copyWith(color: Colors.grey[350],fontFamily: AppFonts.kArabicFont,fontWeight: FontWeight.bold),
               ),
             ],

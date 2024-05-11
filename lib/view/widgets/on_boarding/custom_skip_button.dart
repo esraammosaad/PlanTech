@@ -15,7 +15,7 @@ class CustomSkipButton extends StatelessWidget {
       },
       child: Text(
         'Skip',
-        style: Styles.textStyle18(context),
+        style: Styles.textStyle18,
       ),
     );
   }

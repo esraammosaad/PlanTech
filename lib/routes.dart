@@ -108,13 +108,13 @@ List<GetPage<dynamic>> appRoutes() {
         transition: Transition.cupertino,
         curve: Curves.decelerate
     ),
-    GetPage(
-      name: AppRoutes.postDetailsScreen,
-      page: () => const PostDetails(),
-        transitionDuration: const Duration(milliseconds: 900),
-        transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+    // GetPage(
+    //   name: AppRoutes.postDetailsScreen,
+    //   page: () => const PostDetails(item: null, index: null,),
+    //     transitionDuration: const Duration(milliseconds: 900),
+    //     transition: Transition.cupertino,
+    //     curve: Curves.decelerate
+    // ),
     GetPage(
       name: AppRoutes.seeAllScreen,
       page: () => const SeeAllPlants(),

@@ -16,43 +16,55 @@ class CustomPlantDetailsNameAndTypeRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
-    return Obx(
-    () {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              fit: FlexFit.loose,
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  plantData?.commonName ?? '',
-                  style: getValueForScreenType(context: context, mobile: Styles.textStyle20(context).copyWith(
-                      color: themeController.isDarkMode.value
-                          ? Colors.white
-                          : Colors.black,fontWeight: FontWeight.w300),tablet: Styles.textStyle36(context).copyWith(
-                      color: themeController.isDarkMode.value
-                          ? Colors.white
-                          : Colors.black,fontWeight: FontWeight.w300)),),
-              ),
-            ),
-            const SizedBox(width:8,),
-            FittedBox(
+    return Obx(() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            fit: FlexFit.loose,
+            child: FittedBox(
               fit: BoxFit.scaleDown,
               alignment: AlignmentDirectional.centerStart,
-              child: Text(" Type ${plantData?.type ?? ''}",
-                  style: getValueForScreenType(context: context, mobile: Styles.textStyle14(context).copyWith(
-                      color: themeController.isDarkMode.value
-                          ? Colors.white70
-                          : Colors.black,fontWeight: FontWeight.bold),tablet: Styles.textStyle20(context).copyWith(
-                      color: themeController.isDarkMode.value
-                          ? Colors.white70
-                          : Colors.black,fontWeight: FontWeight.bold)),)),
-
-          ],
-        );
-      }
-    );
+              child: Text(
+                plantData?.commonName ?? '',
+                style: getValueForScreenType(
+                    context: context,
+                    mobile: Styles.textStyle20.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: FontWeight.w300),
+                    tablet: Styles.textStyle36.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? Colors.white
+                            : Colors.black,
+                        fontWeight: FontWeight.w300)),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerStart,
+              child: Text(
+                " Type ${plantData?.type ?? ''}",
+                style: getValueForScreenType(
+                    context: context,
+                    mobile: Styles.textStyle14.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? Colors.white70
+                            : Colors.black,
+                        fontWeight: FontWeight.bold),
+                    tablet: Styles.textStyle20.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? Colors.white70
+                            : Colors.black,
+                        fontWeight: FontWeight.bold)),
+              )),
+        ],
+      );
+    });
   }
 }

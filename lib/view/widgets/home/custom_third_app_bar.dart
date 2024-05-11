@@ -22,9 +22,9 @@ PreferredSizeWidget customAppBar(BuildContext context, {required String text}) {
     ),
     title: Text(
       text,
-      style: getValueForScreenType(context: context, mobile: Styles.textStyle20(context).copyWith(
+      style: getValueForScreenType(context: context, mobile: Styles.textStyle20.copyWith(
         color: themeController.isDarkMode.value ? Colors.white70 : Colors.black,
-      ),tablet: Styles.textStyle30(context).copyWith(
+      ),tablet: Styles.textStyle30.copyWith(
         color: themeController.isDarkMode.value ? Colors.white70 : Colors.black,
       )),
     ),

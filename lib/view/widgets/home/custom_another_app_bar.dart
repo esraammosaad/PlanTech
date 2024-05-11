@@ -37,11 +37,11 @@ class CustomAnotherAppBar extends StatelessWidget {
           Text(
             text,
             textAlign: TextAlign.center,
-            style: getValueForScreenType(context: context, mobile: Styles.textStyle20(context).copyWith(
+            style: getValueForScreenType(context: context, mobile: Styles.textStyle20.copyWith(
                 color: themeController.isDarkMode.value
                     ? Colors.white70
                     : Colors.black,
-                fontWeight: FontWeight.bold),tablet: Styles.textStyle25(context).copyWith(
+                fontWeight: FontWeight.bold),tablet: Styles.textStyle25.copyWith(
                 color: themeController.isDarkMode.value
                     ? Colors.white70
                     : Colors.black,

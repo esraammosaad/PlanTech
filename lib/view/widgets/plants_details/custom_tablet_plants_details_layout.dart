@@ -160,7 +160,7 @@ class CustomFittedPlantsDetailsText extends StatelessWidget {
         fit: BoxFit.scaleDown,
         child: Text(
           text,
-          style: Styles.textStyle20(context).copyWith(
+          style: Styles.textStyle20.copyWith(
             fontWeight: FontWeight.w300,
             color: themeController.isDarkMode.value
                 ? Colors.white

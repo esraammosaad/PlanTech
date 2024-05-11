@@ -22,7 +22,7 @@ class ActiveListTile extends StatelessWidget {
         child: Text(
           item.title,
           style:
-          Styles.textStyle16(context).copyWith(color: Colors.grey),
+          Styles.textStyle16.copyWith(color: Colors.grey),
         ),
       ),
       trailing: Container(
@@ -51,7 +51,7 @@ class InActiveListTile extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16.0),
         child: Text(
           item.title,
-          style:Styles.textStyle16(context).copyWith(color: Colors.grey),
+          style:Styles.textStyle16.copyWith(color: Colors.grey),
         ),
       ),
     );

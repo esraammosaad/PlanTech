@@ -24,7 +24,7 @@ class CareGuide extends StatelessWidget {
                 ? Center(
                     child: Text(
                     controller.errMessage ?? '',
-                    style: Styles.textStyle12(context)
+                    style: Styles.textStyle12
                         .copyWith(color: AppColors.kGreyColor),
                   ))
                 : Obx(() {
@@ -38,11 +38,11 @@ class CareGuide extends StatelessWidget {
                                 fit: BoxFit.scaleDown,
                                 child: Text(
                                   controller.careGuideData?.commonName ?? "",
-                                  style: getValueForScreenType(context: context, mobile: Styles.textStyle20(context).copyWith(
+                                  style: getValueForScreenType(context: context, mobile: Styles.textStyle20.copyWith(
                                       fontWeight: FontWeight.w500,
                                       color: themeController.isDarkMode.value
                                           ? AppColors.kPrimaryColor
-                                          : Colors.black),tablet: Styles.textStyle30(context).copyWith(
+                                          : Colors.black),tablet: Styles.textStyle30.copyWith(
                                       fontWeight: FontWeight.w500,
                                       color: themeController.isDarkMode.value
                                           ? AppColors.kPrimaryColor
@@ -60,12 +60,12 @@ class CareGuide extends StatelessWidget {
                                         controller.careGuideData
                                                 ?.section?[index]?.type ??
                                             '',
-                                        style: getValueForScreenType(context: context, mobile: Styles.textStyle18(context).copyWith(
+                                        style: getValueForScreenType(context: context, mobile: Styles.textStyle18.copyWith(
                                             fontFamily: AppFonts.kArabicFont,
                                             fontWeight: FontWeight.w500,color:
                                         themeController.isDarkMode.value
                                             ? Colors.white
-                                            : Colors.black),tablet: Styles.textStyle25(context).copyWith(
+                                            : Colors.black),tablet: Styles.textStyle25.copyWith(
                                             fontFamily: AppFonts.kArabicFont,
                                             fontWeight: FontWeight.w500,color:
                                         themeController.isDarkMode.value
@@ -95,10 +95,10 @@ class CareGuide extends StatelessWidget {
                                                   ?.section?[index]
                                                   ?.description ??
                                               '',
-                                          style:getValueForScreenType(context: context, mobile: Styles.textStyle14(context).copyWith(
+                                          style:getValueForScreenType(context: context, mobile: Styles.textStyle14.copyWith(
                                               color: AppColors.greyColor,
                                               fontFamily: AppFonts.kArabicFont,
-                                              fontWeight: FontWeight.bold),tablet: Styles.textStyle20(context).copyWith(
+                                              fontWeight: FontWeight.bold),tablet: Styles.textStyle20.copyWith(
                                               color: AppColors.greyColor,
                                               fontFamily: AppFonts.kArabicFont,
                                               fontWeight: FontWeight.bold)),

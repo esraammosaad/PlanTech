@@ -53,7 +53,7 @@ class SettingOptions extends StatelessWidget {
                 title: "Your Profile",
                 onPressed: () {
 
-                  Get.toNamed(AppRoutes.myProfileScreen);
+                  Get.toNamed(AppRoutes.profileScreen);
 
                 },
               ),
