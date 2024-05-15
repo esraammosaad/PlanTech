@@ -10,12 +10,12 @@ import 'package:grad_proj/view/screens/auth/signup_with_phone_number.dart';
 import 'package:grad_proj/view/screens/camera/camera.dart';
 import 'package:grad_proj/view/screens/camera/camera_tips.dart';
 import 'package:grad_proj/view/screens/community/add_post.dart';
+import 'package:grad_proj/view/screens/community/edit_comment.dart';
 import 'package:grad_proj/view/screens/community/edit_post.dart';
 import 'package:grad_proj/view/screens/community/popular_questions.dart';
 import 'package:grad_proj/view/screens/community/post_details.dart';
 import 'package:grad_proj/view/screens/community/see_all_popular_questions.dart';
 import 'package:grad_proj/view/screens/camera/camera_result.dart';
-import 'package:grad_proj/view/screens/home/google_nav_bar.dart';
 import 'package:grad_proj/view/screens/home/nav_bar.dart';
 import 'package:grad_proj/view/screens/home/search.dart';
 import 'package:grad_proj/view/screens/plants_details/care_guide.dart';
@@ -34,151 +34,134 @@ import 'package:grad_proj/view/screens/profile/my_profile.dart';
 List<GetPage<dynamic>> appRoutes() {
   return [
     GetPage(
-      name: AppRoutes.splashScreen,
-      page: () => const Splash(),
+        name: AppRoutes.splashScreen,
+        page: () => const Splash(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.chooseLanguageScreen,
-      page: () => const ChooseLanguage(),
-      middlewares: [
-        MyMiddleware(),
-      ],
+        name: AppRoutes.chooseLanguageScreen,
+        page: () => const ChooseLanguage(),
+        middlewares: [
+          MyMiddleware(),
+        ],
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.onBoardingScreen,
-      page: () => const OnBoarding(),
+        name: AppRoutes.onBoardingScreen,
+        page: () => const OnBoarding(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.logInScreen,
-      page: () => const LogIn(),
-        transitionDuration: const Duration(seconds: 2),
-        transition: Transition.cupertino,
-        curve: Curves.easeInExpo
-    ),
-    GetPage(
-      name: AppRoutes.signUpScreen,
-      page: () => const SignUp(),
+        name: AppRoutes.logInScreen,
+        page: () => const LogIn(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.forgetPasswordScreen,
-      page: () => const ForgetPassword(),
+        name: AppRoutes.signUpScreen,
+        page: () => const SignUp(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.otpScreen,
-      page: () => const OneTimePassword(),
+        name: AppRoutes.forgetPasswordScreen,
+        page: () => const ForgetPassword(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.signUpWithPhoneNumberScreen,
-      page: () => const SignUpWithPhoneNumber(),
+        name: AppRoutes.otpScreen,
+        page: () => const OneTimePassword(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.navBarScreen,
-      page: () => const GoogleNavBar(),
-        transition: Transition.cupertino,
-        transitionDuration: const Duration(seconds: 2),
-        curve: Curves.easeInExpo
-    ),
-    GetPage(
-      name: AppRoutes.plantsDetailsScreen,
-      page: () => const PlantsDetails(),
+        name: AppRoutes.signUpWithPhoneNumberScreen,
+        page: () => const SignUpWithPhoneNumber(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.addPostScreen,
-      page: () => const AddPost(),
+        name: AppRoutes.navBarScreen,
+        page: () => const NavBar(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.plantsDetailsScreen,
+        page: () => const PlantsDetails(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.addPostScreen,
+        page: () => const AddPost(),
+        transitionDuration: const Duration(milliseconds: 900),
+        transition: Transition.cupertino,
+        curve: Curves.decelerate),
     // GetPage(
-    //   name: AppRoutes.postDetailsScreen,
-    //   page: () => const PostDetails(item: null, index: null,),
+    //     name: AppRoutes.postDetailsScreen,
+    //     page: () => const PostDetails(),
     //     transitionDuration: const Duration(milliseconds: 900),
     //     transition: Transition.cupertino,
-    //     curve: Curves.decelerate
-    // ),
+    //     curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.seeAllScreen,
-      page: () => const SeeAllPlants(),
+        name: AppRoutes.seeAllScreen,
+        page: () => const SeeAllPlants(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.editPostScreen,
-      page: () => const EditPost(),
+        name: AppRoutes.editPostScreen,
+        page: () => const EditPost(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.seeAllPopularQuestionsScreen,
-      page: () => const SeeAllPopularQuestions(),
+        name: AppRoutes.seeAllPopularQuestionsScreen,
+        page: () => const SeeAllPopularQuestions(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.popularQuestionsScreen,
-      page: () => const PopularQuestions(),
+        name: AppRoutes.popularQuestionsScreen,
+        page: () => const PopularQuestions(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
-      name: AppRoutes.careGuideScreen,
-      page: () => const CareGuide(),
+        name: AppRoutes.careGuideScreen,
+        page: () => const CareGuide(),
         transitionDuration: const Duration(milliseconds: 900),
         transition: Transition.cupertino,
-        curve: Curves.decelerate
-    ),
+        curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.cameraScreen,
         page: () => const Camera(),
         transition: Transition.cupertino,
-        transitionDuration: const Duration(seconds: 1),
-        curve: Curves.easeInExpo),
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.cameraResultScreen,
         page: () => const CameraResult(),
-        transition: Transition.downToUp,
-        transitionDuration: const Duration(seconds: 1),
-        curve: Curves.easeInExpo),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.cameraTipsScreen,
         page: () => const CameraTips(),
-        transition: Transition.downToUp,
-        transitionDuration: const Duration(seconds: 1),
-        curve: Curves.easeInExpo),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.editProfileScreen,
         page: () => const EditProfile(),
         transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 900),
-        curve: Curves.easeInExpo),
+        curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.searchHomeScreen,
         page: () => const SearchHome(),

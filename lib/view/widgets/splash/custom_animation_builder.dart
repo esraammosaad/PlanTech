@@ -19,14 +19,10 @@ class CustomAnimationBuilder extends StatelessWidget {
       animation: animationController,
       builder: (context, _) => SlideTransition(
         position: slidingAnimation,
-        child: Image.asset("assets/images/splash.png"),
-        // Text(
-        //   'PlantHub',
-        //   style: Styles.textStyle45.copyWith(
-        //       color: AppColors.kPrimaryColor,
-        //       fontFamily: AppFonts.kEnglishFont,
-        //       fontWeight: FontWeight.w200),
-        // ),
+        child:  Text(
+          'PlantHub',
+          style: Styles.textStyle45(context).copyWith(color: AppColors.kPrimaryColor,fontFamily: AppFonts.kEnglishFont,fontWeight: FontWeight.w200),
+        ),
       ),
     );
   }

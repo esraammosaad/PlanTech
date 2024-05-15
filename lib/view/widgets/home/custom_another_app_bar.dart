@@ -20,17 +20,17 @@ class CustomAnotherAppBar extends StatelessWidget {
     return Obx(() {
       return Row(
         children: [
-          // IconButton(
-          //   icon: Icon(
-          //     Icons.arrow_back,
-          //     size: getValueForScreenType(context: context, mobile: 25,tablet: 40),
-          //     color: AppColors.kPrimaryColor,
-          //   ),
-          //   onPressed: () {
-          //     controller.pageController.jumpToPage(controller.selectedPage - 1);
-          //     FocusScope.of(context).unfocus();
-          //   },
-          // ),
+          IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              size: getValueForScreenType(context: context, mobile: 25,tablet: 40),
+              color: AppColors.kPrimaryColor,
+            ),
+            onPressed: () {
+              controller.pageController.jumpToPage(controller.selectedPage - 1);
+              FocusScope.of(context).unfocus();
+            },
+          ),
           const SizedBox(
             width: 20,
           ),

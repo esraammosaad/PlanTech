@@ -4,73 +4,73 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 class Styles {
   static TextStyle textStyle18(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 18),
-    fontWeight: FontWeight.w700,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 18),
+        fontWeight: FontWeight.w700,
+        height: 0,
+      );
   static TextStyle textStyle10(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 10),
-    fontWeight: FontWeight.w700,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 10),
+        fontWeight: FontWeight.w700,
+        height: 0,
+      );
   static TextStyle textStyle20(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 20),
-    fontWeight: FontWeight.w500,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 20),
+        fontWeight: FontWeight.w500,
+        height: 0,
+      );
   static TextStyle textStyle25(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 25),
-    fontWeight: FontWeight.w500,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 25),
+        fontWeight: FontWeight.w500,
+        height: 0,
+      );
   static TextStyle textStyle30(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 30),
-    fontWeight: FontWeight.w500,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 30),
+        fontWeight: FontWeight.w500,
+        height: 0,
+      );
   static TextStyle textStyle36(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 36),
-    fontWeight: FontWeight.w700,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 36),
+        fontWeight: FontWeight.w700,
+        height: 0,
+      );
   static TextStyle textStyle45(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context,
-        fontSize: getValueForScreenType(
-            context: context, mobile: 45, tablet: 80)),
-    fontWeight: FontWeight.w700,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context,
+            fontSize: getValueForScreenType(
+                context: context, mobile: 45, tablet: 80)),
+        fontWeight: FontWeight.w700,
+        height: 0,
+      );
   static TextStyle textStyle17(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 17),
-    fontWeight: FontWeight.w400,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 17),
+        fontWeight: FontWeight.w400,
+        height: 0,
+      );
   static TextStyle textStyle12(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 12),
-    fontWeight: FontWeight.w300,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 12),
+        fontWeight: FontWeight.w300,
+        height: 0,
+      );
   static TextStyle textStyle14(BuildContext context) => TextStyle(
-    color: Colors.black,
-    fontSize: getResponsiveFontSize(context, fontSize: 14),
-    fontWeight: FontWeight.w400,
-    height: 0,
-  );
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 14),
+        fontWeight: FontWeight.w400,
+        height: 0,
+      );
   static TextStyle textStyle16(BuildContext context) => TextStyle(
-    color: AppColors.kPrimaryColor,
-    fontSize: getResponsiveFontSize(context, fontSize: 16),
-    fontWeight: FontWeight.w600,
-    height: 0,
-  );
+        color: AppColors.kPrimaryColor,
+        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        fontWeight: FontWeight.w600,
+        height: 0,
+      );
 }
 
 // scaleFactor
