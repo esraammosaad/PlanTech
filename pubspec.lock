@@ -1036,7 +1036,11 @@ packages:
       sha256: "1ce844379ca14835a50d2f019a3099f419082cfdd231cd86a142af94dd5c6bb1"
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "4.9.0"
+=======
+    version: "4.8.1"
+>>>>>>> yomna
   leak_tracker:
     dependency: transitive
     description:
@@ -1651,6 +1655,17 @@ packages:
     source: hosted
     version: "0.4.0+2"
   vm_service:
+<<<<<<< HEAD
+=======
+    dependency: transitive
+    description:
+      name: vm_service
+      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.0.0"
+  watcher:
+>>>>>>> yomna
     dependency: transitive
     description:
       name: vm_service
