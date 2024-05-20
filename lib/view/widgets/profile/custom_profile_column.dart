@@ -18,7 +18,7 @@ class CustomProfileColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProfileControllerImpl>(builder: (controller) {
-      return Column(
+      return controller.isLoading? Center(child: CircularProgressIndicator(color:AppColors.kPrimaryColor ,)):Column(
         children: [
           const SizedBox(
             height: 20,

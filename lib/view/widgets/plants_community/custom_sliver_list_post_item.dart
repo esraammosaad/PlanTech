@@ -52,7 +52,7 @@ class CustomSliverListPostItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(onTap:(){
-                  Get.toNamed(AppRoutes.myProfileScreen);
+                  FirebaseAuth.instance.currentUser!.uid==item.uid?Get.toNamed(AppRoutes.myProfileScreen):null;
 
                 },child: CustomPostHeader(headerData: item)),
                 const SizedBox(

@@ -24,7 +24,7 @@ class MyProfile extends StatelessWidget {
                   child: CustomMyProfileStack(),
                 ),
                 SliverPadding(
-                  padding: EdgeInsets.only(left: getValueForScreenType(context: context, mobile: 8,tablet: 25), right: getValueForScreenType(context: context, mobile: 8,tablet: 25), top: getValueForScreenType(context: context, mobile: 60,tablet: 110),bottom: getValueForScreenType(context: context, mobile: 0,tablet: 10)),
+                  padding: EdgeInsets.only(left: getValueForScreenType(context: context, mobile: 16,tablet: 25), right: getValueForScreenType(context: context, mobile: 16,tablet: 25), top: getValueForScreenType(context: context, mobile: 70,tablet: 110),bottom: getValueForScreenType(context: context, mobile: 0,tablet: 10)),
                   sliver:
                       const SliverToBoxAdapter(child: CustomMyProfileAddPostField()),
                 ),

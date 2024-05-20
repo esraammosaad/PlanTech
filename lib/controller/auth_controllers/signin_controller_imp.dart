@@ -41,11 +41,11 @@ class SignInControllerImp extends SignInController {
       update();
       var result = await authRepo.logIn(
           email: emailController.text, password: passwordController.text);
-      result.fold((l) {
+      result.fold((l) async {
         isLoading = false;
         update();
 
-          showAwesomeDialog(
+          await showAwesomeDialog(
             cancelOnPress: (){},
               okOnPress: (){},
               context: context,
@@ -86,11 +86,11 @@ class SignInControllerImp extends SignInController {
     update();
 
     var result=await authRepo.googleSignIn();
-    result.fold((l) {
+    result.fold((l) async {
       isLoading = false;
       update();
 
-      showAwesomeDialog(context: context, dialogType: DialogType.error, title: l.errMessage, desc: '',cancelOnPress: (){
+      await showAwesomeDialog(context: context, dialogType: DialogType.error, title: l.errMessage, desc: '',cancelOnPress: (){
 
       },okOnPress: (){});
     }, (r)

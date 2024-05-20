@@ -38,8 +38,8 @@ class ModelControllerImpl extends ModelController {
   @override
   loadDataModelFiles() async {
     String? output = await Tflite.loadModel(
-      model: 'assets/my_model-2.tflite',
-      labels: 'assets/model2labels.txt',
+      model: 'assets/model_unquant.tflite',
+      labels: 'assets/label.txt',
       isAsset: true,
       numThreads: 2,
       useGpuDelegate: false,
@@ -52,6 +52,8 @@ class ModelControllerImpl extends ModelController {
   Future<void> onInit() async {
     await loadDataModelFiles();
     await doImageClassification(image: cameraController.image!.path);
+    debugPrint('=================================================');
+
     super.onInit();
   }
 

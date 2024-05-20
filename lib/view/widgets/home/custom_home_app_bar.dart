@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/home_controllers/home_controller.dart';
+import 'package:grad_proj/controller/profile_controllers/edit_profile_controller.dart';
 import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
+import 'package:grad_proj/view/widgets/profile/custom_center_loading_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../../../core/constants/fonts.dart';
 import '../../../core/constants/styles.dart';
@@ -27,9 +27,13 @@ class CustomHomeAppBar extends StatelessWidget {
             onTap: (){
               Get.toNamed(AppRoutes.myProfileScreen);
             },
-            child: CustomProfileAvatar(
-                image: FirebaseAuth.instance.currentUser?.photoURL ??
-                    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+            child: GetBuilder<EditProfileControllerImpl>(
+              builder: (controller) {
+                return controller.isLoading?const CustomCenterLoadingIndicator(): CustomProfileAvatar(
+                    image: controller.userData.image ??
+                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
+              }
+            ),
           ),
           const SizedBox(
             width: 12,
