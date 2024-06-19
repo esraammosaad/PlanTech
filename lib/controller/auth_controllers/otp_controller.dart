@@ -5,7 +5,6 @@ import 'package:grad_proj/data/data_source/remote/auth_repo/auth_repo_imp.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
 import '../../data/models/user_model.dart';
 
 abstract class OtpController extends GetxController {

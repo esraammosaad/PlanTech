@@ -4,17 +4,11 @@ abstract class Failure{
   final String errMessage;
   Failure({required this.errMessage});
 }
-
 class InternetFailure extends Failure{
   InternetFailure({required super.errMessage});
-
-
 }
-
 class FirebaseFailure extends Failure{
   FirebaseFailure({required super.errMessage});
-
-
 }
 
 class ServerFailure extends Failure {

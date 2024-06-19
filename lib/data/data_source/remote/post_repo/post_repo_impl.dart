@@ -36,13 +36,14 @@ class PostsRepoImpl extends PostRepo {
       return Left(FirebaseFailure(errMessage: e.toString()));
     }
   }
+
   @override
   Future<Either<Failure, List<PostModel>>> getMyPosts() async {
     try {
       List<PostModel> data = [];
 
       fireStore
-          .collection('posts').where('uid',isEqualTo:auth.currentUser!.uid)
+          .collection('posts').where('uid',isEqualTo:auth.currentUser!.uid,)
           .orderBy('time', descending: true)
           .snapshots()
           .listen((event) {
@@ -96,12 +97,9 @@ class PostsRepoImpl extends PostRepo {
             uid: uid);
         await fireStore.collection('posts').doc(postId).set(postModel.toJson());
       }
-
       return null;
     } catch (e) {
-      return e.toString();
-    }
-  }
+      return e.toString();  }  }
 
   @override
   Future<void> editPost(
@@ -211,6 +209,7 @@ class PostsRepoImpl extends PostRepo {
       debugPrint(e.toString());
     }
   }
+
 
   @override
   Future<void> editComment({

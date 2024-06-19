@@ -45,7 +45,6 @@ class MyBindings extends Bindings {
     Get.lazyPut(()=>OpenCameraControllerImpl(),fenix: true);
     Get.lazyPut(()=>ModelControllerImpl(),fenix: true);
     Get.lazyPut(()=>MyGardenControllerImp(),fenix: true);
-    Get.lazyPut(()=>EditProfileControllerImpl(),fenix: true);
     Get.lazyPut(()=>MyProfileControllerImp(),fenix: true);
     Get.put(FirebaseAuthServices());
     Get.put(ThemeController());
@@ -54,6 +53,7 @@ class MyBindings extends Bindings {
     Get.put(ApiService());
     Get.put(PlantsDetailsRepoImpl());
     Get.put(HomeRepoImpl());
+    Get.put(EditProfileControllerImpl());
     Get.put(PopularQuestionsRepoImpl());
     Get.put(PostsRepoImpl());
     Get.put(MyGardenRepoImpl());

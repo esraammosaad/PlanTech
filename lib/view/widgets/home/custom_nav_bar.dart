@@ -25,6 +25,8 @@ class CustomNavBar extends StatelessWidget {
             IconlyLight.user_1,
             Icons.yard_outlined,
             IconlyLight.setting,
+
+
           ],
           activeColor: AppColors.kPrimaryColor,
           inactiveColor: AppColors.greyColor,

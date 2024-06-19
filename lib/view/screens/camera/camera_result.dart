@@ -42,11 +42,11 @@ class CameraResult extends StatelessWidget {
                       ),
                       Expanded(
                           child: SizedBox(
-                        width: double.infinity,
-                        height: double.infinity,
+                        // width: double.infinity,
+                        // height: double.infinity,
                         child: Image.file(
                           image!,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       )),
                       const SizedBox(

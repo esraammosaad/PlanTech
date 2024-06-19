@@ -97,7 +97,7 @@ class EditProfileControllerImpl extends EditProfileController {
           },
           cancelOnPress: () {});
     }, (r) async {
-      showAwesomeDialog(
+      await showAwesomeDialog(
           context: context,
           dialogType: DialogType.info,
           title: 'To Confirm Changes Please Confirm Your New Email',
@@ -202,13 +202,16 @@ class EditProfileControllerImpl extends EditProfileController {
           dialogType: DialogType.success,
           title: 'Photo Changed Successfully',
           desc: '',
-          okOnPress: () {
+          okOnPress: () async {
+
           },
-          cancelOnPress: () {
+          cancelOnPress: () async {
+
 
           });
-      // await getUserData();
-      // update();
+      await getUserData();
+      update();
+
     });
     isLoadingPhoto = false;
     update();
