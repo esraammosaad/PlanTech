@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
         height: 45,
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: ShapeDecoration(
-          color: const Color(0xff0a5c5c),
+          color: AppColors.kPrimaryColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         child: Center(
@@ -34,3 +34,4 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+//Color(0xff0a5c5c)

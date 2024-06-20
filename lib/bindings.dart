@@ -1,3 +1,4 @@
+import 'package:grad_proj/controller/bluetooth/bluetooth_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/camera_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/model_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/my_garden_controller.dart';
@@ -46,6 +47,8 @@ class MyBindings extends Bindings {
     Get.lazyPut(()=>ModelControllerImpl(),fenix: true);
     Get.lazyPut(()=>MyGardenControllerImp(),fenix: true);
     Get.lazyPut(()=>MyProfileControllerImp(),fenix: true);
+    Get.lazyPut(()=>BluetoothControllerImp(),fenix: true);
+    Get.lazyPut(()=>EditProfileControllerImpl(),fenix: true);
     Get.put(FirebaseAuthServices());
     Get.put(ThemeController());
     Get.put(AuthRepoImp());
@@ -53,7 +56,6 @@ class MyBindings extends Bindings {
     Get.put(ApiService());
     Get.put(PlantsDetailsRepoImpl());
     Get.put(HomeRepoImpl());
-    Get.put(EditProfileControllerImpl());
     Get.put(PopularQuestionsRepoImpl());
     Get.put(PostsRepoImpl());
     Get.put(MyGardenRepoImpl());

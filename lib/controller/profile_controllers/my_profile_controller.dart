@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/data/data_source/remote/popular_questions_repo/popular_questions_repo_impl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../data/data_source/remote/post_repo/post_repo_impl.dart';
-import '../../data/models/popular_questions_model.dart';
 import '../../data/models/post_model.dart';
 
 abstract class MyProfileController extends GetxController {

@@ -1,112 +1,58 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:get/get.dart';
+import 'package:grad_proj/controller/bluetooth/bluetooth_controller.dart';
 
-class ConnectCamera extends StatefulWidget {
-  const ConnectCamera({super.key});
-
-  @override
-  State<ConnectCamera> createState() => _ConnectCamera();
-}
-
-class _ConnectCamera extends State<ConnectCamera> {
-  List<BluetoothDevice> _devices = [];
-  late BluetoothConnection connection;
-  String address = '00:21:07:00:50:69';
-  bool isLoading = true;
-  void _requestPermission() async {
-    await Permission.location.request();
-    await Permission.bluetooth.request();
-    await Permission.bluetoothScan.request();
-    await Permission.bluetoothConnect.request();
-
-  }
-
-  @override
-  void initState() {
-     _requestPermission();
-    super.initState();
-    loadDevices();
-
-  }
-
-  Future<void> loadDevices() async {
-    List<BluetoothDevice> devices =
-        await FlutterBluetoothSerial.instance.getBondedDevices();
-    setState(() {
-      _devices = devices;
-    });
-    isLoading=false;
-  }
-
-  Future<void> sendData(String data) async {
-    data = data.trim();
-    try {
-      List<int> list = data.codeUnits;
-      Uint8List bytes = Uint8List.fromList(list);
-      connection.output.add(bytes);
-      await connection.output.allSent;
-      if (kDebugMode) {
-        debugPrint('Data sent successfully');
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
-  Future connect(String address) async {
-    try {
-      connection = await BluetoothConnection.toAddress(address);
-      sendData('111');
-      connection.input!.listen((Uint8List data) {});
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
+class ConnectCamera extends StatelessWidget {
+  const ConnectCamera({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            isLoading?const CircularProgressIndicator():Text(_devices.isEmpty?'No devices':_devices[0].name.toString()),
-            const SizedBox(height: 30,),
-
-            ElevatedButton(
-                onPressed: () async {
-                  await connect(address);
-                },
-                child: const Text('connect')),
-            const SizedBox(height: 30,),
-            ElevatedButton(
-                onPressed: () async {
-                  await sendData('right');
-                },
-                child: const Text('right')),
-            const SizedBox(height: 30,), ElevatedButton(
-                onPressed: () async {
-                  await sendData('left');
-                },
-                child: const Text('left')),
-            const SizedBox(height: 30,),
-
-          ],
-        ),
+        child: GetBuilder<BluetoothControllerImp>(builder: (controller) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              controller.isLoading
+                  ? const CircularProgressIndicator()
+                  : Text(controller.devices.isEmpty
+                      ? 'No devices'
+                      : controller.devices[2].name.toString()),
+              const SizedBox(
+                height: 30,
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    await controller.connect(controller.address);
+                  },
+                  child: const Text('connect')),
+              const SizedBox(
+                height: 30,
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    await controller.sendData('right');
+                  },
+                  child: const Text('right')),
+              const SizedBox(
+                height: 30,
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    await controller.sendData('left');
+                  },
+                  child: const Text('left')),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          );
+        }),
       ),
     );
   }
 }
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;

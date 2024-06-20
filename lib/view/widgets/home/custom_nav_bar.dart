@@ -6,6 +6,7 @@ import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:iconly/iconly.dart';
+import 'package:iconsax/iconsax.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({
@@ -17,29 +18,49 @@ class CustomNavBar extends StatelessWidget {
     ThemeController themeController = Get.find();
     return GetBuilder<NavBarControllerImp>(
       builder: (controller) => Obx(() {
-        return AnimatedBottomNavigationBar(
+        return BottomNavigationBar(
+          // height: 80,
+          elevation: 0,
+
           backgroundColor:
               themeController.isDarkMode.value ? Colors.black26 : Colors.white,
-          icons: const [
-            IconlyLight.home,
-            IconlyLight.user_1,
-            Icons.yard_outlined,
-            IconlyLight.setting,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(IconlyLight.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(            IconlyLight.user_1,
+            ), label: 'Community'),
+            BottomNavigationBarItem(icon: Icon(IconlyLight.camera), label: 'Camera'),
+            BottomNavigationBarItem(icon: Icon( Iconsax.tree,), label: 'Garden'),
+            BottomNavigationBarItem(icon: Icon( Icons.bluetooth_connected,), label: 'Bluetooth'),
+            BottomNavigationBarItem(icon: Icon( IconlyLight.setting,), label: 'Settings'),
+
+
+
 
 
           ],
-          activeColor: AppColors.kPrimaryColor,
-          inactiveColor: AppColors.greyColor,
-          activeIndex: controller.selectedPage,
-          gapLocation: GapLocation.center,
-          notchMargin: 0,
-          notchSmoothness: NotchSmoothness.sharpEdge,
+          selectedItemColor: AppColors.kPrimaryColor,
+          currentIndex: controller.selectedPage,
+          unselectedItemColor: AppColors.greyColor,
+          selectedFontSize: 12,
+
+
+          // activeColor: AppColors.kPrimaryColor,
+          // inactiveColor: AppColors.greyColor,
+          // activeIndex: controller.selectedPage,
+          // // gapLocation: GapLocation.center,
+          // notchMargin: 0,
+          // notchSmoothness: NotchSmoothness.sharpEdge,
 
           onTap: (int index) {
-            controller.navBar(index);
-            controller.pageController.animateToPage(index,
+            if(index!=2){
+              controller.navBar(index);
+              controller.pageController.animateToPage(index,
                 duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut);
+                curve: Curves.easeOut);}
+            else if(index==2){
+              Get.toNamed(AppRoutes.cameraScreen);
+            }
+
           },
           //other params
         );
