@@ -34,16 +34,16 @@ class NavBar extends StatelessWidget {
             children: const [
               Home(),
               PlantsCommunity(),
-              Camera(),
+
               MyGarden(),
-              ConnectCamera(),
+
               Profile(),
             ],
           ),
         ),
-        // floatingActionButton: Visibility(
-        //     visible: !isVisible, child: const CustomFloatingButton()),
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: Visibility(
+            visible: !isVisible, child: const CustomFloatingButton()),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: const CustomNavBar(),
       ),
       tablet: (context) => Scaffold(
