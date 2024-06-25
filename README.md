@@ -25,5 +25,5 @@
 * Remote Land Management: (Premium) Monitor and manage your land's plant health from anywhere.
 * Data Security: Enjoy peace of mind knowing your data is protected by Firebase's secure storage solutions.
 
-# 🌱Get Started with Plantech Today!
+# 🌱Get Started with PlanTech Today!
 ![logo-01 (1)](https://github.com/esraammosaad/grad-proj/assets/110772494/2e02d5e3-a0a4-48ad-bb08-8c48fb561199)
