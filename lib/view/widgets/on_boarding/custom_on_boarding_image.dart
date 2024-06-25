@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../data/data_source/static/static.dart';
+import '../../../data/data_source/static/static_onboarding.dart';
 class CustomOnBoardingImage extends StatelessWidget {
   const CustomOnBoardingImage({
     super.key, required this.index,
@@ -11,11 +10,11 @@ class CustomOnBoardingImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height*0.5,
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage(
-                onBoardigList[index].image!,
+                onBoardingList[index].image!,
               ),
               fit: BoxFit.fill)),
     );

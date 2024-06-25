@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../core/constants/styles.dart';
-import '../../screens/login.dart';
+import '../../screens/auth/login.dart';
 class CustomSkipButton extends StatelessWidget {
   const CustomSkipButton({
     super.key,
@@ -16,7 +15,7 @@ class CustomSkipButton extends StatelessWidget {
       },
       child: Text(
         'Skip',
-        style: Styles.textStyle18,
+        style: Styles.textStyle18(context),
       ),
     );
   }

@@ -1,10 +1,10 @@
-class OnBordingModel {
+class OnBoardingModel {
    final String? title;
    final String? body;
    final String? image;
    final String? text;
 
-  OnBordingModel({
+  OnBoardingModel({
     this.title,
     this.body,
     this.image,

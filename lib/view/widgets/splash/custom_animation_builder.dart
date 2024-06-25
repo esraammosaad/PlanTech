@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grad_proj/core/constants/color.dart';
+import 'package:grad_proj/core/constants/fonts.dart';
+import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 
 class CustomAnimationBuilder extends StatelessWidget {
@@ -19,8 +20,8 @@ class CustomAnimationBuilder extends StatelessWidget {
       builder: (context, _) => SlideTransition(
         position: slidingAnimation,
         child:  Text(
-          'Planteria',
-          style: Styles.textStyle36.copyWith(color: AppColors.kPrimaryColor),
+          'PlantHub',
+          style: Styles.textStyle45(context).copyWith(color: AppColors.kPrimaryColor,fontFamily: AppFonts.kEnglishFont,fontWeight: FontWeight.w200),
         ),
       ),
     );
