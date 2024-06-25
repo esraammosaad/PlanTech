@@ -1,4 +1,4 @@
-# 🌿Plantech: Your Smart Gardening Companion 
+# 🌿PlanTech: Your Smart Gardening Companion 
 
 #### Plantech is a mobile application designed to empower gardening enthusiasts of all levels, It offers a comprehensive suite of features to help you nurture your plants, connect with the gardening community, and monitor your landscapes remotely.
 
