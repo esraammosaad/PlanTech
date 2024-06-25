@@ -29,7 +29,6 @@ abstract class PostRepo{
     required String postId,
     required List likes,
   });
-
   Future<void> deleteComment(
       {required String commentId, required String postId});
   Future<void> editComment(
@@ -38,7 +37,4 @@ abstract class PostRepo{
         required String commentId,});
 
   Future<Either<Failure, List<PostModel>>> getMyPosts();
-
-
-
 }

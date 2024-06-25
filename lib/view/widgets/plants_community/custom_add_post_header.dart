@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grad_proj/controller/profile_controllers/edit_profile_controller.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../../../controller/community_controllers/plants_community_controller.dart';
 import '../../../core/class/them_controller.dart';
@@ -16,6 +17,7 @@ class CustomAddPostHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
+    EditProfileControllerImpl editProfileController=Get.find();
     return GetBuilder<PlantsCommunityControllerImp>(builder: (controller) {
       return Row(
         children: [
@@ -25,7 +27,7 @@ class CustomAddPostHeader extends StatelessWidget {
               height: getValueForScreenType(
                   context: context, mobile: 40, tablet: 120),
               child: CustomProfileAvatar(
-                image: FirebaseAuth.instance.currentUser?.photoURL ??
+                image: editProfileController.userData.image ??
                     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
               )),
           const SizedBox(

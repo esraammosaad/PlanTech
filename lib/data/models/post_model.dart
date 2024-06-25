@@ -7,7 +7,7 @@ class PostModel {
   final String ?post;
   final String ?postType;
   final String ?fileUrl;
-  final List<dynamic?>?likes;
+  final List<dynamic>?likes;
   PostModel( {
     required this.postType,required this.fileUrl,required this.likes,
     required this.postId,

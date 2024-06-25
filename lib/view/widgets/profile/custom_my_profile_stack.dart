@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/profile_controllers/edit_profile_controller.dart';
+import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/view/widgets/profile/custom_center_loading_indicator.dart';
 import 'package:iconly/iconly.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -20,7 +21,7 @@ class CustomMyProfileStack extends StatelessWidget {
     ThemeController themeController = Get.find();
 
     return GetBuilder<EditProfileControllerImpl>(builder: (controller) {
-      return Stack(
+      return controller.isLoading?Center(child: CircularProgressIndicator(color: AppColors.kPrimaryColor,),):Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.bottomLeft,
         children: [
@@ -81,8 +82,7 @@ class CustomMyProfileStack extends StatelessWidget {
                     mobile: MediaQuery.sizeOf(context).width / 7.8,
                     tablet: 65,
                   ),
-                  backgroundImage: CachedNetworkImageProvider(FirebaseAuth
-                          .instance.currentUser!.photoURL ??
+                  backgroundImage: CachedNetworkImageProvider(controller.userData.image ??
                       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
                 ),
                 const SizedBox(

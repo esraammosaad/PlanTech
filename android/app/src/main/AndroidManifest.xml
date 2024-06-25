@@ -10,9 +10,9 @@
     <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"
         tools:targetApi="eclair" />
     <application
-        android:label="grad_proj"
+        android:label="PlanTech"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

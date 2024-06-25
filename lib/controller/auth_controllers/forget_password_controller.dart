@@ -32,10 +32,10 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
       isLoading = true;
 
       var result = await authRepo.resetPassword(email: emailController.text);
-      result.fold((l) {
+      result.fold((l) async {
         isLoading = false;
         update();
-        showAwesomeDialog(
+        await showAwesomeDialog(
           dialogType: DialogType.error,
           title: l.errMessage,
           desc: '',
@@ -47,10 +47,10 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
 
         }
         );
-      },(r) {
+      },(r) async {
         isLoading = false;
         update();
-        showAwesomeDialog(
+        await showAwesomeDialog(
           cancelOnPress: (){
 
 

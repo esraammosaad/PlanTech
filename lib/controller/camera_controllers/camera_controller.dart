@@ -6,6 +6,7 @@ import 'dart:io';
 import '../../core/functions/pick_and_capture_image.dart';
 import '../../main.dart';
 
+
 abstract class OpenCameraController extends GetxController {
   initializeController();
   setFlash();

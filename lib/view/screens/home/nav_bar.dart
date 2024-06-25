@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
+import 'package:grad_proj/view/screens/camera/camera.dart';
 import 'package:grad_proj/view/screens/camera/my_garden.dart';
 import 'package:grad_proj/view/screens/home/home.dart';
+import 'package:grad_proj/view/screens/profile/connect_camera.dart';
 import 'package:grad_proj/view/widgets/home/custom_drawer.dart';
 import 'package:grad_proj/view/screens/profile/profile_settings.dart';
 import 'package:get/get.dart';
@@ -32,7 +34,9 @@ class NavBar extends StatelessWidget {
             children: const [
               Home(),
               PlantsCommunity(),
+
               MyGarden(),
+
               Profile(),
             ],
           ),

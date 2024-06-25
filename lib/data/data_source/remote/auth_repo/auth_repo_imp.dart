@@ -158,8 +158,8 @@ class AuthRepoImp extends AuthRepo {
           },
           verificationFailed: (e) async {
             if (e.code == 'invalid-phone-number') {
-              // throw FirebaseAuthException(
-              //     code: 'The provided phone number is not valid.');
+              throw FirebaseAuthException(
+                  code: 'The provided phone number is not valid.');
             }
           },
           codeSent: (verificationId, resendToken) async {

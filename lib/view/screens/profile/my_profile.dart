@@ -10,10 +10,9 @@ class MyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: customAppBar(context, text: 'My Profile'),
-      body:  SafeArea(
+      body: SafeArea(
         child: Padding(
             padding: const EdgeInsets.only(
               top: 8,
@@ -24,9 +23,17 @@ class MyProfile extends StatelessWidget {
                   child: CustomMyProfileStack(),
                 ),
                 SliverPadding(
-                  padding: EdgeInsets.only(left: getValueForScreenType(context: context, mobile: 8,tablet: 25), right: getValueForScreenType(context: context, mobile: 8,tablet: 25), top: getValueForScreenType(context: context, mobile: 60,tablet: 110),bottom: getValueForScreenType(context: context, mobile: 0,tablet: 10)),
-                  sliver:
-                      const SliverToBoxAdapter(child: CustomMyProfileAddPostField()),
+                  padding: EdgeInsets.only(
+                      left: getValueForScreenType(
+                          context: context, mobile: 16, tablet: 25),
+                      right: getValueForScreenType(
+                          context: context, mobile: 16, tablet: 25),
+                      top: getValueForScreenType(
+                          context: context, mobile: 70, tablet: 110),
+                      bottom: getValueForScreenType(
+                          context: context, mobile: 0, tablet: 10)),
+                  sliver: const SliverToBoxAdapter(
+                      child: CustomMyProfileAddPostField()),
                 ),
                 const SliverPadding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
@@ -37,6 +44,3 @@ class MyProfile extends StatelessWidget {
     );
   }
 }
-
-
-

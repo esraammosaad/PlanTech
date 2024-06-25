@@ -6,6 +6,7 @@ import 'package:grad_proj/core/class/them_controller.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:iconly/iconly.dart';
+import 'package:iconsax/iconsax.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({
@@ -18,14 +19,20 @@ class CustomNavBar extends StatelessWidget {
     return GetBuilder<NavBarControllerImp>(
       builder: (controller) => Obx(() {
         return AnimatedBottomNavigationBar(
+          // height: 80,
+          elevation: 0,
+
           backgroundColor:
               themeController.isDarkMode.value ? Colors.black26 : Colors.white,
           icons: const [
             IconlyLight.home,
             IconlyLight.user_1,
-            Icons.yard_outlined,
+            Iconsax.tree,
             IconlyLight.setting,
           ],
+          // indicatorColor: AppColors.kPrimaryColor,
+          // indicatorShape: UnderlineInputBorder(),
+
           activeColor: AppColors.kPrimaryColor,
           inactiveColor: AppColors.greyColor,
           activeIndex: controller.selectedPage,
@@ -65,15 +72,14 @@ class CustomFloatingButton extends StatelessWidget {
           Get.toNamed(AppRoutes.cameraScreen);
         },
         backgroundColor: AppColors.kPrimaryColor,
-        child: Obx(
-          () {
-            return Icon(
-              IconlyLight.camera,
-              color:  themeController.isDarkMode.value ? Colors.black : Colors.white,
-              size: 28,
-            );
-          }
-        ));
+        child: Obx(() {
+          return Icon(
+            IconlyLight.camera,
+            color:
+                themeController.isDarkMode.value ? Colors.black : Colors.white,
+            size: 28,
+          );
+        }));
   }
 }
 

@@ -97,7 +97,7 @@ class EditProfileControllerImpl extends EditProfileController {
           },
           cancelOnPress: () {});
     }, (r) async {
-      showAwesomeDialog(
+      await showAwesomeDialog(
           context: context,
           dialogType: DialogType.info,
           title: 'To Confirm Changes Please Confirm Your New Email',
@@ -161,8 +161,8 @@ class EditProfileControllerImpl extends EditProfileController {
             await logOut();
           },
           cancelOnPress: () {});
-    }, (r) {
-      showAwesomeDialog(
+    }, (r) async {
+      await showAwesomeDialog(
           context: context,
           dialogType: DialogType.success,
           title: 'Password Changed Successfully',
@@ -186,8 +186,8 @@ class EditProfileControllerImpl extends EditProfileController {
     var result = await updateUserData.editUserPhoto(
       image: image,
     );
-    result.fold((l) {
-      showAwesomeDialog(
+    result.fold((l) async {
+      await showAwesomeDialog(
           context: context,
           dialogType: DialogType.warning,
           title: l.errMessage,
@@ -197,15 +197,21 @@ class EditProfileControllerImpl extends EditProfileController {
           },
           cancelOnPress: () {});
     }, (r) async {
-      showAwesomeDialog(
+      await showAwesomeDialog(
           context: context,
           dialogType: DialogType.success,
           title: 'Photo Changed Successfully',
           desc: '',
-          okOnPress: () {},
-          cancelOnPress: () {});
+          okOnPress: () async {
+
+          },
+          cancelOnPress: () async {
+
+
+          });
       await getUserData();
       update();
+
     });
     isLoadingPhoto = false;
     update();
@@ -242,8 +248,8 @@ class EditProfileControllerImpl extends EditProfileController {
     var result = await updateUserData.editUserHeader(
       header: header,
     );
-    result.fold((l) {
-      showAwesomeDialog(
+    result.fold((l) async {
+      await showAwesomeDialog(
           context: context,
           dialogType: DialogType.warning,
           title: l.errMessage,

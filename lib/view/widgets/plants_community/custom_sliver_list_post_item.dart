@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/community_controllers/post_details_controller.dart';
@@ -52,7 +51,7 @@ class CustomSliverListPostItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(onTap:(){
-                  Get.toNamed(AppRoutes.myProfileScreen);
+                  FirebaseAuth.instance.currentUser!.uid==item.uid?Get.toNamed(AppRoutes.myProfileScreen):null;
 
                 },child: CustomPostHeader(headerData: item)),
                 const SizedBox(

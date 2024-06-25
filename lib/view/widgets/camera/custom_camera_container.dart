@@ -25,7 +25,7 @@ class CustomCameraContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: themeController.isDarkMode.value
                 ? Colors.black54
-                : Colors.white70,
+                : Colors.white,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
