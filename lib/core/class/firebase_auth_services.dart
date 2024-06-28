@@ -45,7 +45,7 @@ class FirebaseAuthServices {
     return credential;
   }
 
-  Future<UserCredential> signInWithFaceBook() async {
+  /* Future<UserCredential> signInWithFaceBook() async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
     final OAuthCredential facebookAuthCredential =
@@ -54,7 +54,7 @@ class FirebaseAuthServices {
     UserCredential credential = await FirebaseAuth.instance
         .signInWithCredential(facebookAuthCredential);
     return credential;
-  }
+  }*/
 
   phoneAuth(
       {required String phoneNum,

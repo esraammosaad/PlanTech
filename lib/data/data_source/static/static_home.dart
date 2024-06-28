@@ -3,26 +3,29 @@ import '../../models/onboardingmodel.dart';
 
 List<OnBoardingModel> homeList = [
   OnBoardingModel(
-    title: "Speak your plant's language, get solutions.",
+    title: "🌿Detect Plant Diseases",
     body:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Snap a photo to identify plant diseases. Perfect for gardeners and farmers to maintain healthy plants.",
     image: AppImageAsset.homeImage1,
   ),
   OnBoardingModel(
-    title: "Identify, care for, and connect with plant lovers.",
+    title: "🤖 Automate Monitoring",
     body:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Use our robot to take plant photos. Results appear directly on your mobile for easy monitoring.",
     image: AppImageAsset.homeImage2,
   ),
   OnBoardingModel(
-    title: "Effortless care with AI-powered garden mapping.",
+    title: "💬 Community Chat",
     body:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Share experiences and get advice from fellow gardeners and farmers. Grow together!",
     image: AppImageAsset.homeImage3,
   ),
 ];
 
-List<String> categoriesList=[
-  'All','Fragrance','Makeup','Hair','Skincare'
-
+List<String> categoriesList = [
+  'All',
+  'Fragrance',
+  'Makeup',
+  'Hair',
+  'Skincare'
 ];

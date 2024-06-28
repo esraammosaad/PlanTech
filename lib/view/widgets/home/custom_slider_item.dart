@@ -7,7 +7,8 @@ import '../../../data/models/onboardingmodel.dart';
 
 class CustomSliderItem extends StatelessWidget {
   const CustomSliderItem({
-    super.key, required this.item,
+    super.key,
+    required this.item,
   });
   final OnBoardingModel item;
 
@@ -16,15 +17,16 @@ class CustomSliderItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          margin:
-          const EdgeInsets.symmetric(vertical: 8),
-          height: MediaQuery.of(context).size.height * 0.4,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration:  BoxDecoration(
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),bottomRight:Radius.circular(25) ),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
             color: AppColors.kPrimaryColor,
-            image: const DecorationImage(
-              image: AssetImage(AppImageAsset.cardBg),fit: BoxFit.cover,
+            image: DecorationImage(
+              image: AssetImage(item.image!),
+              fit: BoxFit.fill,
             ),
           ),
         ),
@@ -38,14 +40,20 @@ class CustomSliderItem extends StatelessWidget {
             children: [
               Text(
                 item.title!,
-                style: Styles.textStyle20(context)
-                    .copyWith(color: Colors.white,fontFamily: AppFonts.kArabicFont,fontWeight: FontWeight.bold),
+                style: Styles.textStyle20(context).copyWith(
+                    color: Colors.white,
+                    fontFamily: AppFonts.kArabicFont,
+                    fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 5,
+              ),
               Text(
                 item.body!,
-                style: Styles.textStyle14(context)
-                    .copyWith(color: Colors.grey[350],fontFamily: AppFonts.kArabicFont,fontWeight: FontWeight.bold),
+                style: Styles.textStyle14(context).copyWith(
+                    color: Colors.grey[350],
+                    fontFamily: AppFonts.kArabicFont,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),

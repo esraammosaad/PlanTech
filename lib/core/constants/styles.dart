@@ -6,7 +6,8 @@ class Styles {
   static TextStyle textStyle18(BuildContext context) => TextStyle(
         color: Colors.black,
         fontSize: getResponsiveFontSize(context, fontSize: 18),
-        fontWeight: FontWeight.w700,
+        fontFamily: 'RobotSlab',
+        fontWeight: FontWeight.w800,
         height: 0,
       );
   static TextStyle textStyle10(BuildContext context) => TextStyle(
@@ -18,7 +19,7 @@ class Styles {
   static TextStyle textStyle20(BuildContext context) => TextStyle(
         color: Colors.black,
         fontSize: getResponsiveFontSize(context, fontSize: 20),
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w800,
         height: 0,
       );
   static TextStyle textStyle25(BuildContext context) => TextStyle(
@@ -35,7 +36,7 @@ class Styles {
       );
   static TextStyle textStyle36(BuildContext context) => TextStyle(
         color: Colors.black,
-        fontSize: getResponsiveFontSize(context, fontSize: 36),
+        fontSize: getResponsiveFontSize(context, fontSize: 28),
         fontWeight: FontWeight.w700,
         height: 0,
       );
@@ -49,8 +50,8 @@ class Styles {
       );
   static TextStyle textStyle17(BuildContext context) => TextStyle(
         color: Colors.black,
-        fontSize: getResponsiveFontSize(context, fontSize: 17),
-        fontWeight: FontWeight.w400,
+        fontSize: getResponsiveFontSize(context, fontSize: 20),
+        fontWeight: FontWeight.w600,
         height: 0,
       );
   static TextStyle textStyle12(BuildContext context) => TextStyle(
@@ -61,14 +62,15 @@ class Styles {
       );
   static TextStyle textStyle14(BuildContext context) => TextStyle(
         color: Colors.black,
-        fontSize: getResponsiveFontSize(context, fontSize: 14),
-        fontWeight: FontWeight.w400,
+        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        fontWeight: FontWeight.w500,
         height: 0,
       );
   static TextStyle textStyle16(BuildContext context) => TextStyle(
         color: AppColors.kPrimaryColor,
-        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        fontSize: getResponsiveFontSize(context, fontSize: 17),
         fontWeight: FontWeight.w600,
+        fontFamily: "RobetSlab",
         height: 0,
       );
 }

@@ -6,6 +6,7 @@ import 'custom_home_app_bar.dart';
 import 'custom_home_slider.dart';
 import 'custom_page_indicator.dart';
 import 'custom_text_row.dart';
+
 class CustomHomeWidgets extends StatelessWidget {
   const CustomHomeWidgets({
     super.key,
@@ -13,17 +14,19 @@ class CustomHomeWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Column(
+    return Column(
       children: [
         const CustomHomeAppBar(),
         const CustomHomeSlider(),
         const CustomPageIndicator(),
-        const SizedBox(height: 5,),
-        CustomTextRow(onTap:(){
-          Get.toNamed(AppRoutes.seeAllScreen);
-
-        },text: 'Popular Plants'),
-
+        const SizedBox(
+          height: 10,
+        ),
+        CustomTextRow(
+            onTap: () {
+              Get.toNamed(AppRoutes.seeAllScreen);
+            },
+            text: 'Popular Plants'),
       ],
     );
   }

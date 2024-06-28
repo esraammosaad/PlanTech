@@ -39,7 +39,7 @@ dependencies:
   flutter_tflite: ^1.0.1
   # DateTime
   jiffy: ^6.2.1
-  intl: ^0.18.0
+  intl: 0.19.0
   http: ^1.1.2
   # Images
   cached_network_image: ^3.3.0
@@ -50,13 +50,13 @@ dependencies:
   # Google Map
   flutter_polyline_points: ^2.0.0
   google_maps_flutter: ^2.5.0
-  geolocator: ^10.1.0
-  geocoding: ^2.1.1
+  geolocator: ^12.0.0
+  geocoding: ^3.0.0
   # Firebase And Notification
-  firebase_messaging: ^14.7.9
-  firebase_core: ^2.24.2
-  flutter_local_notifications: ^16.2.0
-  cloud_firestore: ^4.15.8
+  firebase_messaging: ^15.0.1
+  firebase_core: ^3.1.0
+  flutter_local_notifications: ^17.1.2
+  cloud_firestore: ^5.0.1
   # Local Data Cache
   sqflite: ^2.3.0
   shared_preferences: ^2.2.2
@@ -80,8 +80,8 @@ dependencies:
   image_pickers: ^2.0.4+7
   google_fonts: ^6.1.0
   pin_code_fields: ^8.0.1
-  firebase_auth: ^4.17.2
-  flutter_facebook_auth: ^6.0.4
+  firebase_auth: ^5.1.0
+  flutter_facebook_auth: ^7.0.1
   awesome_dialog: ^3.2.0
   lottie: ^3.0.0
   country_code_picker: ^3.0.0
@@ -90,12 +90,12 @@ dependencies:
   dio: ^5.4.1
   timeago: ^3.6.1
   uuid: ^4.4.0
-  firebase_storage: ^11.6.9
+  firebase_storage: ^12.0.1
   dropdown_button2: ^2.3.9
   animated_bottom_navigation_bar: ^1.3.3
   iconly: ^1.0.1
   flutter_switch:
-  camera: ^0.10.5+9
+  camera: ^0.11.0+1
   google_nav_bar: ^5.0.6
   shimmer: ^3.0.0
   flutter_bluetooth_serial: ^0.4.0
@@ -104,6 +104,8 @@ dependencies:
   path_provider: ^2.1.3
   tflite_flutter: ^0.10.4
   iconsax: ^0.0.8
+  #nav bar
+  spincircle_bottom_bar: ^2.0.0
 
 
 
@@ -178,6 +180,19 @@ flutter:
           - asset: assets/fonts/Inter-Regular.ttf
           - asset: assets/fonts/Inter-Bold.ttf
             weight: 700
+    - family: RobotoSlab
+      fonts:
+          - asset: assets/fonts/RobotoSlab-Black.ttf
+          - asset: assets/fonts/RobotoSlab-Bold.ttf
+          - asset: assets/fonts/RobotoSlab-ExtraBold.ttf
+          - asset: assets/fonts/RobotoSlab-ExtraLight.ttf
+          - asset: assets/fonts/RobotoSlab-Light.ttf
+          - asset: assets/fonts/RobotoSlab-Medium.ttf
+          - asset: assets/fonts/RobotoSlab-Regular.ttf
+          - asset: assets/fonts/RobotoSlab-SemiBold.ttf
+          - asset: assets/fonts/RobotoSlab-Thin.ttf
+
+            weight: 700        
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

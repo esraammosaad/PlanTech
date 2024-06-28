@@ -14,15 +14,11 @@ class CustomLogo extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-            'PlantHub',
-            style: Styles.textStyle18(context).copyWith(
-                color: AppColors.kPrimaryColor,
-                fontFamily: AppFonts.kEnglishFont,
-                fontWeight: FontWeight.w200),
-          ),
-        ),
+            alignment: Alignment.topLeft,
+            child: Container(
+                height: 80,
+                width: 180,
+                child: Image.asset('assets/images/logo.png'))),
       ),
     );
   }

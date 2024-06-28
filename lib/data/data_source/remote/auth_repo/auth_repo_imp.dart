@@ -56,7 +56,8 @@ class AuthRepoImp extends AuthRepo {
           return left(FirebaseFailure(errMessage: e.toString()));
         }
       } catch (e) {
-        return left(FirebaseFailure(errMessage: 'The account already exists for that email.'));
+        return left(FirebaseFailure(
+            errMessage: 'The account already exists for that email.'));
       }
     } else {
       return left(InternetFailure(errMessage: 'Check Internet Connection'));
@@ -67,7 +68,7 @@ class AuthRepoImp extends AuthRepo {
   Future<Either<Failure, String>> facebookSignIn() async {
     if (await checkInternet()) {
       try {
-        await fireBaseServices.signInWithFaceBook();
+        //await fireBaseServices.signInWithFaceBook();
         return right('success');
       } on FirebaseAuthException catch (e) {
         return left(FirebaseFailure(errMessage: e.code));
@@ -182,18 +183,17 @@ class AuthRepoImp extends AuthRepo {
   @override
   Future<Either<Failure, void>> addUserToCollection(UserModel userModel) async {
     if (await checkInternet()) {
-    try {
-    await fireBaseServices.addUsersCollection(userModel);
+      try {
+        await fireBaseServices.addUsersCollection(userModel);
 
-    return right(null);
-    } on FirebaseAuthException catch (e) {
-    return left(FirebaseFailure(errMessage: e.code));
-    }catch (e){
-      return left(FirebaseFailure(errMessage: e.toString()));
-
-    }
+        return right(null);
+      } on FirebaseAuthException catch (e) {
+        return left(FirebaseFailure(errMessage: e.code));
+      } catch (e) {
+        return left(FirebaseFailure(errMessage: e.toString()));
+      }
     } else {
-    return left(InternetFailure(errMessage: 'Check Internet Connection'));
+      return left(InternetFailure(errMessage: 'Check Internet Connection'));
     }
   }
 }

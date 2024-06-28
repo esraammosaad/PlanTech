@@ -34,16 +34,14 @@ class NavBar extends StatelessWidget {
             children: const [
               Home(),
               PlantsCommunity(),
-
               MyGarden(),
-
               Profile(),
             ],
           ),
         ),
         floatingActionButton: Visibility(
             visible: !isVisible, child: const CustomFloatingButton()),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
         bottomNavigationBar: const CustomNavBar(),
       ),
       tablet: (context) => Scaffold(
@@ -60,9 +58,7 @@ class NavBar extends StatelessWidget {
                 child: PageView(
                   controller: controller.pageController,
                   onPageChanged: (index) {
-
-                      controller.navBar(index);
-
+                    controller.navBar(index);
                   },
                   children: const [
                     Home(),

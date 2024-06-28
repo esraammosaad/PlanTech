@@ -11,11 +11,10 @@ class Home extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
               child: Padding(
-               padding: EdgeInsets.all(8.0),
-               child: CustomHomeWidgets(),
+            padding: EdgeInsets.all(8.0),
+            child: CustomHomeWidgets(),
           )),
           CustomGridView(),
-
 
           // const CustomSearchField(),
         ],

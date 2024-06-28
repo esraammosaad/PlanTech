@@ -22,12 +22,10 @@ class _CustomDrawerListViewState extends State<CustomDrawerListView> {
           padding: const EdgeInsets.only(top: 20.0),
           child: GestureDetector(
               onTap: () {
-
-                  controller.navBar(index);
-                  controller.pageController.animateToPage(index,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeOut);
-
+                controller.navBar(index);
+                controller.pageController.animateToPage(index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut);
               },
               child: CustomDrawerListTile(
                 item: controller.drawerList[index],

@@ -21,67 +21,81 @@ class CustomHomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
     return Obx(() {
-      return Row(
-        children: [
-          GestureDetector(
-            onTap: (){
-              Get.toNamed(AppRoutes.myProfileScreen);
-            },
-            child: GetBuilder<EditProfileControllerImpl>(
-              builder: (controller) {
-                return controller.isLoading?const CustomCenterLoadingIndicator(): CustomProfileAvatar(
-                    image: controller.userData.image ??
-                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
-              }
+      return Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Color(0xff5F6F52), width: .5),
+            borderRadius: BorderRadius.circular(8)),
+        child: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.myProfileScreen);
+              },
+              child:
+                  GetBuilder<EditProfileControllerImpl>(builder: (controller) {
+                return controller.isLoading
+                    ? const CustomCenterLoadingIndicator()
+                    : CustomProfileAvatar(
+                        image: controller.userData.image ??
+                            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
+              }),
             ),
-          ),
-          const SizedBox(
-            width: 12,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Welcome Back!',
-                style: getValueForScreenType(context: context, mobile: Styles.textStyle16(context).copyWith(
-                    fontWeight: FontWeight.w300,
-                    color: themeController.isDarkMode.value
-                        ? Colors.white
-                        : Colors.grey[600],
-                    fontFamily: AppFonts.kArabicFont),tablet: Styles.textStyle25(context).copyWith(
-                    fontWeight: FontWeight.w300,
-                    color: themeController.isDarkMode.value
-                        ? Colors.white
-                        : Colors.grey[600],
-                    fontFamily: AppFonts.kArabicFont)),
-              ),
-              Text(
-                FirebaseAuth.instance.currentUser?.displayName == '' ||
-                        FirebaseAuth.instance.currentUser?.displayName == null
-                    ? 'person'
-                    : FirebaseAuth.instance.currentUser!.displayName!,
-                style: getValueForScreenType(context: context, mobile: Styles.textStyle16(context).copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: themeController.isDarkMode.value
-                        ? Colors.grey
-                        : Colors.black,
-                    fontFamily: AppFonts.kArabicFont),tablet: Styles.textStyle25(context).copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: themeController.isDarkMode.value
-                        ? Colors.grey
-                        : Colors.black,
-                    fontFamily: AppFonts.kArabicFont)),
-              ),
-            ],
-          ),
-          const Spacer(),
-          GestureDetector(onTap:(){
-            Get.toNamed(AppRoutes.searchHomeScreen);
-            HomeControllerImp homeController=Get.find();
-            homeController.searchController.clear();
-            homeController.searchResult.clear();
-          },child: const CustomSearchIcon()),
-        ],
+            const SizedBox(
+              width: 12,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Welcome Back!',
+                  style: getValueForScreenType(
+                      context: context,
+                      mobile: Styles.textStyle16(context).copyWith(
+                          fontWeight: FontWeight.w300,
+                          color: themeController.isDarkMode.value
+                              ? Colors.white
+                              : Colors.grey[600],
+                          fontFamily: AppFonts.kArabicFont),
+                      tablet: Styles.textStyle25(context).copyWith(
+                          fontWeight: FontWeight.w300,
+                          color: themeController.isDarkMode.value
+                              ? Colors.white
+                              : Colors.grey[600],
+                          fontFamily: AppFonts.kArabicFont)),
+                ),
+                Text(
+                  FirebaseAuth.instance.currentUser?.displayName == '' ||
+                          FirebaseAuth.instance.currentUser?.displayName == null
+                      ? 'person'
+                      : FirebaseAuth.instance.currentUser!.displayName!,
+                  style: getValueForScreenType(
+                      context: context,
+                      mobile: Styles.textStyle16(context).copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? Colors.grey
+                              : Colors.black,
+                          fontFamily: AppFonts.kArabicFont),
+                      tablet: Styles.textStyle25(context).copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? Colors.grey
+                              : Colors.black,
+                          fontFamily: AppFonts.kArabicFont)),
+                ),
+              ],
+            ),
+            const Spacer(),
+            GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoutes.searchHomeScreen);
+                  HomeControllerImp homeController = Get.find();
+                  homeController.searchController.clear();
+                  homeController.searchResult.clear();
+                },
+                child: const CustomSearchIcon()),
+          ],
+        ),
       );
     });
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grad_proj/core/constants/color.dart';
 import '../../../controller/on_boarding_controller.dart';
+
 class CustomOnBoardingButton extends StatelessWidget {
   const CustomOnBoardingButton({
     super.key,
@@ -13,20 +15,21 @@ class CustomOnBoardingButton extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
-        width: 35,
-        height: 35,
+        width: 50,
+        height: 50,
         decoration: BoxDecoration(
+          color: AppColors.kPrimaryColor,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.black, width: 0.6),
         ),
         child: Center(
           child: IconButton(
             onPressed: () {
               controller.nextPage();
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_forward_ios,
-              size: 20,
+              color: Colors.black,
+              size: 30,
             ),
           ),
         ),

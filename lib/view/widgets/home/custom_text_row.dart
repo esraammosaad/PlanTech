@@ -25,7 +25,7 @@ class CustomTextRow extends StatelessWidget {
             style: getValueForScreenType(
                 context: context,
                 mobile: Styles.textStyle18(context).copyWith(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                     color: themeController.isDarkMode.value
                         ? Colors.white70
                         : Colors.black),

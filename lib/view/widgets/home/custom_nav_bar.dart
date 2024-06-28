@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -30,6 +31,8 @@ class CustomNavBar extends StatelessWidget {
             Iconsax.tree,
             IconlyLight.setting,
           ],
+          iconSize: 27,
+
           // indicatorColor: AppColors.kPrimaryColor,
           // indicatorShape: UnderlineInputBorder(),
 
@@ -62,24 +65,256 @@ class CustomFloatingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
 
-    return FloatingActionButton(
-        elevation: 0,
-        shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.kPrimaryColor),
+    return Padding(
+      padding:
+          const EdgeInsets.only(bottom: 50.0), // Adjust this padding as needed
+      child: ExpandableFab(
+        distance: 100,
+        children: [
+          ActionButton(
+            onPressed: () {
+              Get.toNamed(AppRoutes.cameraScreen);
+            },
+            icon: const Icon(Icons.camera),
+          ),
+          ActionButton(
+            onPressed: () {},
+            icon: const Icon(Icons.play_circle_filled_outlined),
+          ),
+          ActionButton(
+            onPressed: () {},
+            icon: const Icon(Icons.image),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+@immutable
+class ExpandableFab extends StatefulWidget {
+  const ExpandableFab({
+    super.key,
+    this.initialOpen,
+    required this.distance,
+    required this.children,
+  });
+
+  final bool? initialOpen;
+  final double distance;
+  final List<Widget> children;
+
+  @override
+  State<ExpandableFab> createState() => _ExpandableFabState();
+}
+
+class _ExpandableFabState extends State<ExpandableFab>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _expandAnimation;
+  bool _open = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _open = widget.initialOpen ?? false;
+    _controller = AnimationController(
+      value: _open ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 250),
+      vsync: this,
+    );
+    _expandAnimation = CurvedAnimation(
+      curve: Curves.fastOutSlowIn,
+      reverseCurve: Curves.easeOutQuad,
+      parent: _controller,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _toggle() {
+    setState(() {
+      _open = !_open;
+      if (_open) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          const EdgeInsets.only(bottom: 25.0), // Adjust this padding as needed
+      child: SizedBox.expand(
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          clipBehavior: Clip.none,
+          children: [
+            _buildTapToCloseFab(),
+            ..._buildExpandingActionButtons(),
+            _buildTapToOpenFab(),
+          ],
         ),
-        onPressed: () {
-          Get.toNamed(AppRoutes.cameraScreen);
-        },
-        backgroundColor: AppColors.kPrimaryColor,
-        child: Obx(() {
-          return Icon(
-            IconlyLight.camera,
-            color:
-                themeController.isDarkMode.value ? Colors.black : Colors.white,
-            size: 28,
-          );
-        }));
+      ),
+    );
+  }
+
+  Widget _buildTapToCloseFab() {
+    return SizedBox(
+      width: 56,
+      height: 56,
+      child: Center(
+        child: Material(
+          shape: const CircleBorder(),
+          clipBehavior: Clip.antiAlias,
+          elevation: 4,
+          child: InkWell(
+            onTap: _toggle,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Icon(
+                Icons.close,
+                color: AppColors.kPrimaryColor,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _buildExpandingActionButtons() {
+    final children = <Widget>[];
+    final count = widget.children.length;
+    final startAngleDegrees = 45.0; // Start angle at 45 degrees
+    final step = 90.0 / (count - 1); // Spread over 90 degrees
+
+    for (var i = 0, angleInDegrees = startAngleDegrees;
+        i < count;
+        i++, angleInDegrees += step) {
+      final angleInRadians = angleInDegrees * (math.pi / 180.0);
+      final offset = Offset(math.cos(angleInRadians) * widget.distance,
+          math.sin(angleInRadians) * widget.distance);
+
+      children.add(
+        _ExpandingActionButton(
+          directionInDegrees: angleInDegrees,
+          maxDistance: widget.distance,
+          progress: _expandAnimation,
+          child: widget.children[i],
+          offset: offset,
+        ),
+      );
+    }
+
+    return children;
+  }
+
+  Widget _buildTapToOpenFab() {
+    return IgnorePointer(
+      ignoring: _open,
+      child: AnimatedContainer(
+        transformAlignment: Alignment.center,
+        transform: Matrix4.diagonal3Values(
+          _open ? 0.7 : 1.0,
+          _open ? 0.7 : 1.0,
+          1.0,
+        ),
+        duration: const Duration(milliseconds: 250),
+        curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
+        child: AnimatedOpacity(
+          opacity: _open ? 0.0 : 1.0,
+          curve: const Interval(0.25, 1.0, curve: Curves.easeInOut),
+          duration: const Duration(milliseconds: 250),
+          child: FloatingActionButton(
+            onPressed: _toggle,
+            child: const Icon(
+              IconlyLight.camera,
+              color: Colors.black,
+            ),
+            backgroundColor: AppColors.kPrimaryColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+@immutable
+class _ExpandingActionButton extends StatelessWidget {
+  const _ExpandingActionButton({
+    required this.directionInDegrees,
+    required this.maxDistance,
+    required this.progress,
+    required this.child,
+    required this.offset,
+  });
+
+  final double directionInDegrees;
+  final double maxDistance;
+  final Animation<double> progress;
+  final Widget child;
+  final Offset offset;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: progress,
+      builder: (context, child) {
+        return Positioned(
+          left: (MediaQuery.of(context).size.width / 2) +
+              offset.dx -
+              28, // Adjust to position relative to FAB center
+          bottom: offset.dy,
+          child: Transform.rotate(
+            angle: (1.0 - progress.value) * math.pi / 2,
+            child: FadeTransition(
+              opacity: progress,
+              child: child!,
+            ),
+          ),
+        );
+      },
+      child: FadeTransition(
+        opacity: progress,
+        child: child,
+      ),
+    );
+  }
+}
+
+@immutable
+class ActionButton extends StatelessWidget {
+  const ActionButton({
+    super.key,
+    this.onPressed,
+    required this.icon,
+  });
+
+  final VoidCallback? onPressed;
+  final Widget icon;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Material(
+      shape: const CircleBorder(),
+      clipBehavior: Clip.antiAlias,
+      color: AppColors.backgroundColor,
+      elevation: 4,
+      child: IconButton(
+        onPressed: onPressed,
+        icon: icon,
+        color: AppColors.kPrimaryColor,
+      ),
+    );
   }
 }
 
