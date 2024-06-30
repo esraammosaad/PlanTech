@@ -39,7 +39,7 @@ dependencies:
   flutter_tflite: ^1.0.1
   # DateTime
   jiffy: ^6.2.1
-  intl: 0.19.0
+  intl:
   http: ^1.1.2
   # Images
   cached_network_image: ^3.3.0
@@ -106,6 +106,7 @@ dependencies:
   iconsax: ^0.0.8
   #nav bar
   spincircle_bottom_bar: ^2.0.0
+  flutter_blue: ^0.8.0
 
 
 
