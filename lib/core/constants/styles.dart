@@ -59,6 +59,11 @@ class Styles {
         fontSize: getResponsiveFontSize(context, fontSize: 12),
         fontWeight: FontWeight.w300,
         height: 0,
+      ); static TextStyle textStyle13(BuildContext context) => TextStyle(
+        color: Colors.black,
+        fontSize: getResponsiveFontSize(context, fontSize: 13),
+        fontWeight: FontWeight.w300,
+        height: 0,
       );
   static TextStyle textStyle14(BuildContext context) => TextStyle(
         color: Colors.black,

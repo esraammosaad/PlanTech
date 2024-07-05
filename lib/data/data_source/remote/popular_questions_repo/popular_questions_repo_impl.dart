@@ -14,7 +14,7 @@ class PopularQuestionsRepoImpl implements PopularQuestionsRepo {
   Future<Either<Failure, List<Questions>>> getPopularQuestions() async {
     try {
       Map<String, dynamic> data = await apiService
-          .getData('$_baseUrl''article-faq-list?key=sk-r9GG65f0fae27a3684547&page=1');
+          .getData('$_baseUrl''article-faq-list?key=sk-O9PP661780d434fd85066&page=1');
       List<Questions> popularQuestionsList = [];
       popularQuestionsList = PopularQuestionsModel.fromJson(data).data;
       debugPrint(popularQuestionsList[0].question);
@@ -38,9 +38,9 @@ class PopularQuestionsRepoImpl implements PopularQuestionsRepo {
           questionsList.add(PopularQuestionsModel.fromJson(data).data[j]);
         }
       }
-      //sk-r9GG65f0fae27a3684547
-      //sk-bu8C65f1041dab4504548
-      //sk-O9PP661780d434fd85066
+      // sk-r9GG65f0fae27a3684547
+      // sk-bu8C65f1041dab4504548
+      // sk-O9PP661780d434fd85066
 
       return right(questionsList);
     } on DioException catch (e) {

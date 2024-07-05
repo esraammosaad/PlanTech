@@ -72,12 +72,29 @@ class SettingOptions extends StatelessWidget {
                 onPressed: () {
                   Get.toNamed(AppRoutes.connectCameraScreen);
                 },
-              ),
-              const CustomSpace(),
+              ),   const CustomSpace(),
+              // CustomSettingItem(
+              //   icon: Icons.stream,
+              //   title: "Image Stream",
+              //   onPressed: () {
+              //     Get.toNamed(AppRoutes.imageStreamingScreen);
+              //   },
+              // ),
+              // const CustomSpace(),
+              // CustomSettingItem(
+              //   icon: Icons.live_tv_outlined,
+              //   title: "Live Stream",
+              //   onPressed: () {
+              //     Get.toNamed(AppRoutes.liveStreamingScreen);
+              //   },
+              // ),
+              // const CustomSpace(),
               CustomSettingItem(
                 icon: IconlyLight.notification,
                 title: "Notifications",
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppRoutes.notificationsScreen);
+                },
               ),
               const CustomSpace(),
               CustomSettingItem(

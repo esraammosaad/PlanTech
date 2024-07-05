@@ -23,42 +23,56 @@ class CustomOnBoardingDecoration extends GetView<OnBoardingController> {
         clipBehavior: Clip.none,
         alignment: Alignment.center,
         children: [
-          Image.asset(
-            height: MediaQuery.of(context).size.height / 1.5,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
-            onBoardingList[index].image!,
-          ),
-          const CustomLogo(),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 16, right: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  onBoardingList[index].title!,
-                  style: Styles.textStyle36(context)
-                      .copyWith(color: Color(0xff5F6F52), height: 1),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  onBoardingList[index].body!,
-                  style:
-                      Styles.textStyle14(context).copyWith(color: Colors.black),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                CustomOnBoardingButton(controller: controller),
-                const SizedBox(
-                  height: 16,
-                ),
-              ],
+            padding: const EdgeInsets.only(top: 25.0, left: 5, right: 5),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Image.asset(
+                    height: MediaQuery.of(context).size.height /1.5,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                    onBoardingList[index].image!,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          onBoardingList[index].title!,
+                          style: Styles.textStyle36(context)
+                              .copyWith(color: Color(0xff5F6F52), height: 1),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          onBoardingList[index].body!,
+                          style:
+                          Styles.textStyle14(context).copyWith(color: Colors.black,fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        CustomOnBoardingButton(controller: controller),
+                        const SizedBox(
+                          height: 16,
+                        ),
+
+                      ],
+                    ),
+                  )
+
+                ],
+              ),
             ),
           ),
+          const CustomLogo(),
+
         ],
       ),
     );

@@ -1,9 +1,8 @@
+import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
-import 'package:grad_proj/view/screens/camera/camera.dart';
 import 'package:grad_proj/view/screens/camera/my_garden.dart';
 import 'package:grad_proj/view/screens/home/home.dart';
-import 'package:grad_proj/view/screens/profile/connect_camera.dart';
 import 'package:grad_proj/view/widgets/home/custom_drawer.dart';
 import 'package:grad_proj/view/screens/profile/profile_settings.dart';
 import 'package:get/get.dart';
@@ -12,13 +11,20 @@ import '../../../core/functions/alert_dialog.dart';
 import '../../widgets/home/custom_nav_bar.dart';
 import '../community/plants_community.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
 
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     bool isVisible = MediaQuery.of(context).viewInsets.bottom != 0;
     NavBarControllerImp controller = Get.find();
+    GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
+
     return ScreenTypeLayout.builder(
       mobile: (context) => Scaffold(
         extendBody: true,

@@ -1,9 +1,13 @@
 import 'package:grad_proj/controller/bluetooth/bluetooth_controller.dart';
+import 'package:grad_proj/controller/bluetooth/capture_image_controller.dart';
+import 'package:grad_proj/controller/bluetooth/image_stream_controller.dart';
+import 'package:grad_proj/controller/bluetooth/live_stream_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/camera_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/model_controller.dart';
 import 'package:grad_proj/controller/camera_controllers/my_garden_controller.dart';
 import 'package:grad_proj/controller/community_controllers/add_post_controller.dart';
 import 'package:grad_proj/controller/community_controllers/see_all_questions_controller.dart';
+import 'package:grad_proj/controller/firebase_notification_controller.dart';
 import 'package:grad_proj/controller/home_controllers/home_controller.dart';
 import 'package:grad_proj/controller/home_controllers/nav_bar_controller.dart';
 import 'package:grad_proj/controller/plants_details_controllers/care_guide_controller.dart';
@@ -49,6 +53,9 @@ class MyBindings extends Bindings {
     Get.lazyPut(()=>MyProfileControllerImp(),fenix: true);
     Get.lazyPut(()=>BluetoothControllerImp(),fenix: true);
     Get.lazyPut(()=>EditProfileControllerImpl(),fenix: true);
+    Get.lazyPut(()=>ImageStreamControllerImp(),fenix: true);
+    Get.lazyPut(()=>LiveStreamControllerImp(),fenix: true);
+    Get.lazyPut(()=>CaptureImageControllerImp(),fenix: true);
     Get.put(FirebaseAuthServices());
     Get.put(ThemeController());
     Get.put(AuthRepoImp());

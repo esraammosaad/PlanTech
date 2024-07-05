@@ -1,4 +1,4 @@
-import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/core/middleware/middleware.dart';
@@ -9,11 +9,10 @@ import 'package:grad_proj/view/screens/auth/signup.dart';
 import 'package:grad_proj/view/screens/auth/signup_with_phone_number.dart';
 import 'package:grad_proj/view/screens/camera/camera.dart';
 import 'package:grad_proj/view/screens/camera/camera_tips.dart';
+import 'package:grad_proj/view/screens/camera/garden_item_details.dart';
 import 'package:grad_proj/view/screens/community/add_post.dart';
-import 'package:grad_proj/view/screens/community/edit_comment.dart';
 import 'package:grad_proj/view/screens/community/edit_post.dart';
 import 'package:grad_proj/view/screens/community/popular_questions.dart';
-import 'package:grad_proj/view/screens/community/post_details.dart';
 import 'package:grad_proj/view/screens/community/see_all_popular_questions.dart';
 import 'package:grad_proj/view/screens/camera/camera_result.dart';
 import 'package:grad_proj/view/screens/home/nav_bar.dart';
@@ -28,8 +27,11 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:grad_proj/view/screens/profile/connect_camera.dart';
 import 'package:grad_proj/view/screens/profile/contact_us.dart';
 import 'package:grad_proj/view/screens/profile/edit_profile.dart';
+import 'package:grad_proj/view/screens/profile/image_streaming.dart';
 import 'package:grad_proj/view/screens/profile/info.dart';
+import 'package:grad_proj/view/screens/profile/live_streaming.dart';
 import 'package:grad_proj/view/screens/profile/my_profile.dart';
+import 'package:grad_proj/view/screens/profile/notification.dart';
 
 List<GetPage<dynamic>> appRoutes() {
   return [
@@ -176,13 +178,13 @@ List<GetPage<dynamic>> appRoutes() {
         curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.contactUsScreen,
-        page: () => const ContactUs(),
+        page: () => const Developers(),
         transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 900),
         curve: Curves.decelerate),
     GetPage(
         name: AppRoutes.connectCameraScreen,
-        page: () => const ConnectCamera(),
+        page: () => ConnectCamera(),
         transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 900),
         curve: Curves.decelerate),
@@ -192,11 +194,29 @@ List<GetPage<dynamic>> appRoutes() {
         transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 900),
         curve: Curves.decelerate),
-    // GetPage(
-    //     name: AppRoutes.editCommentScreen,
-    //     page: () => const EditComment(),
-    //     transition: Transition.cupertino,
-    //     transitionDuration: const Duration(milliseconds: 900),
-    //     curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.gardenItemDetailsScreen,
+        page: () => const GardenItemDetails(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.imageStreamingScreen,
+        page: () => const ImageStreaming(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.liveStreamingScreen,
+        page: () => const LiveStreaming(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
+    GetPage(
+        name: AppRoutes.notificationsScreen,
+        page: () => const Notifications(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 900),
+        curve: Curves.decelerate),
   ];
 }

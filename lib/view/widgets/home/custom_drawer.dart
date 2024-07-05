@@ -40,6 +40,20 @@ class CustomDrawer extends StatelessWidget {
                       },
                       child: const InActiveListTile(
                           item: DrawerModel(
+                              title: 'Live Streaming', icon: IconlyLight.play)),
+                    ),GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.imageStreamingScreen);
+                      },
+                      child: const InActiveListTile(
+                          item: DrawerModel(
+                              title: 'Image Streaming', icon: IconlyLight.image)),
+                    ),GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.cameraScreen);
+                      },
+                      child: const InActiveListTile(
+                          item: DrawerModel(
                               title: 'Camera', icon: IconlyLight.camera)),
                     ),
                     const SizedBox(

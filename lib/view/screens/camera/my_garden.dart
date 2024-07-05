@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/controller/camera_controllers/my_garden_controller.dart';
+import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/core/constants/color.dart';
 import 'package:grad_proj/view/widgets/home/custom_sliver_try_again_text.dart';
 import '../../widgets/camera/custom_search_my_garden_text_field.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
 import 'custom_my_garden_list_item.dart';
 
-class MyGarden extends StatefulWidget {
-  const MyGarden({Key? key}) : super(key: key);
 
-  @override
-  State<MyGarden> createState() => _MyGardenState();
-}
 
-class _MyGardenState extends State<MyGarden> {
+class MyGarden extends StatelessWidget {
+  const MyGarden({super.key});
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +58,10 @@ class _MyGardenState extends State<MyGarden> {
                         ? const CustomSliverTryAgainText(text: 'You Garden Is Empty!')
                         : SliverList.builder(
                             itemBuilder: (context, index) =>
-                                CustomMyGardenListItem(index: index),
+                                GestureDetector(onTap :(){
+                                  Get.toNamed(AppRoutes.gardenItemDetailsScreen,arguments: [index]);
+
+                                },child: CustomMyGardenListItem(index: index)),
                             itemCount: controller.myGarden?.length,
                           );
               }),
@@ -69,6 +72,7 @@ class _MyGardenState extends State<MyGarden> {
       ),
     );
   }
+
 }
 
 

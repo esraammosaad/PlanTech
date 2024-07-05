@@ -15,7 +15,7 @@ class PlantsDetailsRepoImpl implements PlantsDetailsRepo {
       {required int id}) async {
     try {
       Map<String,dynamic> data = await apiService
-          .getData('$_baseUrl''species/details/$id?key=sk-bu8C65f1041dab4504548');
+          .getData('$_baseUrl''species/details/$id?key=sk-O9PP661780d434fd85066');
       print(data);
       PlantsDetailsModel plantsDetailsData = PlantsDetailsModel.fromJson(data);
 

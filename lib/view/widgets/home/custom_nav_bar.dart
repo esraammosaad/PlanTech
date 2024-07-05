@@ -24,7 +24,7 @@ class CustomNavBar extends StatelessWidget {
           elevation: 0,
 
           backgroundColor:
-              themeController.isDarkMode.value ? Colors.black26 : Colors.white,
+          themeController.isDarkMode.value ? Colors.black26 : Colors.white,
           icons: const [
             IconlyLight.home,
             IconlyLight.user_1,
@@ -63,11 +63,10 @@ class CustomFloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find();
 
     return Padding(
       padding:
-          const EdgeInsets.only(bottom: 50.0), // Adjust this padding as needed
+      const EdgeInsets.only(bottom: 50.0), // Adjust this padding as needed
       child: ExpandableFab(
         distance: 100,
         children: [
@@ -75,14 +74,24 @@ class CustomFloatingButton extends StatelessWidget {
             onPressed: () {
               Get.toNamed(AppRoutes.cameraScreen);
             },
-            icon: const Icon(Icons.camera),
+            icon: const Icon(IconlyLight.camera),
           ),
           ActionButton(
-            onPressed: () {},
+            onPressed: () {
+
+              Get.toNamed(AppRoutes.liveStreamingScreen);
+
+
+            },
             icon: const Icon(Icons.play_circle_filled_outlined),
           ),
           ActionButton(
-            onPressed: () {},
+
+            onPressed: () {
+
+              Get.toNamed(AppRoutes.imageStreamingScreen);
+
+            },
             icon: const Icon(Icons.image),
           ),
         ],
@@ -151,7 +160,7 @@ class _ExpandableFabState extends State<ExpandableFab>
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.only(bottom: 25.0), // Adjust this padding as needed
+      const EdgeInsets.only(bottom: 0.0), // Adjust this padding as needed
       child: SizedBox.expand(
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -197,8 +206,8 @@ class _ExpandableFabState extends State<ExpandableFab>
     final step = 90.0 / (count - 1); // Spread over 90 degrees
 
     for (var i = 0, angleInDegrees = startAngleDegrees;
-        i < count;
-        i++, angleInDegrees += step) {
+    i < count;
+    i++, angleInDegrees += step) {
       final angleInRadians = angleInDegrees * (math.pi / 180.0);
       final offset = Offset(math.cos(angleInRadians) * widget.distance,
           math.sin(angleInRadians) * widget.distance);
@@ -236,8 +245,9 @@ class _ExpandableFabState extends State<ExpandableFab>
           child: FloatingActionButton(
             onPressed: _toggle,
             child: const Icon(
-              IconlyLight.camera,
+              IconlyLight.play,
               color: Colors.black,
+              size: 30,
             ),
             backgroundColor: AppColors.kPrimaryColor,
           ),
@@ -303,11 +313,12 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    ThemeController themeController = Get.find();
+
     return Material(
       shape: const CircleBorder(),
       clipBehavior: Clip.antiAlias,
-      color: AppColors.backgroundColor,
+      color: themeController.isDarkMode.value?Colors.black38:AppColors.backgroundColor,
       elevation: 4,
       child: IconButton(
         onPressed: onPressed,

@@ -1,8 +1,25 @@
 plugins {
     id "com.android.application"
+    id "com.google.gms.google-services"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+
 }
+//protobuf {
+//    protoc {
+//        artifact = "com.google.protobuf:protoc:3.21.7"
+//    }
+//
+//    generateProtoTasks {
+//        all().each { task ->
+//            task.builtins {
+//                java {
+//                    option 'lite'
+//                }
+//            }
+//        }
+//    }
+//}
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -69,4 +86,9 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation  "androidx.datastore:datastore:1.1.1"
+    implementation  "com.google.protobuf:protobuf-javalite:3.22.3"
+}

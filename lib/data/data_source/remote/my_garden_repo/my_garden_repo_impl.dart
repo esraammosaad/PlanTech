@@ -47,7 +47,7 @@ class MyGardenRepoImpl extends MyGardenRepo {
 
        fireStore
           .collection('my_garden')
-          .where('uid', isEqualTo: auth.currentUser!.uid)
+          .where('uid', isEqualTo: auth.currentUser!.uid).orderBy('time', descending: true)
           .snapshots()
           .listen((event) {
         data.clear();
