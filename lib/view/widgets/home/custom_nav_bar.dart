@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
@@ -94,6 +95,15 @@ class CustomFloatingButton extends StatelessWidget {
             },
             icon: const Icon(Icons.image),
           ),
+          ActionButton(
+
+            onPressed: () {
+
+              Get.toNamed(AppRoutes.captureImageScreen);
+
+            },
+            icon: const Icon(Icons.camera),
+          ),
         ],
       ),
     );
@@ -160,7 +170,7 @@ class _ExpandableFabState extends State<ExpandableFab>
   Widget build(BuildContext context) {
     return Padding(
       padding:
-      const EdgeInsets.only(bottom: 0.0), // Adjust this padding as needed
+       EdgeInsets.only(bottom: MediaQuery.of(context).size.height/35), // Adjust this padding as needed
       child: SizedBox.expand(
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -315,15 +325,17 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
 
-    return Material(
-      shape: const CircleBorder(),
-      clipBehavior: Clip.antiAlias,
-      color: themeController.isDarkMode.value?Colors.black38:AppColors.backgroundColor,
-      elevation: 4,
-      child: IconButton(
-        onPressed: onPressed,
-        icon: icon,
-        color: AppColors.kPrimaryColor,
+    return Obx(
+        ()=> Material(
+        shape: const CircleBorder(),
+        clipBehavior: Clip.antiAlias,
+        color: themeController.isDarkMode.value?Colors.black:AppColors.backgroundColor,
+        elevation: 4,
+        child: IconButton(
+          onPressed: onPressed,
+          icon: icon,
+          color: AppColors.kPrimaryColor,
+        ),
       ),
     );
   }

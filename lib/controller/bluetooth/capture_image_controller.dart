@@ -1,15 +1,15 @@
 import 'dart:convert';
-import 'dart:typed_data';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:grad_proj/controller/camera_controllers/camera_controller.dart';
 import 'package:signalr_netcore/hub_connection.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';  // Add this import
 
 import 'package:signalr_netcore/hub_connection_builder.dart';
+
+import '../camera_controllers/camera_controller.dart';
+import '../camera_controllers/model_controller.dart';
 
 abstract class CaptureImageController extends GetxController {
   connectToSignalR();
@@ -23,6 +23,9 @@ class CaptureImageControllerImp extends CaptureImageController {
   Image? image;
   File? imageFile;
   bool isLoading = true;
+  String ?result;
+  double ? accuracy;
+  File ? capturedImage ;
 
   @override
   void connectToSignalR() async {
@@ -50,6 +53,7 @@ class CaptureImageControllerImp extends CaptureImageController {
     }
   }
 
+
   @override
   void handleIncomingImage(List<dynamic>? parameters) async {
     try {
@@ -67,6 +71,29 @@ class CaptureImageControllerImp extends CaptureImageController {
           debugPrint("Received image data with length: ${imageBytes.length}");
           image = Image.file(file);
           imageFile = file;
+
+          OpenCameraControllerImpl cameraController = Get.find();
+          cameraController.image = imageFile;
+          ModelControllerImpl modelController = Get.find();
+          update();
+          capturedImage = imageFile;
+          await Future.delayed(Duration(seconds: 1));
+          result = modelController.result;
+          accuracy = modelController.accuracy;
+          print("===================================================$result");
+          update();
+          if (imageFile!=null&& !modelController.isLoading) {
+            result='';
+            await modelController.doImageClassification(image: imageFile!.path) ;
+            update();
+            capturedImage = imageFile;
+            await Future.delayed(Duration(seconds: 1));
+            result = modelController.result;
+            accuracy = modelController.accuracy;
+            print("===================================================$result");
+            update();
+
+          }
           update();
         } else {
           debugPrint("No valid image data received");
@@ -85,6 +112,7 @@ class CaptureImageControllerImp extends CaptureImageController {
       await hubConnection.invoke("CaptureImage");
       debugPrint('Capture image invoked');
       isLoading = false;
+      update();
       Fluttertoast.showToast(
         msg: "Image Saved in my garden",
         toastLength: Toast.LENGTH_SHORT,
@@ -101,7 +129,6 @@ class CaptureImageControllerImp extends CaptureImageController {
       update();
     }
   }
-
   // @override
   // void onClose() {
   //   hubConnection.stop(); // Ensure the connection is stopped
@@ -111,6 +138,6 @@ class CaptureImageControllerImp extends CaptureImageController {
   // @override
   // void onInit() {
   //   super.onInit();
-  //   // connectToSignalR();
+  //   connectToSignalR();
   // }
 }

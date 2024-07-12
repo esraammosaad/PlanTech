@@ -16,41 +16,38 @@ class CustomSignUpWithPhoneForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<SignUpWthPhoneNumControllerImp>(
         builder: (controller) => controller.isLoading
-            ? const CustomLoadingIcon(path: AppIcons.loadingIcon,)
-            :Form(
-              autovalidateMode: controller.autoValidateMode,
-              key: controller.formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  const CustomAuthText(
-                      text: "Enter Your Phone",
-                      subText:
-                      "At our app, we take the security of your information seriously."),
-
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextFormField(
-                    hintText: 'Your Phone',
-                    prefixIcon: controller.chooseCountryCode(),
-                      onSave: (value) {},
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.next,
-                      obscureText: false,
-                      errMassage: '25'.tr,
-                      controller: controller.phoneNumController),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  CustomButton(
-                      text: '19'.tr,
-                      onTap: () {
-                        controller.signUpWithPhoneNumber(context);
-                      }),
-                ],
-              ),
-            ));
+            ? const CustomLoadingIcon(
+                path: AppIcons.loadingIcon,
+              )
+            : Form(
+                autovalidateMode: controller.autoValidateMode,
+                key: controller.formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomAuthText(text: "36".tr, subText: "35".tr),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextFormField(
+                        hintText: '37'.tr,
+                        prefixIcon: controller.chooseCountryCode(),
+                        onSave: (value) {},
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        errMassage: '25'.tr,
+                        controller: controller.phoneNumController),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    CustomButton(
+                        text: '19'.tr,
+                        onTap: () {
+                          controller.signUpWithPhoneNumber(context);
+                        }),
+                  ],
+                ),
+              ));
   }
 }

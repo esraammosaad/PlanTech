@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grad_proj/core/constants/app_routes.dart';
 import 'package:grad_proj/view/widgets/home/custom_text_row.dart';
+import 'package:grad_proj/view/widgets/plants_community/custom_community_slider.dart';
 import 'package:grad_proj/view/widgets/plants_community/custom_create_post_field.dart';
 import 'package:grad_proj/view/widgets/plants_community/custom_popular_questions_list.dart';
 import '../../widgets/home/custom_another_app_bar.dart';
@@ -40,6 +41,17 @@ class PlantsCommunity extends StatelessWidget {
                             height: 18,
                           ),
                           const CustomPopularQuestionsList(),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextRow(text: 'Plants Videos',onTap: (){
+                            Get.toNamed(AppRoutes.seeAllVideosScreen);
+
+                          }),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const CustomCommunitySlider(),
                           const SizedBox(
                             height: 22,
                           ),

@@ -1,111 +1,193 @@
+import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
-import 'package:get/get.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_joystick/flutter_joystick.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:gesture_zoom_box/gesture_zoom_box.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grad_proj/controller/bluetooth/bluetooth_controller.dart';
+import 'package:grad_proj/core/constants/color.dart';
+import 'package:grad_proj/core/constants/styles.dart';
+import 'package:grad_proj/view/widgets/camera/get_fab.dart';
+import '../../../controller/bluetooth/live_stream_controller.dart';
+import '../../widgets/home/custom_third_app_bar.dart';
 
-class ConnectCamera extends StatelessWidget {
-  final BluetoothControllerImp bluetoothService =
-      Get.put(BluetoothControllerImp());
+class ConnectCamera extends StatefulWidget {
+  const ConnectCamera({
+    super.key,
+  });
+
+  @override
+  State<ConnectCamera> createState() => _ConnectCameraState();
+}
+
+class _ConnectCameraState extends State<ConnectCamera> {
+  setLandscapeOrientation() {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+  }
+  @override
+  void initState() {
+setLandscapeOrientation();
+super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bluetooth Scanner'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    // setLandscapeOrientation();
+      return Scaffold(
+      appBar: customAppBar(context, text: 'Moving Camera'),
+      body: Stack(
+          alignment: Alignment.bottomRight,
           children: [
-            Obx(() => Text(
-                  bluetoothService.connectionText.value,
-                  style: TextStyle(fontSize: 20),
-                )),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                bluetoothService.startScan();
-              },
-              child: Text('Start Scan'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                bluetoothService.disconnectFromDevice();
-              },
-              child: Text('Disconnect'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                bluetoothService.writeData("Your Data Here");
-              },
-              child: Text('Send Data'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: GetBuilder<BluetoothControllerImp>(builder: (bluetoothController) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(bluetoothController.connectionText),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                bluetoothController.writeData('C');
+                              },
+                              child: Icon(
+                                Icons.rotate_right,
+                                color: AppColors.kPrimaryColor,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors
+                                    .white54, // Change background color here
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    bluetoothController.writeData('B');
+                                  },
+                                  child: Text(
+                                    'Left',
+                                    style: Styles.textStyle16(context),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors
+                                        .white54, // Change background color here
+                                  ),
+                                ),
+                                SizedBox(width: 30),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    bluetoothController.writeData('A');
+                                  },
+                                  child: Text(
+                                    'Right',
+                                    style: Styles.textStyle16(context),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors
+                                        .white54, // Change background color here
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                bluetoothController.writeData('D');
+                              },
+                              child: Icon(
+                                Icons.rotate_left,
+                                color: AppColors.kPrimaryColor,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors
+                                    .white54, // Change background color here
+                              ),
+                            ),
+                          ],
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            bluetoothController.writeData('S');
+                          },
+                          child: Text(
+                            'Stop',
+                            style: Styles.textStyle16(context),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                Colors.white54, // Change background color here
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              }),
             ),
           ],
         ),
-      ),
+      floatingActionButton:
+          GetBuilder<BluetoothControllerImp>(builder: (bluetoothController) {
+        return SpeedDial(
+          backgroundColor: AppColors.kPrimaryColor,
+          animatedIcon: AnimatedIcons.menu_close,
+          animatedIconTheme: IconThemeData(size: 22, color: Colors.black),
+          visible: true,
+          curve: Curves.bounceIn,
+          children: [
+            SpeedDialChild(
+              label: 'Scan Again',
+              onTap: () => bluetoothController.startScan(),
+              child: const Icon(Icons.restart_alt),
+            ),
+            SpeedDialChild(
+              label: 'Stop Scan',
+              onTap: () => bluetoothController.stopScan(),
+              child: const Icon(
+                Icons.stop_rounded,
+                color: Colors.black,
+              ),
+            ),
+            SpeedDialChild(
+              label: 'Connect To Device',
+              onTap: () => bluetoothController.connectToDevice(),
+              child: const Icon(Icons.bluetooth_connected_outlined),
+            ),
+            SpeedDialChild(
+              label: 'Disconnect From Device',
+              onTap: () => bluetoothController.disconnectFromDevice(
+                  device: bluetoothController.targetDevice),
+              child: const Icon(Icons.disabled_by_default_outlined),
+            ),
+          ],
+        );
+      }),
     );
   }
 }
-
-/*class ConnectCamera extends StatelessWidget {
-  const ConnectCamera({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: Text('Devices'),
-      ),
-      body: GetBuilder<BluetoothControllerImp>(
-        init: BluetoothControllerImp(),
-        builder: (BluetoothControllerImp controller) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                StreamBuilder<List<ScanResult>>(
-                    stream: controller.scanResults,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Expanded(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (context, index) {
-                                final data = snapshot.data![index];
-                                return Card(
-                                  elevation: 2,
-                                  child: ListTile(
-                                    title: Text(data.device.name),
-                                    subtitle: Text(data.device.id.id),
-                                    trailing: Text(data.rssi.toString()),
-                                    onTap: () =>
-                                        controller.connectToDevice(data.device),
-                                  ),
-                                );
-                              }),
-                        );
-                      } else {
-                        return Center(
-                          child: Text("No Device Found"),
-                        );
-                      }
-                    }),
-                SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                    onPressed: () async {
-                      controller.scanDevices();
-                      // await controller.disconnectDevice();
-                    },
-                    child: Text("SCAN")),
-              ],
-            ),
-          );
-        },
-      ));
-      
-}*/
+//A =>Right
+// B=> Left
+// C => clockwise
+// D=> anticlockwise
+// S=> stop
+//

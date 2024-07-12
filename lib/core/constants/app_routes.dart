@@ -32,5 +32,9 @@ abstract class AppRoutes {
   static String imageStreamingScreen = '/imageStreaming';
   static String liveStreamingScreen = '/liveStreaming';
   static String notificationsScreen = '/notifications';
+  static String videosScreen = '/videos';
+  static String seeAllVideosScreen = '/seeAllVideos';
+  static String captureImageScreen = '/captureImage';
+  static String chooseLanguageSettingsScreen = '/chooseLanguageSettings';
 
 }

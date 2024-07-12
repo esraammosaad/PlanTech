@@ -22,18 +22,26 @@ class MyGardenControllerImp extends MyGardenController {
   bool isLoading = false;
   List<ImageModel>? myGarden;
   late TextEditingController controller;
+  List<int> selectedIndex=[];
+  String status='';
   @override
   Future uploadImage({required String result, required File file}) async {
-    isLoading = true;
-    update();
-    await myGardenRepo.uploadImage(
-      result: result,
-      uid: FirebaseAuth.instance.currentUser!.uid,
-      file: file,
-    );
-    isLoading = false;
-    update();
-    Get.back();
+    try {
+      isLoading = true;
+      update();
+      await myGardenRepo.uploadImage(
+        result: result,
+        uid: FirebaseAuth.instance.currentUser!.uid,
+        file: file,
+      );
+      isLoading = false;
+      status='Successfully Added';
+
+      update();
+    } on Exception catch (e) {
+      status='Failed Added';
+      debugPrint(e.toString());
+    }
   }
 
   @override
@@ -44,7 +52,11 @@ class MyGardenControllerImp extends MyGardenController {
     startTimer();
     super.onInit();
   }
+selectIndex(int index){
+    selectedIndex.add(index);
+    update();
 
+}
   @override
   deleteFromMyGarden({required String id, required String fileUrl}) async {
     isLoading = true;

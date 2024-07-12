@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:grad_proj/core/constants/styles.dart';
 import '../../../core/constants/color.dart';
 import '../../widgets/home/custom_third_app_bar.dart';

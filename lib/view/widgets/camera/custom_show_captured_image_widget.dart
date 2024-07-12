@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:grad_proj/controller/bluetooth/capture_image_controller.dart';
+import 'package:grad_proj/view/widgets/home/custom_material_button.dart';
 import '../../../controller/bluetooth/live_stream_controller.dart';
+import '../../../controller/camera_controllers/my_garden_controller.dart';
+import '../../../core/constants/color.dart';
 import '../../../core/constants/styles.dart';
 class CustomShowCapturedImageWidget extends StatelessWidget {
   const CustomShowCapturedImageWidget({
@@ -41,6 +44,29 @@ class CustomShowCapturedImageWidget extends StatelessWidget {
                   ],
                 ),
               ),
+              GetBuilder<MyGardenControllerImp>(
+                  builder: (myGardenController) {
+                    return myGardenController.isLoading
+                        ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.kPrimaryColor,
+                        ),
+                      ),
+                    )
+                        :  myGardenController.status=='Successfully Added'?CircleAvatar(radius: 25,backgroundColor: AppColors.kPrimaryColor,child:Icon( Icons.check,size: 25,color: AppColors.backgroundColor,),):Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: CustomMaterialButton(
+                          text: 'Add To Your Garden',
+                          onPressed: () async {
+                            await myGardenController
+                                .uploadImage(
+                                result: controller.result??'',
+                                file: controller.capturedImage!);
+                          }),
+                        );
+                  }),
             ],
           );
         }

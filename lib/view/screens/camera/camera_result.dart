@@ -1005,6 +1005,8 @@ class CameraResult extends StatelessWidget {
                                                   .uploadImage(
                                                       result: controller.result,
                                                       file: image);
+                                              Get.back();
+
                                             });
                                   }),
                                 ],

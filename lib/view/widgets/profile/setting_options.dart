@@ -101,7 +101,7 @@ class SettingOptions extends StatelessWidget {
                 icon: Icons.language,
                 title: "Language",
                 onPressed: () {
-                  Get.to(const ChooseLanguage());
+                  Get.toNamed(AppRoutes.chooseLanguageSettingsScreen,);
                 },
               ),
               const CustomSpace(),

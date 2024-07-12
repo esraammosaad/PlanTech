@@ -19,15 +19,12 @@ class CustomForgetPasswordForm extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomAuthText(
-                      text: "Forgot Password",
-                      subText:
-                          "At our app, we take the security of your information seriously."),
+                  CustomAuthText(text: "34".tr, subText: "35".tr),
                   const SizedBox(
                     height: 15,
                   ),
                   CustomTextFormField(
-                      hintText: 'Enter your Email',
+                      hintText: '6'.tr,
                       onSave: (value) {},
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,

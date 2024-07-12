@@ -24,12 +24,9 @@ void main() async {
   );
   cameras = await availableCameras();
   await initialServices();
-  runApp(DevicePreview(
-    enabled: true,
-    builder: (context) {
-      return const MyApp();
-    }
-  ));
+  runApp(DevicePreview(builder: (context) {
+    return const MyApp();
+  }));
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +34,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseNotificationControllerImpl notificationController = Get.put(FirebaseNotificationControllerImpl());
+    FirebaseNotificationControllerImpl notificationController =
+        Get.put(FirebaseNotificationControllerImpl());
     LocaleController controller = Get.put(LocaleController());
     ThemeController themeController = Get.put(ThemeController());
     return ResponsiveApp(builder: (context) {

@@ -17,7 +17,7 @@ class CustomSignUpForm extends StatelessWidget {
   const CustomSignUpForm({super.key});
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController=Get.find();
+    ThemeController themeController = Get.find();
     return GetBuilder<SignUpControllerImp>(
         builder: (controller) => controller.isLoading
             ? const CustomLoadingIcon(
@@ -31,26 +31,23 @@ class CustomSignUpForm extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomAuthText(
-                          text: 'Create Account',
-                          subText:
-                              "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!"),
+                      CustomAuthText(text: '38'.tr, subText: "39".tr),
                       const SizedBox(
                         height: 16,
                       ),
                       CustomTextFormField(
-                          hintText: 'Username',
+                          hintText: '40'.tr,
                           onSave: (value) {},
                           keyboardType: TextInputType.name,
                           textInputAction: TextInputAction.next,
                           obscureText: false,
-                          errMassage: 'Please Enter Your Username',
+                          errMassage: '41'.tr,
                           controller: controller.usernameController),
                       const SizedBox(
                         height: 16,
                       ),
                       CustomTextFormField(
-                          hintText: 'Email',
+                          hintText: '31'.tr,
                           onSave: (value) {},
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
@@ -61,7 +58,7 @@ class CustomSignUpForm extends StatelessWidget {
                         height: 16,
                       ),
                       CustomTextFormField(
-                          hintText: 'Password',
+                          hintText: '32'.tr,
                           icon: IconButton(
                             icon: Icon(
                               controller.isNotVisible
@@ -83,13 +80,13 @@ class CustomSignUpForm extends StatelessWidget {
                         height: 16,
                       ),
                       CustomTextFormField(
-                          hintText: 'Confirm Password',
+                          hintText: '14'.tr,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return '13'.tr;
                             } else if (controller.passwordController.text !=
                                 controller.confirmPasswordController.text) {
-                              return "Password doesn't match";
+                              return "42".tr;
                             }
                             return null;
                           },
@@ -129,7 +126,10 @@ class CustomSignUpForm extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               '8'.tr,
-                              style: Styles.textStyle17(context).copyWith(color: themeController.isDarkMode.value?Colors.white70:Colors.black),
+                              style: Styles.textStyle17(context).copyWith(
+                                  color: themeController.isDarkMode.value
+                                      ? Colors.white70
+                                      : Colors.black),
                             ),
                           ),
                           const CustomDivider(),
@@ -141,7 +141,10 @@ class CustomSignUpForm extends StatelessWidget {
                       Center(
                           child: Text(
                         '${'11'.tr} ${'9'.tr}',
-                        style: Styles.textStyle14(context).copyWith(color: themeController.isDarkMode.value?Colors.white:Colors.black),
+                        style: Styles.textStyle14(context).copyWith(
+                            color: themeController.isDarkMode.value
+                                ? Colors.white
+                                : Colors.black),
                       )),
                       const SizedBox(
                         height: 15,

@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart'; // Import path_provider
+import 'package:path_provider/path_provider.dart';
 import '../camera_controllers/camera_controller.dart';
 import 'package:signalr_netcore/hub_connection.dart';
 import 'package:signalr_netcore/hub_connection_builder.dart';
-import 'package:uuid/uuid.dart'; // Import UUID package
+import 'package:uuid/uuid.dart';
 import '../camera_controllers/model_controller.dart';
 
 abstract class ImageStreamController extends GetxController {
@@ -61,7 +61,6 @@ class ImageStreamControllerImp extends ImageStreamController {
     }
   }
 
-
   Future<void> handleIncomingImage(List? parameters) async {
     try {
       if (parameters != null && parameters.isNotEmpty) {
@@ -81,39 +80,41 @@ class ImageStreamControllerImp extends ImageStreamController {
           final filePath = '${directory.path}/$uniqueFileName';
           final file = File(filePath);
           await file.writeAsBytes(imageBytes);
-
           debugPrint("Saved image to: $filePath");
-
           image = Image.file(file);
           imageFile = file;
-
           OpenCameraControllerImpl cameraController = Get.find();
           cameraController.image = imageFile;
-
           ModelControllerImpl modelController = Get.find();
           update();
-
           await Future.delayed(Duration(seconds: 5));
-          resultList.add(modelController.result);
-          accuracyList.add(modelController.accuracy);
-          print("===================================================$resultList");
-          update();
-          imageList.add(image!);
-          imageFileList.add(file);
-          update();
-
-          if (imageFile != null && !modelController.isLoading) {
-            await modelController.doImageClassification(image: imageFile!.path);
-            update();
-            await Future.delayed(Duration(seconds: 5));
+          if (imageFile == null && modelController.isLoading) {
             resultList.add(modelController.result);
             accuracyList.add(modelController.accuracy);
-            print("===================================================$resultList");
+            print(
+                "===================================================$resultList");
             update();
             imageList.add(image!);
             imageFileList.add(file);
+          }
+          update();
+          if (!imageFileList.contains(imageFile) &&
+              !modelController.isLoading) {
+            await modelController.doImageClassification(image: imageFile!.path);
             update();
-            print("===================================================$resultList");
+            await Future.delayed(Duration(seconds: 5));
+            if (!imageFileList.contains(imageFile)) {
+              resultList.add(modelController.result);
+              accuracyList.add(modelController.accuracy);
+              print(
+                  "===================================================$resultList");
+              update();
+              imageList.add(image!);
+              imageFileList.add(file);
+            }
+            update();
+            print(
+                "===================================================$resultList");
             update();
           }
           update();
@@ -127,7 +128,6 @@ class ImageStreamControllerImp extends ImageStreamController {
       print(e.toString());
     }
   }
-
 
   void startImageStream(int interval) async {
     try {
@@ -156,7 +156,7 @@ class ImageStreamControllerImp extends ImageStreamController {
       update();
     }
   }
-
+  //
   // @override
   // void onClose() {
   //   stopImageStream();
@@ -166,7 +166,7 @@ class ImageStreamControllerImp extends ImageStreamController {
   //
   // @override
   // void onInit() {
-  //   // connectToSignalR();
+  //   connectToSignalR();
   //   super.onInit();
   // }
 }

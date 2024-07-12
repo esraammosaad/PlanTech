@@ -12,7 +12,7 @@ class GetFab extends StatelessWidget {
     return SpeedDial(
       backgroundColor: AppColors.kPrimaryColor,
       animatedIcon: AnimatedIcons.menu_close,
-      animatedIconTheme: IconThemeData(size: 22),
+      animatedIconTheme: IconThemeData(size: 22,color: Colors.black),
       visible: isLandscape,
       curve: Curves.bounceIn,
       children: [

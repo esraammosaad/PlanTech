@@ -14,7 +14,7 @@ class CustomNavigationBarInLiveStream extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CaptureImageControllerImp>(
+    return GetBuilder<LiveStreamControllerImp>(
         builder: (controller) {
           return Column(
             children: [
@@ -44,7 +44,7 @@ class CustomNavigationBarInLiveStream extends StatelessWidget {
                         size: 24,
                       ),
                       onPressed: () {
-                        // controller.stopLiveStream();
+                        controller.stopLiveStream();
                       },
                     ),
                     IconButton(
@@ -53,8 +53,7 @@ class CustomNavigationBarInLiveStream extends StatelessWidget {
                         size: 24,
                       ),
                       onPressed: () {
-                        // controller.isFullScreen = true;
-
+controller.fullScreenFunction();
                       },
                     ),
                   ],

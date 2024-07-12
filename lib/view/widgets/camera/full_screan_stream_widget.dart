@@ -1,6 +1,4 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_joystick/flutter_joystick.dart';
 import 'package:gesture_zoom_box/gesture_zoom_box.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grad_proj/controller/bluetooth/bluetooth_controller.dart';
@@ -27,11 +25,16 @@ class FullScreenLiveStreamWidget extends StatelessWidget {
                     maxScale: 5,
                     doubleTapScale: 2,
                     duration: Duration(milliseconds: 200),
-                    child: Image.asset(
-                      'assets/images/home3.jpeg',
-                      width: double.infinity,
-                      height: double.infinity,
+                    child: controller.image==null?SizedBox(
+                      height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: Center()):Image.memory(
+                      controller.image!,
+
+                      width: MediaQuery.of(context).size.height,
+                      height: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
+                      gaplessPlayback: true,
                     )),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 35.0,vertical: 16),
@@ -40,54 +43,79 @@ class FullScreenLiveStreamWidget extends StatelessWidget {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Joystick(
-                            period: Duration(seconds: 1),
-                            includeInitialAnimation: false,
-                            stick:  CircleAvatar(
-                              backgroundColor: AppColors.kPrimaryColor,
-                              radius: 20,
-
-                            ),
-                            base: Container(
-                              width: 180,
-                              height: 180,
-                              decoration:  BoxDecoration(
-                                color:Colors.grey.withOpacity(0.5),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            listener: (details) {
-                              print((atan2(details.y, details.x) * 180 / pi + 360) % 360);
-                            },
-                          ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 65.0,top: 50),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment:MainAxisAlignment.end ,
                               children: [
                                 ElevatedButton(
 
                                   onPressed: (){
+                                    controller.writeData('C');
                                   },
-                                  child: Text('Left',style: Styles.textStyle16(context),),
+                                  child: Icon(Icons.rotate_right,color: AppColors.kPrimaryColor,),
                                   style:ElevatedButton.styleFrom(
-                                    backgroundColor:Colors.grey.withOpacity(0.5),  // Change background color here
+                                    backgroundColor:Colors.white54,  // Change background color here
                                   ) ,
                                 ),
-                                SizedBox(width: 20),
-                                ElevatedButton(
-                                  onPressed: (){
+                                SizedBox(height: 8,),
 
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+
+                                      onPressed: (){
+                                        controller.writeData('B');
+                                      },
+                                      child: Text('Left',style: Styles.textStyle16(context),),
+                                      style:ElevatedButton.styleFrom(
+                                        backgroundColor:Colors.white54,  // Change background color here
+                                      ) ,
+                                    ),
+                                    SizedBox(width: 40),
+                                    ElevatedButton(
+                                      onPressed: (){
+                                        controller.writeData('A');
+
+                                      },
+                                      child: Text('Right',style: Styles.textStyle16(context),),
+                                      style:ElevatedButton.styleFrom(
+                                        backgroundColor:Colors.white54,  // Change background color here
+                                      ) ,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 8,),
+                                ElevatedButton(
+
+                                  onPressed: (){
+                                    controller.writeData('D');
                                   },
-                                  child: Text('Right',style: Styles.textStyle16(context),),
+                                  child: Icon(Icons.rotate_left,color: AppColors.kPrimaryColor,),
                                   style:ElevatedButton.styleFrom(
-                                    backgroundColor:Colors.grey.withOpacity(0.5),  // Change background color here
+                                    backgroundColor:Colors.white54,  // Change background color here
                                   ) ,
                                 ),
                               ],
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 0.0,top: 110,left: 60),
+
+                            child: ElevatedButton(
+
+                              onPressed: (){
+                                controller.writeData('S');
+                              },
+                              child: Text('Stop',style: Styles.textStyle16(context),),
+                              style:ElevatedButton.styleFrom(
+                                backgroundColor:Colors.white54,  // Change background color here
+                              ) ,
+                            ),
+                          ),
                         ],
+
                       );
                     }
                   ),
@@ -98,3 +126,8 @@ class FullScreenLiveStreamWidget extends StatelessWidget {
     });
   }
 }
+//A =>Right
+// B=> Left
+// C => clockwise
+// D=> anticlockwise
+// S=> stop

@@ -19,7 +19,7 @@ class CustomLogInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController=Get.find();
+    ThemeController themeController = Get.find();
     return GetBuilder<SignInControllerImp>(
         builder: (controller) => controller.isLoading
             ? const CustomLoadingIcon(
@@ -33,12 +33,12 @@ class CustomLogInForm extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                     const CustomAuthText(text: "Welcome Back",subText: "We're excited to have you back, can't wait to see what you've been up to since you last logged in."),
+                      CustomAuthText(text: '29'.tr, subText: "30".tr),
                       const SizedBox(
                         height: 30,
                       ),
                       CustomTextFormField(
-                          hintText: 'Email',
+                          hintText: '31'.tr,
                           onSave: (value) {},
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
@@ -49,7 +49,7 @@ class CustomLogInForm extends StatelessWidget {
                         height: 20,
                       ),
                       CustomTextFormField(
-                          hintText: 'Password',
+                          hintText: '32'.tr,
                           icon: IconButton(
                             icon: Icon(
                               controller.isNotVisible
@@ -71,7 +71,7 @@ class CustomLogInForm extends StatelessWidget {
                         height: 32,
                       ),
                       CustomButton(
-                          text: 'Login',
+                          text: '33'.tr,
                           onTap: () {
                             controller.login(context);
                           }),
@@ -92,9 +92,10 @@ class CustomLogInForm extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               '8'.tr,
-                              style: Styles.textStyle17(context).copyWith(color: themeController.isDarkMode.value
-                                  ? Colors.white70
-                                  : Colors.black),
+                              style: Styles.textStyle17(context).copyWith(
+                                  color: themeController.isDarkMode.value
+                                      ? Colors.white70
+                                      : Colors.black),
                             ),
                           ),
                           const CustomDivider(),
@@ -106,9 +107,10 @@ class CustomLogInForm extends StatelessWidget {
                       Center(
                           child: Text(
                         '${'5'.tr} ${'9'.tr}',
-                        style: Styles.textStyle14(context).copyWith(color: themeController.isDarkMode.value
-                            ? Colors.white
-                            : Colors.black),
+                        style: Styles.textStyle14(context).copyWith(
+                            color: themeController.isDarkMode.value
+                                ? Colors.white
+                                : Colors.black),
                       )),
                       const SizedBox(
                         height: 15,

@@ -34,11 +34,11 @@ class LiveStreamControllerImp extends LiveStreamController {
   final serverUrl =
       "https://planethealth.azurewebsites.net/detection?type=flutter";
   late HubConnection hubConnection;
-  Image? image;
+  Uint8List? image;
   int _totalChunks = 0;
   int _receivedChunks = 0;
   List<Uint8List> _imageChunks = [];
-  bool isLoading = true;
+  bool isLoading = false;
   File? capturedImage;
   String? result;
   double? accuracy;
@@ -47,6 +47,9 @@ class LiveStreamControllerImp extends LiveStreamController {
   @override
   void connectToSignalR() async {
     try {
+      isLoading=true;
+      update();
+
       hubConnection = HubConnectionBuilder().withUrl(serverUrl).build();
 
       hubConnection.onclose(({error}) {
@@ -81,6 +84,8 @@ class LiveStreamControllerImp extends LiveStreamController {
   @override
   handleIncomingFrame(List<Object?>? parameters) {
     if (parameters != null && parameters.isNotEmpty) {
+      isLoading=true;
+      update();
       final chunk = parameters[0] as String;
       final index = parameters[1] as int;
       final totalChunks = parameters[2] as int;
@@ -98,10 +103,7 @@ class LiveStreamControllerImp extends LiveStreamController {
         final completeImageBytes =
             Uint8List.fromList(_imageChunks.expand((chunk) => chunk).toList());
 
-        image = Image.memory(
-          completeImageBytes,
-          gaplessPlayback: true,
-        );
+        image = completeImageBytes;
         update();
 
         debugPrint(
@@ -110,7 +112,12 @@ class LiveStreamControllerImp extends LiveStreamController {
         debugPrint(
             "Received frame chunk $index / $totalChunks with bytes: ${imageBytes.length}");
       }
+
+      isLoading=false;
+      update();
     } else {
+      isLoading=false;
+      update();
       debugPrint("No Frames received");
     }
   }
@@ -118,6 +125,8 @@ class LiveStreamControllerImp extends LiveStreamController {
   @override
   void stopLiveStream() async {
     try {
+      isLoading=true;
+      update();
       await hubConnection.invoke("StopLiveStream");
       debugPrint('Live stream Stop');
       isLoading=false;
@@ -163,10 +172,16 @@ class LiveStreamControllerImp extends LiveStreamController {
   // @override
   // void onInit() {
   //   super.onInit();
-  //   // connectToSignalR();
+  //   connectToSignalR();
   //   isLandscape = false;
   //   timeString = formatDateTime(DateTime.now());
   //   Timer.periodic(Duration(seconds: 1), (Timer t) => getTime());
+  // }
+  // @override
+  // void onClose() {
+  //   hubConnection.stop(); //
+  //   stopLiveStream();// Ensure the connection is stopped
+  //   super.onClose();
   // }
 
   @override
