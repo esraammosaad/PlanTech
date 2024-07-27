@@ -27,3 +27,15 @@
 
 # 🌱Get Started with PlanTech Today!
 ![logo-01 (1)](https://github.com/esraammosaad/grad-proj/assets/110772494/2e02d5e3-a0a4-48ad-bb08-8c48fb561199)
+
+# Demo of the application 🎥
+
+https://github.com/user-attachments/assets/b3c564e1-636c-4e6b-a7f9-284e354d8896
+
+# Demo of the ropot 🤖
+
+https://github.com/user-attachments/assets/e683c3a4-d1d1-42c6-a31a-75a51cae6117
+
+
+
+
